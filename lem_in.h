@@ -6,14 +6,14 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/25 11:18:19 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/02/25 11:58:14 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-#include "libft/libft.h"
+#include "libft/includes/libft.h"
 
 typedef	struct			s_room
 {
