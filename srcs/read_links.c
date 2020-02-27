@@ -4,15 +4,14 @@ void		check_room_exists(char *name, t_room **room)
 {
 	while ((*room)->next)
 	{
-	//	if (ft_strcmp(name, (*room)->name) == 0)
-	//		return ;
-		ft_printf("%sa\n", name);
+		if (ft_strcmp(name, (*room)->name) == 0)
+			return ;
 		*room = (*room)->next;
 	}
 	if (ft_strcmp(name, (*room)->name) == 0)
 		return ;
 	else
-		exit(ft_printf("Errrrror\n"));
+		exit(ft_printf("Error\n"));
 }
 
 void		check_links(char *line, t_room **room)
@@ -26,7 +25,6 @@ void		check_links(char *line, t_room **room)
 	{
 		check_room_exists(tmp[i], room);
 		i++;
-		ft_printf("%sa\n", (*room)->name);
 		go_to_first_room(room);
 	}
 	if (tmp[i])
@@ -38,12 +36,10 @@ void		check_links(char *line, t_room **room)
 void	read_links(char **line, t_room **room)
 {
 	check_links(*line, room);
-	free(*line);
 	*line = NULL;
 	while (get_next_line(0, line) == 1)
 	{
 		check_links(*line, room);
-		free(*line);
 		*line = NULL;
 	}
 }
