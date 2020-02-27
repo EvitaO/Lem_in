@@ -45,6 +45,12 @@ int		check_rooms(char *line, t_room **room)
 		j++;
 	}
 	store_room(tmp, room);
+	i = 0;
+	while (tmp[i])
+	{
+		free(tmp[i]);
+		i++;
+	}
 	free(tmp);
 	return (0);
 }
@@ -57,9 +63,9 @@ void	read_rooms(char **line, t_room **room, char **str)
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
 		ret = check_rooms(*line, room);
-		*str = ft_strjoin(*str, *line);
+		store_input_str(str, line);
 //		free(line);
-//		line = NULL;
+		line = NULL;
 	}
 	go_to_first_room(room);
 }

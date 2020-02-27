@@ -28,7 +28,7 @@ int	count_ants(char **line, char **str)
 	{
 		get_next_line(0, line);
 		ants = check_ants(ants, line);
-		*str = ft_strjoin(*str, *line);
+		store_input_str(str, line);
 		free(*line);
 		*line = NULL;
 	}

@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lem_in.c                                           :+:    :+:            */
+/*   store_input_str.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/02/27 15:31:52 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/02/27 14:45:03 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/02/27 15:16:21 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	main(void)
+void	store_input_str(char **str, char **line)
 {
-	int		ants;
-	char	*line;
-	char	*output;
-	t_room	*room;
+	int	i;
 
-	line = NULL;
-	output = "";
-	check_input(&ants, &line, &room, &output);
-	ft_printf("%s\n", output);
-	free(output);
-	while(1);
-	return (0);
+	i = 0;
+	*str = ft_strjoin(*str, *line);
+	while (str[0][i] != '\0')
+		i++;
+	str[0][i] = '\n';
 }

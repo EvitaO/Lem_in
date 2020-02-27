@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/27 14:29:58 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/02/27 14:53:32 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct			s_able
 
 void				check_input(int *ants, char **line,\
 					t_room **room, char **str);
+void				store_input_str(char **str, char **line);
 
 /*		count ants				*/
 int					count_ants(char **line, char **str);

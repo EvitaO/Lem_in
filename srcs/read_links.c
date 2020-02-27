@@ -30,6 +30,12 @@ void		check_links(char *line, t_room **room)
 	if (tmp[i])
 		exit(ft_printf("Error\n"));
 	free(line);
+	i = 0;
+	while (tmp[i])
+	{
+		free(tmp[i]);
+		i++;
+	}
 	free(tmp);
 }
 
@@ -40,7 +46,7 @@ void	read_links(char **line, t_room **room, char **str)
 	while (get_next_line(0, line) == 1)
 	{
 		check_links(*line, room);
-		*str = ft_strjoin(*str, *line);
+		store_input_str(str, line);
 		*line = NULL;
 	}
 }
