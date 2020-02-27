@@ -33,13 +33,14 @@ void		check_links(char *line, t_room **room)
 	free(tmp);
 }
 
-void	read_links(char **line, t_room **room)
+void	read_links(char **line, t_room **room, char **str)
 {
 	check_links(*line, room);
 	*line = NULL;
 	while (get_next_line(0, line) == 1)
 	{
 		check_links(*line, room);
+		*str = ft_strjoin(*str, *line);
 		*line = NULL;
 	}
 }

@@ -49,7 +49,7 @@ int		check_rooms(char *line, t_room **room)
 	return (0);
 }
 
-void	read_rooms(char **line, t_room **room)
+void	read_rooms(char **line, t_room **room, char **str)
 {
 	int	ret;
 
@@ -57,6 +57,7 @@ void	read_rooms(char **line, t_room **room)
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
 		ret = check_rooms(*line, room);
+		*str = ft_strjoin(*str, *line);
 //		free(line);
 //		line = NULL;
 	}

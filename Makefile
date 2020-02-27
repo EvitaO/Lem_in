@@ -1,8 +1,10 @@
 NAME = lem-in
 
-SRCS = count_ants.c lem_in.c read_links.c read_rooms.c go_to_start.c
+SRCS = count_ants.c lem_in.c read_links.c read_rooms.c go_to_start.c\
+	 check_input.c
 
-OBJ = count_ants.o lem_in.o read_links.o read_rooms.o go_to_start.o
+OBJ = count_ants.o lem_in.o read_links.o read_rooms.o go_to_start.o\
+	 check_input.o
 
 FLAGS = -Wall -Werror -Wextra
 

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lem_in.c                                           :+:    :+:            */
+/*   check_input.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/02/27 14:37:41 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/02/27 13:28:12 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/02/27 14:32:20 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	main(void)
+void	check_input(int *ants, char **line, t_room **room, char **str)
 {
-	int		ants;
-	char	*line;
-	char	*output;
-	t_room	*room;
-
-	line = NULL;
-	output = "";
-	check_input(&ants, &line, &room, &output);
-	ft_printf("%s\n", output);
-	return (0);
+	*ants = count_ants(line, str);
+	read_rooms(line, room, str);
+	read_links(line, room, str);
 }

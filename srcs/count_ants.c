@@ -19,7 +19,7 @@ int	check_ants(int	ants, char **line)
 	return (ants);
 }
 
-int	count_ants(char **line)
+int	count_ants(char **line, char **str)
 {
 	int	ants;
 
@@ -28,6 +28,7 @@ int	count_ants(char **line)
 	{
 		get_next_line(0, line);
 		ants = check_ants(ants, line);
+		*str = ft_strjoin(*str, *line);
 		free(*line);
 		*line = NULL;
 	}
