@@ -21,6 +21,8 @@ int	main(void)
 
 	line = NULL;
 	output = "";
+	room = (t_room*)malloc(sizeof(t_room));
+	room->prev = NULL;
 	check_input(&ants, &line, &room, &output);
 	ft_printf("%s\n", output);
 	free(output);
