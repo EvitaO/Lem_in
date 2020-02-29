@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/27 14:53:32 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
+/*   Updated: 2020/02/29 17:49:01 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,17 @@ typedef	struct			s_room
 	struct s_room		*prev;
 }						t_room;
 
+typedef struct			s_node
+{
+	char				*name;
+	struct s_node		*next;
+}						t_node;
+
+
 typedef struct			s_able
 {
 	int					size;
-	t_room				**array;
+	t_node				**array;
 }						t_able;
 
 /*									CHECK								*/
@@ -42,7 +49,7 @@ int					count_ants(char **line, char **str);
 int					check_ants(int ants, char **line);
 
 /*		check rooms				*/
-void				read_rooms(char **line, t_room **room, char **str);
+int					read_rooms(char **line, t_room **room, char **str);
 int					check_rooms(char *line, t_room **room);
 void				store_room(char **tmp, t_room **room);
 

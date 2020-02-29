@@ -55,17 +55,21 @@ int		check_rooms(char *line, t_room **room)
 	return (0);
 }
 
-void	read_rooms(char **line, t_room **room, char **str)
+int		read_rooms(char **line, t_room **room, char **str)
 {
 	int	ret;
+	int	i;
 
+	i = 0;
 	ret = 0;
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
+		i++;
 		ret = check_rooms(*line, room);
 		store_input_str(str, line);
 		if (ret != 1)
 			free(*line);
 	}
 	go_to_first_room(room);
+	return (i - 1);
 }
