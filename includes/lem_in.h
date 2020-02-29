@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/27 14:53:32 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/02/29 18:15:58 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int					check_ants(int ants, char **line);
 void				read_rooms(char **line, t_room **room, char **str);
 int					check_rooms(char *line, t_room **room);
 void				store_room(char **tmp, t_room **room);
+void				check_valid_room(char **tmp, t_room **room);
 
 /*		check links				*/
 void				read_links(char **line, t_room **room, char **str);

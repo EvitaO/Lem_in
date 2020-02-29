@@ -44,6 +44,8 @@ int		check_rooms(char *line, t_room **room)
 		i = 0;
 		j++;
 	}
+	if (*room)
+		check_valid_room(tmp, room);
 	store_room(tmp, room);
 	i = 0;
 	while (tmp[i])

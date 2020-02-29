@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 14:45:03 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/29 16:01:14 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/02/29 17:52:04 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	store_input_str(char **str, char **line)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	*str = ft_strjoin(*str, *line);
