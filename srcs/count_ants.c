@@ -30,7 +30,6 @@ int	count_ants(char **line, char **str)
 		ants = check_ants(ants, line);
 		store_input_str(str, line);
 		free(*line);
-		*line = NULL;
 	}
 	return (ants);
 }

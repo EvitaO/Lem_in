@@ -67,5 +67,6 @@ void	read_rooms(char **line, t_room **room, char **str)
 		if (ret != 1)
 			free(*line);
 	}
+	free(*line);
 	go_to_first_room(room);
 }
