@@ -2,21 +2,20 @@
 
 void	store_room(char **tmp, t_room **room)
 {
-	/*if (!(*room))
-	{
-		ft_printf("P\n");
-		*room = (t_room*)malloc(sizeof(t_room));
-		(*room)->prev = NULL;
-	}*/
-	if ((*room)->name)
+	if (*room)
 	{
 		(*room)->next = (t_room*)malloc(sizeof(t_room));
 		(*room)->next->prev = *room;
-		(*room) = (*room)->next;
+		*room = (*room)->next;
 	}
-	(*room)->name = tmp[0];
-	(*room)->x = tmp[1];
-	(*room)->y = tmp[2];
+	else
+	{
+		*room = (t_room*)malloc(sizeof(t_room));
+		(*room)->prev = NULL;
+	}
+	(*room)->name = ft_strdup(tmp[0]);
+	(*room)->x = ft_strdup(tmp[1]);
+	(*room)->y = ft_strdup(tmp[2]);
 	(*room)->next = NULL;
 }
 
@@ -46,12 +45,12 @@ int		check_rooms(char *line, t_room **room)
 		j++;
 	}
 	store_room(tmp, room);
-	/*i = 0;
+	i = 0;
 	while (tmp[i])
 	{
 		free(tmp[i]);
 		i++;
-	}*/
+	}
 	free(tmp);
 	return (0);
 }
@@ -67,7 +66,6 @@ void	read_rooms(char **line, t_room **room, char **str)
 		store_input_str(str, line);
 		if (ret != 1)
 			free(*line);
-//		line = NULL;
 	}
 	go_to_first_room(room);
 }

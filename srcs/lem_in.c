@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/02/27 15:31:52 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/02/29 15:15:02 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	main(void)
 
 	line = NULL;
 	output = "";
-	room = (t_room*)malloc(sizeof(t_room));
-	room->prev = NULL;
+	room = NULL;
 	check_input(&ants, &line, &room, &output);
 	ft_printf("%s\n", output);
 	free(output);
