@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/29 18:15:58 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/02 13:57:24 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ typedef	struct			s_room
 	struct s_room		*next;
 	struct s_room		*prev;
 }						t_room;
+
+typedef struct			s_node
+{
+	char				*name;
+	struct s_node		*next;
+}						t_node;
 
 typedef struct			s_able
 {
@@ -42,7 +48,7 @@ int					count_ants(char **line, char **str);
 int					check_ants(int ants, char **line);
 
 /*		check rooms				*/
-void				read_rooms(char **line, t_room **room, char **str);
+int					read_rooms(char **line, t_room **room, char **str);
 int					check_rooms(char *line, t_room **room);
 void				store_room(char **tmp, t_room **room);
 void				check_valid_room(char **tmp, t_room **room);
@@ -54,5 +60,9 @@ void				check_room_exists(char *name, t_room **room);
 
 /*		go to the start / end of a list		*/
 void				go_to_first_room(t_room **room);
+
+/*		store rooms in hashtable			*/
+t_able			rooms_hash(t_room **room, t_able *hashtable, int size);
+int				hash(int size, char *key);
 
 #endif
