@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/02/29 17:49:01 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/02 13:19:21 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct			s_node
 	char				*name;
 	struct s_node		*next;
 }						t_node;
-
 
 typedef struct			s_able
 {
