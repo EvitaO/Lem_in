@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/02 13:57:24 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/02 14:22:32 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct			s_node
 typedef struct			s_able
 {
 	int					size;
-	t_room				**array;
+	t_node				**array;
 }						t_able;
 
 /*									CHECK								*/

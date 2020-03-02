@@ -6,12 +6,12 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/02 13:25:30 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/02 14:41:07 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
+/*
 static void	ht_get(int size, t_able *hashtable)
 {
 	t_node		*tmp;
@@ -31,7 +31,7 @@ static void	ht_get(int size, t_able *hashtable)
 	{
 		ft_printf("no string there\n");
 	}
-}
+}*/
 
 static void	add_node_ht(t_able *hashtable, t_node **node, int index)
 {
@@ -83,6 +83,7 @@ t_able		rooms_hash(t_room **room, t_able *hashtable, int size)
 	hashtable = (t_able*)malloc(sizeof(t_able));
 	hashtable->array = (t_node**)malloc(size * sizeof(t_node));
 	ft_memset(hashtable->array, 0, size * sizeof(t_node));
+	ft_printf("AA\n");
 	hashtable->size = size;
 	while ((*room)->next)
 	{

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/29 17:58:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/02/29 18:27:24 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/02 14:26:11 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static void	check_room_name(char *name, t_room **room)
 		}
 		*room = (*room)->next;
 	}
-	ft_printf("AA\n");
 	if (ft_strcmp((*room)->name, name) == 0)
 	{
 		ft_printf("Error\n");
