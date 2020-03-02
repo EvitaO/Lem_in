@@ -44,6 +44,7 @@ typedef struct			s_able
 t_able				check_input(int *ants, char **line,\
 					t_room **room, char **str);
 void				store_input_str(char **str, char **line);
+int					check_comment(char **line);
 
 /*
 **		count ants
@@ -78,7 +79,8 @@ t_able			rooms_hash(t_room **room, t_able *hashtable, int size);
 int				hash(int size, char *key);
 
 /*
-**		Free Functions
+**			FREE
+**			FUNCTION
 */
 void			free_room(t_room **room);
 

@@ -14,11 +14,11 @@ NAME = lem-in
 
 SRCS = count_ants.c lem_in.c read_links.c read_rooms.c go_to_start.c\
 	 check_input.c store_input_str.c valid_check_room.c hashtables.c\
-	 free_room.c
+	 free_room.c check_comment.c
 
 OBJ = count_ants.o lem_in.o read_links.o read_rooms.o go_to_start.o\
 	 check_input.o store_input_str.o valid_check_room.o hashtables.o\
-	 free_room.o
+	 free_room.o check_comment.o
 
 FLAGS = -Wall -Werror -Wextra
 

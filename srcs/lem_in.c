@@ -24,6 +24,8 @@ int	main(void)
 	output = "";
 	room = NULL;
 	hashtable = check_input(&ants, &line, &room, &output);
+	if (hashtable.size)
+		ft_printf("a\n");
 	ft_printf("%s\n", output);
 	free(output);
 	free_room(&room);
