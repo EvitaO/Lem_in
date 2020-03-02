@@ -6,11 +6,12 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/02 14:41:07 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/02 18:20:59 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
 /*
 static void	ht_get(int size, t_able *hashtable)
 {
@@ -33,7 +34,7 @@ static void	ht_get(int size, t_able *hashtable)
 	}
 }*/
 
-static void	add_node_ht(t_able *hashtable, t_node **node, int index)
+void	add_node_ht(t_able *hashtable, t_node **node, int index)
 {
 	t_node			*tmp;
 
@@ -50,7 +51,7 @@ static void	add_node_ht(t_able *hashtable, t_node **node, int index)
 	}
 }
 
-static void	ht_put(t_able *hashtable, t_room **room, int index)
+void	ht_put(t_able *hashtable, t_room **room, int index)
 {
 	t_node		*node;
 
@@ -77,13 +78,10 @@ int		hash(int size, char *key)
 t_able		rooms_hash(t_room **room, t_able *hashtable, int size)
 {
 	int		index;
-	int		i;
 
-	i = 0;
 	hashtable = (t_able*)malloc(sizeof(t_able));
 	hashtable->array = (t_node**)malloc(size * sizeof(t_node));
 	ft_memset(hashtable->array, 0, size * sizeof(t_node));
-	ft_printf("AA\n");
 	hashtable->size = size;
 	while ((*room)->next)
 	{

@@ -40,8 +40,6 @@ void		check_links(char *line, t_room **room)
 
 void	read_links(char **line, t_room **room, char **str)
 {
-	check_links(*line, room);
-//	free(*line);
 	while (get_next_line(0, line) == 1)
 	{
 		check_links(*line, room);

@@ -70,8 +70,10 @@ int		read_rooms(char **line, t_room **room, char **str)
 		store_input_str(str, line);
 		if (ret != 1)
 			free(*line);
+		i++;
 	}
-	free(*line);
 	go_to_first_room(room);
+	if (ret == 1)
+		check_links(*line, room);
 	return (i - 1);
 }
