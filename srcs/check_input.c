@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 13:28:12 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/02/29 18:22:12 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/02 13:17:48 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ht_get(int size, t_able *hashtable)
 	t_node		*tmp;
 
 	tmp = hashtable->array[size];
-	if (tmp != NULL)
-		ft_printf("string5 is %s\n", tmp->name);
 	if (hashtable->array[size] != NULL)
 	{
 		tmp = hashtable->array[size];
@@ -35,28 +33,29 @@ void	ht_get(int size, t_able *hashtable)
 	}
 }
 
-void	add_node_ht(t_able *hashtable, t_node *node, int index)
+void	add_node_ht(t_able *hashtable, t_node **node, int index)
 {
 	t_node			*tmp;
 
 	tmp = hashtable->array[index];
 	if (hashtable->array[index] != NULL)
 	{
-		node->next = tmp;
-		hashtable->array[index] = node;
+		(*node)->next = tmp;
+		hashtable->array[index] = *node;
 	}
 	else
 	{
-		node->next = NULL;
-		hashtable->array[index] = node;
+		(*node)->next = NULL;
+		hashtable->array[index] = *node;
 	}
 }
 
 void	ht_put(t_able *hashtable, t_room **room, int index)
 {
-	t_node		node;
+	t_node		*node;
 
-	node.name = ft_strdup((*room)->name);
+	node = (t_node*)malloc(sizeof(t_node));
+	node->name = ft_strdup((*room)->name);
 	add_node_ht(hashtable, &node, index);
 }
 
@@ -75,10 +74,12 @@ int		hash(int size, char *key)
 	return (hash);
 }
 
-void	rooms_hash(t_room **room, t_able *hashtable, int size)
+t_able	rooms_hash(t_room **room, t_able *hashtable, int size)
 {
 	int		index;
+	int		i;
 
+	i = 0;
 	hashtable = (t_able*)malloc(sizeof(t_able));
 	hashtable->array = (t_node**)malloc(size * sizeof(t_node));
 	ft_memset(hashtable->array, 0, size * sizeof(t_node));
@@ -91,6 +92,7 @@ void	rooms_hash(t_room **room, t_able *hashtable, int size)
 	}
 	index = hash(hashtable->size, (*room)->name);
 	ht_put(hashtable, room, index);
+	return (*hashtable);
 }
 
 void	check_input(int *ants, char **line, t_room **room, char **str)
@@ -102,8 +104,8 @@ void	check_input(int *ants, char **line, t_room **room, char **str)
 	i = 0;
 	*ants = count_ants(line, str);
 	size = read_rooms(line, room, str);
-	rooms_hash(room, &hashtable, size);
-	while (i <= size)
+	hashtable = rooms_hash(room, &hashtable, size);
+	while (i < size)
 	{
 		ht_get(i, &hashtable);
 		i++;
