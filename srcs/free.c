@@ -5,16 +5,16 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/02 17:06:08 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/03 12:20:34 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/02 17:06:08 by eutrodri       #+#    #+#                */
+/*   Updated: 2020/03/03 11:34:47 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	free_room(t_room **room)
+void			free_room(t_room **room)
 {
-	t_room	*tmp;
+	t_room		*tmp;
 
 	while ((*room)->next)
 	{
@@ -32,15 +32,31 @@ void	free_room(t_room **room)
 	free(*room);
 }
 
-void	free_tmp(char **tmp)
+void			free_ht(t_able *hashtable)
 {
-	int	i;
+	t_node		*tmp;
+	t_node		*tmp_node;
+	int			i;
 
 	i = 0;
-	while (tmp[i])
+	while (i < hashtable->size)
 	{
-		free(tmp[i]);
+		tmp_node = hashtable->array[i];
+		if (tmp_node != NULL)
+		{
+			while (tmp_node->next)
+			{
+				tmp = tmp_node;
+				tmp_node = tmp_node->next;
+				free(tmp->name);
+				free(tmp);
+			}
+			free(tmp_node->name);
+			free(tmp_node);
+		}
 		i++;
 	}
-	free(tmp);
+	free(hashtable->array);
+	//free(hashtable->size);
+	//free(hashtable);
 }
