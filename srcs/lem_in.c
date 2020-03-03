@@ -6,13 +6,13 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/03 14:37:36 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/03 15:34:50 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	main(void)
+static int	aap(char *a)
 {
 	int		ants;
 	char	*line;
@@ -20,6 +20,7 @@ int	main(void)
 	t_room	*room;
 	t_able	hashtable;
 
+	a = "hallo";
 	line = NULL;
 	output = "";
 	room = NULL;
@@ -27,6 +28,13 @@ int	main(void)
 	ft_printf("%s\n", output);
 	free(output);
 	free_room(&room);
+	free_ht(&hashtable);
+	return (0);
+}
+
+int	main(void)
+{
+	aap("leuk");
 	while(1);
 	return (0);
 }
