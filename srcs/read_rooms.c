@@ -44,6 +44,8 @@ int		check_rooms(char *line, t_room **room)
 		i = 0;
 		j++;
 	}
+	if (*room)
+		check_valid_room(tmp, room);
 	store_room(tmp, room);
 	i = 0;
 	while (tmp[i])
@@ -59,17 +61,25 @@ int		read_rooms(char **line, t_room **room, char **str)
 {
 	int	ret;
 	int	i;
+	int	comment;
 
 	i = 0;
 	ret = 0;
+	comment = 0;
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
-		i++;
+		if (comment > 0)
+			ft_printf("A\n");	
+		comment = check_comment(line);
 		ret = check_rooms(*line, room);
+		if (*line[0] != '#')
+			i++;
 		store_input_str(str, line);
 		if (ret != 1)
 			free(*line);
 	}
 	go_to_first_room(room);
+	if (ret == 1)
+		check_links(*line, room);
 	return (i - 1);
 }

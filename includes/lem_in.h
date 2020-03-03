@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/02 13:19:21 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/03 11:16:23 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,52 @@ typedef struct			s_able
 	t_node				**array;
 }						t_able;
 
-/*									CHECK								*/
-/*									INPUT				*/
+/*
+**									CHECK
+**									INPUT
+*/
 
-void				check_input(int *ants, char **line,\
+t_able				check_input(int *ants, char **line,\
 					t_room **room, char **str);
 void				store_input_str(char **str, char **line);
+int					check_comment(char **line);
 
-/*		count ants				*/
+/*
+**		count ants
+*/
 int					count_ants(char **line, char **str);
 int					check_ants(int ants, char **line);
 
-/*		check rooms				*/
+/*
+**		check rooms
+*/
 int					read_rooms(char **line, t_room **room, char **str);
 int					check_rooms(char *line, t_room **room);
 void				store_room(char **tmp, t_room **room);
+void				check_valid_room(char **tmp, t_room **room);
 
-/*		check links				*/
+/*
+**		check links
+*/
 void				read_links(char **line, t_room **room, char **str);
 void				check_links(char *line, t_room **room);
 void				check_room_exists(char *name, t_room **room);
 
-/*		go to the start / end of a list		*/
+/*
+**		go to the start / end of a list
+*/
 void				go_to_first_room(t_room **room);
+
+/*
+**		store rooms in hashtable
+*/
+t_able			rooms_hash(t_room **room, t_able *hashtable, int size);
+int				hash(int size, char *key);
+
+/*
+**			FREE
+**			FUNCTION
+*/
+void			free_room(t_room **room);
 
 #endif
