@@ -6,33 +6,11 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/02 18:20:59 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/03 12:26:36 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-/*
-static void	ht_get(int size, t_able *hashtable)
-{
-	t_node		*tmp;
-
-	tmp = hashtable->array[size];
-	if (hashtable->array[size] != NULL)
-	{
-		tmp = hashtable->array[size];
-		while (tmp->next)
-		{
-			ft_printf("string is %s\n", tmp->name);
-			tmp = tmp->next;
-		}
-		ft_printf("string2 is %s\n", tmp->name);
-	}
-	else
-	{
-		ft_printf("no string there\n");
-	}
-}*/
 
 void	add_node_ht(t_able *hashtable, t_node **node, int index)
 {
@@ -75,11 +53,10 @@ int		hash(int size, char *key)
 	return (hash);
 }
 
-t_able		rooms_hash(t_room **room, t_able *hashtable, int size)
+t_able	rooms_hash(t_room **room, t_able *hashtable, int size)
 {
 	int		index;
 
-	hashtable = (t_able*)malloc(sizeof(t_able));
 	hashtable->array = (t_node**)malloc(size * sizeof(t_node));
 	ft_memset(hashtable->array, 0, size * sizeof(t_node));
 	hashtable->size = size;

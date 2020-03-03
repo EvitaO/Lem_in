@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   count_ants.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: eutrodri <marvin@codam.nl>                   +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/03/03 12:23:12 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/03/03 12:24:53 by eutrodri      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
-int	check_ants(int	ants, char **line)
+int	check_ants(int ants, char **line)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (line[0][i] && ft_isdigit(line[0][i]) == 1)

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/02 18:17:33 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/03 12:19:56 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct			s_able
 t_able				check_input(int *ants, char **line,\
 					t_room **room, char **str);
 void				store_input_str(char **str, char **line);
-int					check_comment(char **line);
+int					check_comment(char *line);
 
 /*
 **		count ants
@@ -59,6 +59,8 @@ int					read_rooms(char **line, t_room **room, char **str);
 int					check_rooms(char *line, t_room **room);
 void				store_room(char **tmp, t_room **room);
 void				check_valid_room(char **tmp, t_room **room);
+void				valid_cordinates(char **tmp);
+void				valid_name(char *tmp);
 
 /*
 **		check links
@@ -83,5 +85,6 @@ int				hash(int size, char *key);
 **			FUNCTION
 */
 void			free_room(t_room **room);
+void			free_tmp(char **tmp);
 
 #endif
