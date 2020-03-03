@@ -25,32 +25,3 @@ void		store_links(char **tmp, t_able *hashtable)
 		t->link->next = t2;
 	}
 }
-
-void			free_ht(t_able *hashtable)
-{
-	t_node		*tmp;
-	t_node		*tmp_node;
-	int			i;
-
-	i = 0;
-	while (i < hashtable->size)
-	{
-		tmp_node = hashtable->array[i];
-		if (tmp_node != NULL)
-		{
-			while (tmp_node->next)
-			{
-				tmp = tmp_node;
-				tmp_node = tmp_node->next;
-				free(tmp->name);
-				free(tmp);
-			}
-			free(tmp_node->name);
-			free(tmp_node);
-		}
-		i++;
-	}
-	free(hashtable->array);
-	//free(hashtable->size);
-	//free(hashtable);
-}
