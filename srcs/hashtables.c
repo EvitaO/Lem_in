@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/03 12:26:36 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/04 11:26:36 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,25 @@ t_able	rooms_hash(t_room **room, t_able *hashtable, int size)
 {
 	int		index;
 
-	hashtable->array = (t_node**)malloc(size * sizeof(t_node));
-	ft_memset(hashtable->array, 0, size * sizeof(t_node));
-	hashtable->size = size;
+	hashtable->array = (t_node**)malloc((size + 2) * sizeof(t_node));
+	ft_memset(hashtable->array, 0, (size + 2) * sizeof(t_node));
 	while ((*room)->next)
 	{
-		index = hash(hashtable->size, (*room)->name);
+		if ((*room)->comment == 1)
+			index = size;
+		else if ((*room)->comment == 2)
+			index = size + 1;
+		else
+			index = hash(hashtable->size, (*room)->name);
 		ht_put(hashtable, room, index);
 		*room = (*room)->next;
 	}
-	index = hash(hashtable->size, (*room)->name);
+	if ((*room)->comment == 1)
+		index = size;
+	else if ((*room)->comment == 2)
+		index = size + 1;
+	else
+		index = hash(hashtable->size, (*room)->name);
 	ht_put(hashtable, room, index);
 	return (*hashtable);
 }

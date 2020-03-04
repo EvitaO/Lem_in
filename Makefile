@@ -6,7 +6,7 @@
 #    By: eutrodri <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/03/02 13:55:04 by eutrodri       #+#    #+#                 #
-#    Updated: 2020/03/03 14:50:36 by eovertoo      ########   odam.nl          #
+#    Updated: 2020/03/04 12:51:58 by eutrodri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME = lem-in
 
 SRCS = count_ants.c lem_in.c read_links.c read_rooms.c go_to_start.c\
 	 check_input.c store_input_str.c valid_check_room.c hashtables.c\
-	 free.c check_comment.c
+	 free.c check_comment.c store_links.c
 
 OBJ = count_ants.o lem_in.o read_links.o read_rooms.o go_to_start.o\
 	 check_input.o store_input_str.o valid_check_room.o hashtables.o\
-	 free.o check_comment.o
+	 free.o check_comment.o store_links.o
 
 FLAGS = -Wall -Werror -Wextra
 

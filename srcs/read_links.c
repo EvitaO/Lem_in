@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:26:57 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/03 14:24:33 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/04 12:48:20 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_room_exists(char *name, t_room **room)
 		exit(ft_printf("Error check if room exists\n"));
 }
 
-void	check_links(char *line, t_room **room)
+void	check_links(char *line, t_room **room, t_able *hashtable)
 {
 	char	**tmp;
 	int		i;
@@ -41,14 +41,15 @@ void	check_links(char *line, t_room **room)
 	}
 	if (tmp[i])
 		exit(ft_printf("Error check_links\n"));
+	store_links(tmp, hashtable);
 	free_tmp(tmp);
 }
 
-void	read_links(char **line, t_room **room, char **str)
+void	read_links(char **line, t_room **room, char **str, t_able *hashtable)
 {
 	while (get_next_line(0, line) == 1)
 	{
-		check_links(*line, room);
+		check_links(*line, room, hashtable);
 		store_input_str(str, line);
 		free(*line);
 	}

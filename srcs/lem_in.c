@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/03 15:34:50 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/04 11:14:20 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	aap(char *a)
 {
-	int		ants;
 	char	*line;
 	char	*output;
 	t_room	*room;
@@ -24,7 +23,7 @@ static int	aap(char *a)
 	line = NULL;
 	output = "";
 	room = NULL;
-	hashtable = check_input(&ants, &line, &room, &output);
+	hashtable = check_input(&line, &room, &output);
 	ft_printf("%s\n", output);
 	free(output);
 	free_room(&room);

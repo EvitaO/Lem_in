@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:28:42 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/03 14:25:55 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/04 13:51:27 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		check_rooms(char *line, t_room **room)
 {
 	char	**tmp;
 
+	if (line[0] == '#')
+		return (0);
 	tmp = ft_strsplit(line, ' ');
 	if (!tmp[1])
 	{
@@ -62,19 +64,18 @@ int		read_rooms(char **line, t_room **room, char **str)
 	comment = 0;
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
-		comment = check_comment(*line);
 		ret = check_rooms(*line, room);
 		if (*line[0] != '#')
-			i++;
-		if (ret != 1)
 		{
-			store_input_str(str, line);
-			free(*line);
+			if (ret != 1)
+				(*room)->comment = comment;
+			i++;
 		}
+		store_input_str(str, line);
+		if (ret != 1)
+			free(*line);
+		comment = check_comment(*line);
 	}
 	go_to_first_room(room);
-	store_input_str(str, line);
-	if (ret == 1)
-		check_links(*line, room);
 	return (i - 1);
 }
