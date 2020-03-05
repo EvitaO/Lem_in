@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:28:42 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/05 14:44:47 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/05 15:04:13 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		check_rooms(char *line, t_room **room)
 		free_tmp(tmp);
 		return (1);
 	}
+	else if (!tmp[2])
+		exit(-1);
 	valid_name(tmp[0]);
 	valid_cordinates(tmp);
 	if (*room)
