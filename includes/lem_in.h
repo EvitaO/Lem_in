@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/05 14:24:04 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/05 15:29:40 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct		s_able
 {
 	int				ants;
 	int				size;
+	int				cnt_l;
 	t_node			**array;
 }					t_able;
 
