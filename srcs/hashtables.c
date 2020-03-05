@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/05 11:20:26 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/05 14:50:07 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	add_node_ht(t_able *hashtable, t_node **node, int index)
 	t_node			*tmp;
 
 	tmp = hashtable->array[index];
+	if ((index == hashtable->size + 1 || index == hashtable->size) && tmp != NULL)
+		exit(-1);
 	if (hashtable->array[index] != NULL)
 	{
 		(*node)->next = tmp;

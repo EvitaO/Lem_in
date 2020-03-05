@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/03 12:28:42 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/04 13:51:27 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/03 12:28:42 by eutrodri       #+#    #+#                */
+/*   Updated: 2020/03/05 14:44:47 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		check_rooms(char *line, t_room **room)
 
 	if (line[0] == '#')
 		return (0);
+	else if (line[0] == 'L')
+		exit(-1);
 	tmp = ft_strsplit(line, ' ');
 	if (!tmp[1])
 	{
