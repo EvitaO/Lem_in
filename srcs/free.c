@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_room.c                                        :+:    :+:            */
+/*   free.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 17:06:08 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/04 12:08:53 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/05 14:25:15 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,28 +45,51 @@ void	free_tmp(char **tmp)
 	free(tmp);
 }
 
-void	free_ht(t_able *hashtable)
+void	free_link(t_link *link)
+{
+	t_link		*tmp_link;
+
+	while (link->next)
+	{
+		tmp_link = link;
+		link = link->next;
+		free(tmp_link->name);
+		free(tmp_link);
+	}
+	free(link->name);
+	free(link);
+}
+
+void	free_node(t_node *node)
 {
 	t_node		*tmp;
+
+	while (node->next)
+	{
+		if (node->link)
+			free_link(node->link);
+		tmp = node;
+		node = node->next;
+		free(tmp->name);
+		free(tmp);
+	}
+	if (node->link)
+		free_link(node->link);
+	free(node->name);
+	free(node);
+}
+
+void	free_ht(t_able *hashtable)
+{
 	t_node		*tmp_node;
 	int			i;
 
 	i = 0;
-	while (i < hashtable->size)
+	while (i < hashtable->size + 2)
 	{
 		tmp_node = hashtable->array[i];
 		if (tmp_node != NULL)
-		{
-			while (tmp_node->next)
-			{
-				tmp = tmp_node;
-				tmp_node = tmp_node->next;
-				free(tmp->name);
-				free(tmp);
-			}
-			free(tmp_node->name);
-			free(tmp_node);
-		}
+			free_node(tmp_node);
 		i++;
 	}
 	free(hashtable->array);

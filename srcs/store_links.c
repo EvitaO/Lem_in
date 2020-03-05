@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/04 12:09:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/04 14:38:36 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/04 12:09:21 by eutrodri       #+#    #+#                */
+/*   Updated: 2020/03/05 11:41:54 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,40 +22,41 @@ static int	find_index(char *tmp, t_able *hashtable)
 		return (hash(hashtable->size, tmp));
 }
 
+void		put_link(t_node **t, char *name, char *new)
+{
+	t_link	*t2;
+
+	while (ft_strcmp((*t)->name, name) != 0)
+		*t = (*t)->next;
+	if (!((*t)->link))
+	{
+		(*t)->link = (t_link*)malloc(sizeof(t_link));
+		(*t)->link->name = ft_strdup(new);
+		(*t)->link->next = NULL;
+	}
+	else
+	{
+		t2 = (*t)->link;
+		while (t2 && t2->next)
+			t2 = t2->next;
+		t2->next = (t_link*)malloc(sizeof(t_link));
+		t2 = t2->next;
+		t2->name = ft_strdup(new);
+		t2->next = NULL;
+	}
+}
+
 void		store_links(char **tmp, t_able *hashtable)
 {
 	int		index_a;
 	int		index_b;
 	t_node	*t;
-	t_link	*t2;
+	t_node	*s;
 
-	//index_a = hash(hashtable->size, tmp[0]);
-	//index_b = hash(hashtable->size, tmp[1]);
 	index_a = find_index(tmp[0], hashtable);
 	index_b = find_index(tmp[1], hashtable);
 	t = hashtable->array[index_a];
-	while (ft_strcmp(t->name, tmp[0]) != 0)
-		t = t->next;
-	if (!(t->link))
-	{
-		ft_printf("AAp\n");
-		t->link = (t_link*)malloc(sizeof(t_link));
-		t->link->name = ft_strdup(tmp[1]);
-		t->link->next = NULL;
-	}
-	else
-	{
-		t2 = t->link;
-		ft_printf("%s\n", t2->name);
-		while (t2 && t2->next)
-		{
-			ft_printf("AAl\n");
-			t2 = t2->next;
-		}
-		ft_printf("AAl\n");
-		t2->next = (t_link*)malloc(sizeof(t_link));
-		t2 = t2->next;
-		t2->name = ft_strdup(tmp[1]);
-		t2->next = NULL;
-	}
+	s = hashtable->array[index_b];
+	put_link(&t, tmp[0], tmp[1]);
+	put_link(&s, tmp[1], tmp[0]);
 }

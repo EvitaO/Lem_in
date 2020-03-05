@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/04 11:26:36 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/02 13:21:38 by eutrodri       #+#    #+#                */
+/*   Updated: 2020/03/05 11:20:26 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ht_put(t_able *hashtable, t_room **room, int index)
 
 	node = (t_node*)malloc(sizeof(t_node));
 	node->name = ft_strdup((*room)->name);
+	node->link = NULL;
 	add_node_ht(hashtable, &node, index);
 }
 

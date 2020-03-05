@@ -6,44 +6,44 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/04 12:50:57 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/05 14:24:04 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-#include "../libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
-typedef	struct			s_room
+typedef	struct		s_room
 {
-	char				*name;
-	char				*x;
-	char				*y;
-	int					comment;
-	struct s_room		*next;
-	struct s_room		*prev;
-}						t_room;
+	char			*name;
+	char			*x;
+	char			*y;
+	int				comment;
+	struct s_room	*next;
+	struct s_room	*prev;
+}					t_room;
 
-typedef struct			s_link
+typedef struct		s_link
 {
-	char				*name;
-	struct s_link		*next;
-}						t_link;
+	char			*name;
+	struct s_link	*next;
+}					t_link;
 
-typedef struct			s_node
+typedef struct		s_node
 {
-	char				*name;
-	t_link				*link;
-	struct s_node		*next;
-}						t_node;
+	char			*name;
+	t_link			*link;
+	struct s_node	*next;
+}					t_node;
 
-typedef struct			s_able
+typedef struct		s_able
 {
-	int					ants;
-	int					size;
-	t_node				**array;
-}						t_able;
+	int				ants;
+	int				size;
+	t_node			**array;
+}					t_able;
 
 /*
 **									CHECK
@@ -86,16 +86,19 @@ void				go_to_first_room(t_room **room);
 /*
 **		store in hashtable
 */
-t_able			rooms_hash(t_room **room, t_able *hashtable, int size);
-int				hash(int size, char *key);
-void			store_links(char **tmp, t_able *hashtable);
+t_able				rooms_hash(t_room **room, t_able *hashtable, int size);
+int					hash(int size, char *key);
+void				store_links(char **tmp, t_able *hashtable);
+void				put_link(t_node **t, char *name, char *new);
 
 /*
 **			FREE
 **			FUNCTION
 */
-void			free_room(t_room **room);
-void			free_tmp(char **tmp);
-void			free_ht(t_able *hashtable);
+void				free_room(t_room **room);
+void				free_tmp(char **tmp);
+void				free_ht(t_able *hashtable);
+void				free_link(t_link *link);
+void				free_node(t_node *node);
 
 #endif

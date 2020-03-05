@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/03 12:26:57 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/04 12:48:20 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/03 12:26:57 by eutrodri       #+#    #+#                */
+/*   Updated: 2020/03/05 12:19:12 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	check_links(char *line, t_room **room, t_able *hashtable)
 {
 	char	**tmp;
 	int		i;
+	t_able	*bla;
 
+	bla = hashtable;
 	tmp = ft_strsplit(line, '-');
 	i = 0;
 	while (tmp[i] && i < 2)
