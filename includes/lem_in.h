@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/06 10:34:24 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/06 12:13:59 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct		s_able
 {
 	int				ants;
 	int				size;
-	int				cnt_l;
+	int				cnt_e;
+	int				cnt_s;
+	int				max_path;
 	t_node			**array;
 }					t_able;
 
@@ -92,7 +94,8 @@ t_able				rooms_hash(t_room **room, t_able *hashtable, int size);
 int					hash(int size, char *key);
 void				store_links(char **tmp, t_able *hashtable);
 void				put_link(t_node **t, char *name, char *new);
-
+void				links_start_end(t_able *hashtable);
+void				max_path(t_able *ht);
 /*
 **			FREE
 **			FUNCTION

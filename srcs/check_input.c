@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 13:28:12 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/05 14:52:21 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/06 12:20:22 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ t_able	check_input(char **line, t_room **room, char **str)
 	free(*line);
 	go_to_first_room(room);
 	read_links(line, room, str, &hashtable);
+	links_start_end(&hashtable);
+	max_path(&hashtable);
 	return (hashtable);
 }

@@ -6,11 +6,40 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/04 12:09:21 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/05 11:41:54 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/06 11:58:24 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+void		links_start_end(t_able *hashtable)
+{
+	t_node	*tmp;
+	t_link	*tmp2;
+
+	hashtable->cnt_s = 0;
+	hashtable->cnt_e = 0;
+	tmp = hashtable->array[hashtable->size];
+	if (tmp->link)
+	{
+		tmp2 = tmp->link;
+		while (tmp2)
+		{
+			tmp2 = tmp2->next;
+			hashtable->cnt_s++;
+		}
+	}
+	tmp = hashtable->array[hashtable->size + 1];
+	if (tmp->link)
+	{
+		tmp2 = tmp->link;
+		while (tmp2)
+		{
+			tmp2 = tmp2->next;
+			hashtable->cnt_e++;
+		}
+	}
+}
 
 static int	find_index(char *tmp, t_able *hashtable)
 {

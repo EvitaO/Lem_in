@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lem_in.c                                           :+:    :+:            */
+/*   max_path.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/06 11:39:52 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/06 12:02:07 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/03/06 12:15:09 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static int	aap(char *a)
+void	max_path(t_able *ht)
 {
-	char	*line;
-	char	*output;
-	t_room	*room;
-	t_able	hashtable;
-
-	a = "hallo";
-	line = NULL;
-	output = "";
-	room = NULL;
-	hashtable = check_input(&line, &room, &output);
-	ft_printf("%s\n", output);
-	free(output);
-	free_room(&room);
-	free_ht(&hashtable);
-	return (0);
-}
-
-int			main(void)
-{
-	aap("leuk");
-	while (1);
-	return (0);
+	if (ht->cnt_s <= ht->cnt_e && ht->cnt_s <= ht->ants)
+		ht->max_path = ht->cnt_s;
+	else if (ht->cnt_e < ht->cnt_s && ht->cnt_e <= ht->ants)
+		ht->max_path = ht->cnt_e;
+	else
+		ht->max_path = ht->ants;
 }

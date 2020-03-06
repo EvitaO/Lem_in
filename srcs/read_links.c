@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:26:57 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/05 15:31:10 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/06 11:38:16 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,10 @@ void	check_links(char *line, t_room **room, t_able *hashtable)
 
 void	read_links(char **line, t_room **room, char **str, t_able *hashtable)
 {
-	hashtable->cnt_l = 1;
 	while (get_next_line(0, line) == 1)
 	{
 		if (*line[0] != '#')
-		{
 			check_links(*line, room, hashtable);
-			hashtable->cnt_l++;
-		}
 		store_input_str(str, line);
 		free(*line);
 	}
