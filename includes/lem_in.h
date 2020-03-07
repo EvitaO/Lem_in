@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/06 12:13:59 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/07 12:51:13 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,11 @@ void				free_tmp(char **tmp);
 void				free_ht(t_able *hashtable);
 void				free_link(t_link *link);
 void				free_node(t_node *node);
+
+/*
+**			PATH
+*/
+void				save_path(t_able *hashtable);
+t_link				*find_path(t_able *hashtable);
 
 #endif

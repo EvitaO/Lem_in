@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/06 11:39:52 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/07 11:34:44 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int	aap(char *a)
 	ft_printf("%s\n", output);
 	free(output);
 	free_room(&room);
+	save_path(&hashtable);
 	free_ht(&hashtable);
 	return (0);
 }
