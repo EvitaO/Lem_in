@@ -4,9 +4,39 @@
 #223a
 2
 ##start
-hallo 12 3
-bla 1 8
+een 12 3
+twee 1 8
 ##end
-eu 1 0
-eu-bla
-hallo-eu
+drie 1 0
+vier 2 6
+vijf 1 6
+zes 0 6
+zeven 5 6
+acht 6 6
+negen 7 6
+tien 8 6
+elf 9 6
+twaalf 10 6
+dertien 11 6
+veertien 12 6
+vijftien 13 6
+zestien 14 6
+#lalalala
+een-veertien
+een-twaalf
+veertien-dertien
+dertien-tien
+tien-acht
+acht-twee
+twee-drie
+#twaalf-negen
+negen-vijf
+vijf-twee
+vijf-vier
+vier-drie
+twaalf-elf
+elf-zes
+zes-zeven
+zeven-drie
+drie-vijftien
+vijftien-zestien

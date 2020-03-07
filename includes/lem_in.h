@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/07 12:51:13 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/07 14:36:40 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ typedef struct		s_able
 	int				max_path;
 	t_node			**array;
 }					t_able;
+
+typedef struct		s_path
+{
+	t_link			**array;
+}					t_path;
 
 /*
 **									CHECK
