@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/07 14:36:40 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/09 15:21:55 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef	struct		s_room
 typedef struct		s_link
 {
 	char			*name;
+	int				visited;
 	struct s_link	*next;
 }					t_link;
 
