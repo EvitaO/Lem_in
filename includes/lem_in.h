@@ -6,7 +6,11 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:07:28 by eutrodri       #+#    #+#                */
+<<<<<<< HEAD
 /*   Updated: 2020/03/10 15:46:39 by eutrodri      ########   odam.nl         */
+=======
+/*   Updated: 2020/03/10 14:35:24 by eovertoo      ########   odam.nl         */
+>>>>>>> ebranch
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +121,11 @@ void				free_node(t_node *node);
 */
 void				save_path(t_able *hashtable);
 t_link				*find_path(t_able *hashtable);
+<<<<<<< HEAD
 void				all_paths(t_link **path);
+=======
+void				find_node(t_able *hash, t_path *p, int index, int index_p);
+void				reset(t_able *hashtable, t_link *p);
+>>>>>>> ebranch
 
 #endif
