@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/07 11:34:53 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/10 11:38:02 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/10 11:51:36 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	first_node_path(t_able *hashtable, t_path *all_paths)
 	t_node	*tmp3;
 
 	i = 0;
-	//tmp2 = (t_link*)malloc(sizeof(t_link));
 	tmp = hashtable->array[hashtable->size]->link;
 	while (tmp)
 	{
@@ -47,14 +46,12 @@ static void	first_node_path(t_able *hashtable, t_path *all_paths)
 
 static void	find_node(t_able *hashtable, t_path *p, int index, int index_p)
 {
-	int		i;
 	t_link	*tmp;
 	t_link	*new_link;
 	t_link	*tmp_p;
 	t_node	*tmp_h;
 	t_node	*ht;
 
-	i = 0;
 	new_link = (t_link*)malloc(sizeof(t_link));
 	tmp_h = hashtable->array[index];
 	tmp_p = p->array[index_p];
@@ -65,7 +62,6 @@ static void	find_node(t_able *hashtable, t_path *p, int index, int index_p)
 	tmp = tmp_h->link;
 	while (tmp)
 	{
-		ft_printf("htstart visited = %i\n", hashtable->array[hashtable->size]->visited);
 		ht = hashtable->array[hash(hashtable->size, tmp->name)];
 		if (ft_strcmp(tmp->name, hashtable->array[hashtable->size]->name) == 0)
 			tmp = tmp->next;
@@ -79,29 +75,16 @@ static void	find_node(t_able *hashtable, t_path *p, int index, int index_p)
 		else
 		{
 			while (ft_strcmp(ht->name, tmp->name) != 0)
-			{
-				ft_printf("b;alala\n");
 				ht = ht->next;
-			}
-			ft_printf("%i\n", ht->visited);
 			if (ht->visited == 1000 || ht->visited >= hashtable->array[hashtable->size]->visited)
-			{
-				ft_printf("22222\n");
 				tmp = tmp->next;
-			}
 			else
 			{
-				ft_printf("bbbbbb\n");
 				new_link->name = ft_strdup(tmp->name);
 				new_link->next = NULL;
-				while (ft_strcmp(ht->name, tmp->name) != 0)
-					ht = ht->next;
 				ht->visited++;
 				tmp_p->next = new_link;
-				// break ;
-				tmp = tmp->next;
-				i++;
-				//ft_printf("koekeoekoe\n");
+				break ;
 			}
 		}
 	}
@@ -132,7 +115,7 @@ t_link		*find_path(t_able *hashtable)
 	i = -1;
 	first_node_path(hashtable, &p);
 	tmp = p.array[0];
-	while (ft_strcmp(tmp->name, "end") != 0)//verkeerd statement was i <hashtable->cnt_s
+	while (ft_strcmp(tmp->name, "end") != 0)
 	{
 		if (i == hashtable->cnt_s - 1)
 			i = 0;

@@ -6,7 +6,7 @@
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo       #+#    #+#                */
-/*   Updated: 2020/03/10 11:23:59 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/10 11:57:24 by eovertoo      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,17 @@ void		save_path(t_able *hashtable)
 		while (tmp)
 		{
 			ft_printf("array[%i] = %s", i, tmp->name);
-			ft_printf("----->");
 			tmp = tmp->next;
+			if (tmp)
+				ft_printf("----->");
 		}
 		ft_printf("\n");
 		reset(hashtable, p.array[i]);
 		//else
 		//	*array[i] = find_path_end(hashtable);
 		hashtable->array[hashtable->size]->visited++;
+		hashtable->cnt_s--;
 		i++;
 	}
+	exit(1);
 }
