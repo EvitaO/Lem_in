@@ -6,17 +6,16 @@
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo       #+#    #+#                */
-/*   Updated: 2020/03/10 15:58:50 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/10 17:58:54 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void		save_path(t_able *hashtable)
+t_path		save_path(t_able *hashtable)
 {
 	int		i;
 	t_path	p;
-	t_link	*tmp;
 
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->max_path);
 	ft_memset(p.array, 0, hashtable->max_path * sizeof(t_link));
@@ -26,15 +25,6 @@ void		save_path(t_able *hashtable)
 	{
 		if (hashtable->cnt_s < hashtable->cnt_e)
 			p.array[i] = find_path(hashtable);
-		tmp = p.array[i];
-		while (tmp)
-		{
-			ft_printf("array[%i] = %s", i, tmp->name);
-			tmp = tmp->next;
-			if (tmp)
-				ft_printf("----->");
-		}
-		ft_printf("\n");
 		reset(hashtable, p.array[i]);
 		//else
 		//	*array[i] = find_path_end(hashtable);
@@ -42,5 +32,5 @@ void		save_path(t_able *hashtable)
 		hashtable->cnt_s--;
 		i++;
 	}
-	exit(1);
+	return (p);
 }

@@ -6,11 +6,26 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/07 11:34:44 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/10 18:07:18 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static void	free_p(t_path *p, t_able *hashtable)
+{
+	t_link	*tmp;
+	int		i;
+
+	i = 0;
+	while (i < hashtable->max_path)
+	{
+		tmp = p->array[i];
+		free_link(tmp);
+		i++;
+	}
+	free(p->array);
+}
 
 static int	aap(char *a)
 {
@@ -18,6 +33,8 @@ static int	aap(char *a)
 	char	*output;
 	t_room	*room;
 	t_able	hashtable;
+	t_path	p;
+	int		i;
 
 	a = "hallo";
 	line = NULL;
@@ -27,7 +44,16 @@ static int	aap(char *a)
 	ft_printf("%s\n", output);
 	free(output);
 	free_room(&room);
-	save_path(&hashtable);
+	p = save_path(&hashtable);
+	i = 0;
+	while (i < hashtable.max_path)
+	{
+		if (ft_strcmp(p.array[i]->name, "start") == 0)
+			all_paths(&p.array[i]);
+		i++;
+	}
+	walking_ants(hashtable.ants, &p, hashtable.max_path);
+	free_p(&p, &hashtable);
 	free_ht(&hashtable);
 	return (0);
 }

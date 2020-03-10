@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/07 11:34:53 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/10 15:02:49 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/10 18:12:26 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static t_link	*add_first_node(char *str)
 
 	new = (t_link*)malloc(sizeof(t_link));
 	new->name = ft_strdup("start");
+	new->visited = 0;
 	new->next = (t_link*)malloc(sizeof(t_link));
 	new->next->name = ft_strdup(str);
+	new->next->visited = 0;
 	new->next->next = NULL;
 	return (new);
 }
@@ -68,6 +70,8 @@ t_link		*find_path(t_able *hashtable)
 	int		i;
 	int		index;
 	t_link	*tmp;
+	int		j;
+	t_link	*tmp_f;
 
 	index = 0;
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->cnt_s);
@@ -86,5 +90,14 @@ t_link		*find_path(t_able *hashtable)
 		while (tmp->next)
 			tmp = tmp->next;
 	}
-	return (p.array[i]);
+	j = 0;
+	tmp = p.array[i];
+	while (j < hashtable->cnt_s)
+	{
+		tmp_f = p.array[j];
+		free_link(tmp_f);
+		j++;
+	}
+	free(p.array);
+	return (tmp);
 }

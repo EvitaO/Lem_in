@@ -6,7 +6,7 @@
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 13:54:45 by eovertoo       #+#    #+#                */
-/*   Updated: 2020/03/10 15:52:46 by eovertoo      ########   odam.nl         */
+/*   Updated: 2020/03/10 17:54:25 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static t_link	*new_link(char *str)
 
 	new = (t_link*)malloc(sizeof(t_link));
 	new->name = ft_strdup(str);
+	new->visited = 0;
 	new->next = NULL;
 	return (new);
 }
