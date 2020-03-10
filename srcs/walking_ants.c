@@ -6,13 +6,13 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 14:43:41 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/10 11:41:03 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/10 15:57:00 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static int	ants_on_the_walk(t_link **tmp, t_link **tmp2, int i)
+static int	ants_on_the_walk(t_link **tmp, t_link **tmp2, int counter)
 {
 	if ((*tmp2)->visited == 0 && ft_strcmp((*tmp2)->name, "end") != 0)
 	{
@@ -23,13 +23,13 @@ static int	ants_on_the_walk(t_link **tmp, t_link **tmp2, int i)
 	else if (ft_strcmp((*tmp2)->name, "end") == 0)
 	{
 		ft_printf(" L%i-%s", (*tmp)->visited, (*tmp2)->name);
-		i++;
+		counter++;
 		(*tmp)->visited = 0;
 	}
-	return (i);
+	return (counter);
 }
 
-static int	one_path(t_link **tmp, int *a, int ants, int i)
+static int	one_path(t_link **tmp, int *a, int ants, int counter)
 {
 	t_link	*tmp2;
 
@@ -45,11 +45,11 @@ static int	one_path(t_link **tmp, int *a, int ants, int i)
 			}
 		}
 		else if (ft_strcmp((*tmp)->name, "end") != 0 && (*tmp)->visited != 0)
-			i = ants_on_the_walk(tmp, &tmp2, i);
+			counter = ants_on_the_walk(tmp, &tmp2, counter);
 		tmp2 = *tmp;
 		*tmp = (*tmp)->next;
 	}
-	return (i);
+	return (counter);
 }
 
 void		walking_ants(int ants, t_path *p, int size)
@@ -57,12 +57,12 @@ void		walking_ants(int ants, t_path *p, int size)
 	int		a;
 	int		path;
 	t_link	*tmp;
-	int		i;
+	int		counter;
 
 	a = 1;
 	path = 0;
-	i = 0;
-	while (i != ants)
+	counter = 0;
+	while (counter != ants)
 	{
 		if (path >= size)
 			path = 0;
@@ -70,7 +70,7 @@ void		walking_ants(int ants, t_path *p, int size)
 		{
 			tmp = p->array[path];
 			if (tmp)
-				i = one_path(&tmp, &a, ants, i);
+				counter = one_path(&tmp, &a, ants, counter);
 			path++;
 		}
 		ft_printf("\n");
@@ -103,15 +103,24 @@ int	main(void)
 	while (i < 5)
 	{
 		p->array[1] = (t_link*)malloc(sizeof(t_link));
-		p->array[1]->name = ft_strdup("end");
+		p->array[1]->name = ft_strdup("start");
 		p->array[1]->next = (t_link*)malloc(sizeof(t_link));
 		p->array[1]->next->name = ft_strdup("hallo");
 		p->array[1]->next->next = (t_link*)malloc(sizeof(t_link));
 		p->array[1]->next->next->name = ft_strdup("YES");
 		p->array[1]->next->next->next = (t_link*)malloc(sizeof(t_link));
-		p->array[1]->next->next->next->name = ft_strdup("start");
+		p->array[1]->next->next->next->name = ft_strdup("end");
 		p->array[1]->next->next->next->next = NULL;
 		i = 5;
 	}
-	walking_ants(20, p, 2);
+	i = 0;
+	while (i < 2)
+	{
+		if (ft_strcmp(p->array[i]->name, "start") == 0)
+			all_paths(&p->array[i]);
+		i++;
+		ft_printf("A\n");
+	}
+	ft_printf("A\n");
+	walking_ants(10, p, 2);
 }
