@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/07 11:34:53 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/11 10:54:02 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/11 12:24:12 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,29 @@ static void		search_node(t_able *hashtable, t_path *p, int index_p)
 	find_node(hashtable, p, index_h, index_p);
 }
 
-t_link		*find_path(t_able *hashtable)
+static void		free_patha(t_able *hashtable, t_path *p, int i)
+{
+	int			j;
+	t_link		*tmp;
+
+	j = 0;
+	while (j < hashtable->cnt_s)
+	{
+		if (j != i)
+		{
+			tmp = p->array[j];
+			free_link(tmp);
+		}
+		j++;
+	}
+}
+
+t_link			*find_path(t_able *hashtable)
 {
 	t_path	p;
 	int		i;
-	int		index;
 	t_link	*tmp;
-	int		j;
 
-	index = 0;
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->cnt_s);
 	ft_memset(p.array, 0, hashtable->cnt_s * sizeof(t_link));
 	i = -1;
@@ -89,16 +103,7 @@ t_link		*find_path(t_able *hashtable)
 		while (tmp->next)
 			tmp = tmp->next;
 	}
-	j = 0;
-	while (j < hashtable->cnt_s)
-	{
-		if (j != i)
-		{
-			tmp = p.array[j];
-			free_link(tmp);
-		}
-		j++;
-	}
+	free_patha(hashtable, &p, i);
 	tmp = p.array[i];
 	free(p.array);
 	return (&*tmp);

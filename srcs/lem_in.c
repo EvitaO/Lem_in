@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/11 10:56:40 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/11 11:23:34 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,5 @@ static int	aap(char *a)
 int			main(void)
 {
 	aap("leuk");
-	while (1);
 	return (0);
 }
