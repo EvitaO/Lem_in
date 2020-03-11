@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/10 18:07:18 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/11 10:56:40 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static int	aap(char *a)
 	walking_ants(hashtable.ants, &p, hashtable.max_path);
 	free_p(&p, &hashtable);
 	free_ht(&hashtable);
+	ft_printf("DONE\n");
 	return (0);
 }
 

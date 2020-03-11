@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/07 11:34:53 by eutrodri       #+#    #+#                */
-/*   Updated: 2020/03/10 18:12:26 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/03/11 10:54:02 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ t_link		*find_path(t_able *hashtable)
 	int		index;
 	t_link	*tmp;
 	int		j;
-	t_link	*tmp_f;
 
 	index = 0;
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->cnt_s);
@@ -91,13 +90,16 @@ t_link		*find_path(t_able *hashtable)
 			tmp = tmp->next;
 	}
 	j = 0;
-	tmp = p.array[i];
 	while (j < hashtable->cnt_s)
 	{
-		tmp_f = p.array[j];
-		free_link(tmp_f);
+		if (j != i)
+		{
+			tmp = p.array[j];
+			free_link(tmp);
+		}
 		j++;
 	}
+	tmp = p.array[i];
 	free(p.array);
-	return (tmp);
+	return (&*tmp);
 }
