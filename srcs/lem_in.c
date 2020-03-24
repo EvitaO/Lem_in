@@ -27,7 +27,7 @@ static void	free_p(t_path *p, t_able *hashtable)
 	free(p->array);
 }
 
-static int	aap(char *a)
+int	main(void)
 {
 	char	*line;
 	char	*output;
@@ -36,7 +36,6 @@ static int	aap(char *a)
 	t_path	p;
 	int		i;
 
-	a = "hallo";
 	line = NULL;
 	output = "";
 	room = NULL;
@@ -58,9 +57,9 @@ static int	aap(char *a)
 	ft_printf("DONE\n");
 	return (0);
 }
-
+/*
 int			main(void)
 {
 	aap("leuk");
 	return (0);
-}
+}*/

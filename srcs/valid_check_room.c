@@ -39,7 +39,7 @@ void		valid_name(char *tmp)
 	if (tmp[i] != '\0')
 		exit(ft_printf("Error\n"));
 }
-
+/*
 static void	check_cordinates(char *x, char *y, t_room **room)
 {
 	while ((*room)->next)
@@ -47,10 +47,7 @@ static void	check_cordinates(char *x, char *y, t_room **room)
 		if (ft_strcmp((*room)->x, x) == 0)
 		{
 			if (ft_strcmp((*room)->y, y) == 0)
-			{
-				ft_printf("Error\n");
-				exit(-1);
-			}
+				exit(ft_printf("Error\n");
 		}
 		*room = (*room)->next;
 	}
@@ -63,29 +60,31 @@ static void	check_cordinates(char *x, char *y, t_room **room)
 		}
 	}
 }
-
-static void	check_room_name(char *name, t_room **room)
+*/
+static void	check_exist(char **tmp, t_room **room)
 {
 	while ((*room)->next)
 	{
-		if (ft_strcmp((*room)->name, name) == 0)
+		if (ft_strcmp((*room)->name, tmp[0]) == 0)
+			exit(ft_printf("Error\n"));
+		if (ft_strcmp((*room)->x, tmp[1]) == 0)
 		{
-			ft_printf("Error\n");
-			exit(-1);
+			if (ft_strcmp((*room)->y, tmp[2]) == 0)
+				exit(ft_printf("Error\n"));
 		}
 		*room = (*room)->next;
 	}
-	if (ft_strcmp((*room)->name, name) == 0)
+	if (ft_strcmp((*room)->name, tmp[0]) == 0)
+			exit(ft_printf("Error\n"));
+	if (ft_strcmp((*room)->x, tmp[1]) == 0)
 	{
-		ft_printf("Error\n");
-		exit(-1);
+		if (ft_strcmp((*room)->y, tmp[2]) == 0)
+			exit(ft_printf("Error\n"));
 	}
 }
 
 void		check_valid_room(char **tmp, t_room **room)
 {
 	go_to_first_room(room);
-	check_room_name(tmp[0], room);
-	go_to_first_room(room);
-	check_cordinates(tmp[1], tmp[2], room);
+	check_exist(tmp, room);
 }

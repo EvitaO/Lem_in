@@ -76,9 +76,9 @@ int		read_rooms(char **line, t_room **room, char **str)
 			i++;
 		}
 		store_input_str(str, line);
+		comment = check_comment(*line);
 		if (ret != 1)
 			free(*line);
-		comment = check_comment(*line);
 	}
 	go_to_first_room(room);
 	return (i - 1);
