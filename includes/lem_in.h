@@ -30,6 +30,7 @@ typedef struct		s_link
 	char			*name;
 	int				visited;
 	struct s_link	*next;
+	struct s_link	*prev;
 }					t_link;
 
 typedef struct		s_node
@@ -120,6 +121,7 @@ t_link				*find_path(t_able *hashtable);
 void				all_paths(t_link **path);
 void				find_node(t_able *hash, t_path *p, int index, int index_p);
 void				reset(t_able *hashtable, t_link *p);
+void				algo(t_able *hashtable);
 
 /*
 **			WALKING ANTS

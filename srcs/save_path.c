@@ -24,7 +24,11 @@ t_path		save_path(t_able *hashtable)
 	while (i < hashtable->max_path)
 	{
 		if (hashtable->cnt_s < hashtable->cnt_e)
-			p.array[i] = find_path(hashtable);
+		{
+			algo(hashtable);
+			exit(1);
+		}
+		//	p.array[i] = find_path(hashtable);
 		reset(hashtable, p.array[i]);
 		//else
 		//	*array[i] = find_path_end(hashtable);

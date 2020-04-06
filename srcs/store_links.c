@@ -62,6 +62,7 @@ void		put_link(t_node **t, char *name, char *new)
 		(*t)->link = (t_link*)malloc(sizeof(t_link));
 		(*t)->link->name = ft_strdup(new);
 		(*t)->link->next = NULL;
+		(*t)->link->prev = NULL;
 	}
 	else
 	{
@@ -69,6 +70,7 @@ void		put_link(t_node **t, char *name, char *new)
 		while (t2 && t2->next)
 			t2 = t2->next;
 		t2->next = (t_link*)malloc(sizeof(t_link));
+		t2->next->prev = t2;
 		t2 = t2->next;
 		t2->name = ft_strdup(new);
 		t2->next = NULL;
