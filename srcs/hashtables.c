@@ -40,6 +40,7 @@ void	ht_put(t_able *hashtable, t_room **room, int index)
 	node->name = ft_strdup((*room)->name);
 	node->visited = 0;
 	node->link = NULL;
+	node->prev = NULL;
 	add_node_ht(hashtable, &node, index);
 }
 

@@ -39,6 +39,7 @@ typedef struct		s_node
 	int				visited;
 	t_link			*link;
 	struct s_node	*next;
+	struct s_node	*prev;
 }					t_node;
 
 typedef struct		s_able
@@ -122,6 +123,10 @@ void				all_paths(t_link **path);
 void				find_node(t_able *hash, t_path *p, int index, int index_p);
 void				reset(t_able *hashtable, t_link *p);
 void				algo(t_able *hashtable);
+void				clos_lost_rooms(t_node *room, t_able hashtable);
+t_node				*find_room(t_able *hashtable, char *name);
+int					start_end_room(t_able *hashtable, char *name);
+void				make_path(t_node *room, t_link *path);
 
 /*
 **			WALKING ANTS
