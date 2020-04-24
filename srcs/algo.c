@@ -51,15 +51,26 @@ static void	algo1(t_able *hashtable, t_link *links, int size)
 			if (room->visited != 1000 && (room->visited == 0 || room->visited > size))
 			{
 				room->visited = size;
-				ft_printf("room is %s and visited is %i\n", room->name, room->visited);
-				r = hashtable->array[hash(hashtable->size, room->link->name)];
-				if (start_end_room(hashtable, r->name) == 1)
+//				ft_printf("room is %s and visited is %i\n", room->name, room->visited);
+/*				r = find_room(hashtable, room->link->name);
+				if (start_end_room(hashtable, r->name) == 1 ||\
+					(start_end_room(hashtable, r->name)\
+					 == 0 && r->visited == size - 1))
+				{
 					room->prev = r;
-				else if (start_end_room(hashtable, r->name) == 0 && r->visited > size + 1)
+					ft_printf("room %s - room->prev %s\n", room->name, r->name);
+				}
+				else if (start_end_room(hashtable, r->name) == 0 && r->visited > room->visited)
+				{
 					r->prev = room;
+					ft_printf("r->prev %s -- r %s\n", room->name, r->name);
+				}
 				else if (start_end_room(hashtable, r->name) == 0 && r->visited == 0)
+				{
 					r->prev = room;
-				algo1(hashtable, room->link, size + 1);
+					ft_printf("r->prev %s ---- r %s\n", room->name, r->name);
+				}
+*/				algo1(hashtable, room->link, size + 1);
 			}
 		}
 		links = links->next;
@@ -68,16 +79,42 @@ static void	algo1(t_able *hashtable, t_link *links, int size)
 	{
 		close_lost_rooms(find_room(hashtable, l->name), hashtable);
 		room = find_room(hashtable, l->name);
-		ft_printf("room is %s visited is %i\n", room->name, room->visited);
+		links = room->link;
+		while (links)
+		{
+			r = find_room(hashtable, links->name);
+			if (r->visited < room->visited && r->visited != -1)
+			{
+				if (start_end_room(hashtable, links->name) == 0)
+					room->prev = r;
+				else if (start_end_room(hashtable, links->name) == 1)
+					r->prev = room;
+			}
+			links = links->next;
+		}
+//		ft_printf("room is %s visited is %i\n", room->name, room->visited);
 		l = l->next;
 	}
+	ft_printf("room->%s %i --- prev->", room->name, room->visited);
+	if (room->prev)
+		ft_printf("%s\n", room->prev->name);
+	ft_printf("\n");
 }
 
 void		algo(t_able *hashtable)
 {
 	t_link	*links;
+	t_link	*l;
+	t_node	*room;
 
 	links = hashtable->array[hashtable->size]->link;
+	l = links;
+	while (l)
+	{
+		room =find_room(hashtable, l->name);
+		room->prev = hashtable->array[hashtable->size];
+		l = l->next;
+	}
 	algo1(hashtable, links, 1);
 	ft_printf("finished\n");
 }

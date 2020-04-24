@@ -49,12 +49,9 @@ void		find_short_path(t_able *ht, t_path *path)
 		link->prev->next = link;
 		link = link->prev;
 		make_path(tmp, link);
-		ft_printf("%s -- %s tmp->prev\n", tmp->name, tmp->next->name);
 		tmp = tmp->prev;
-		ft_printf("%s tmp %s tmp2\n", tmp->name, tmp2->name);
 		if (!ft_strcmp(tmp->name, tmp2->name) == 0)
 			link->prev = (t_link*)malloc(sizeof(t_link));
-		ft_printf("%s -> name %s -> prev\n", path->array[0]->name, path->array[0]->prev->name);
 	}
 }
 	
@@ -80,7 +77,7 @@ t_path		save_path(t_able *hashtable)
 			while (p.array[0])
 			{
 				ft_printf(" %s -", p.array[0]->name);
-				p.array[0] = p.array[0]->next;
+				p.array[0] = p.array[0]->prev;
 			}
 			exit(1);
 		}
