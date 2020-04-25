@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/08/04 17:35:27 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/01/21 17:24:15 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/04/25 12:24:05 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,36 @@
 **EU_Floatminus(1 << 11)//2048		0000 1000 0000 0000
 */
 
-# define EU_HA (1 << 0)
-# define EU_Z (1 << 1)
-# define EU_P (1 << 2)
-# define EU_M (1 << 3)
-# define EU_S (1 << 4)
-# define EU_H (1 << 5)
-# define EU_HH (1 << 6)
-# define EU_EL (1 << 7)
-# define EU_LL (1 << 8)
-# define EU_L (1 << 9)
-# define EU_PO (1 << 10)
-# define EU_FM (1 << 11)
+enum
+{
+	EU_HA = (1 << 0),
+	EU_Z = (1 << 1),
+	EU_P = (1 << 2),
+	EU_M = (1 << 3),
+	EU_S = (1 << 4),
+	EU_H = (1 << 5),
+	EU_HH = (1 << 6),
+	EU_EL = (1 << 7),
+	EU_LL = (1 << 8),
+	EU_L = (1 << 9),
+	EU_PO = (1 << 10),
+	EU_FM = (1 << 11)
+};
+
+/*
+** # define EU_HA (1 << 0)
+** # define EU_Z (1 << 1)
+** # define EU_P (1 << 2)
+** # define EU_M (1 << 3)
+** # define EU_S (1 << 4)
+** # define EU_H (1 << 5)
+** # define EU_HH (1 << 6)
+** # define EU_EL (1 << 7)
+** # define EU_LL (1 << 8)
+** # define EU_L (1 << 9)
+** # define EU_PO (1 << 10)
+** # define EU_FM (1 << 11)
+*/
 
 typedef	union		u_floats
 {
