@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/29 17:58:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/03 12:29:35 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/04/25 11:28:10 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		valid_name(char *tmp)
 	if (tmp[i] != '\0')
 		exit(ft_printf("Error\n"));
 }
+
 /*
 static void	check_cordinates(char *x, char *y, t_room **room)
 {
@@ -61,6 +62,7 @@ static void	check_cordinates(char *x, char *y, t_room **room)
 	}
 }
 */
+
 static void	check_exist(char **tmp, t_room **room)
 {
 	while ((*room)->next)

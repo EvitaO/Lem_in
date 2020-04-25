@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/10 11:22:07 by eovertoo       #+#    #+#                */
-/*   Updated: 2020/03/11 10:40:50 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
+/*   Updated: 2020/04/25 11:21:12 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void		make_path(t_node *room, t_link *path)
+void	make_path(t_node *room, t_link *path)
 {
 	t_link	*p;
 
@@ -22,9 +22,8 @@ void		make_path(t_node *room, t_link *path)
 	p->name = room->name;
 	p->prev = NULL;
 }
-		
 
-void		find_short_path(t_able *ht, t_path *path)
+void	find_short_path(t_able *ht, t_path *path)
 {
 	t_node	*tmp;
 	t_node	*tmp2;
@@ -54,9 +53,8 @@ void		find_short_path(t_able *ht, t_path *path)
 			link->prev = (t_link*)malloc(sizeof(t_link));
 	}
 }
-	
-			
-t_path		save_path(t_able *hashtable)
+
+t_path	save_path(t_able *hashtable)
 {
 	int		i;
 	t_path	p;

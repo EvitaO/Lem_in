@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   find_room.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: eutienne <eutienne@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/04/25 11:05:13 by eutienne      #+#    #+#                 */
+/*   Updated: 2020/04/25 11:14:33 by eutienne      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
-int	start_end_room(t_able *hashtable, char *name)
+int		start_end_room(t_able *hashtable, char *name)
 {
 	if (ft_strcmp(name, hashtable->array[hashtable->size]->name) == 0)
 		return (1);
@@ -11,7 +23,7 @@ int	start_end_room(t_able *hashtable, char *name)
 
 t_node	*find_room(t_able *hashtable, char *name)
 {
-	int	ret;
+	int		ret;
 	t_node	*room;
 
 	ret = start_end_room(hashtable, name);
