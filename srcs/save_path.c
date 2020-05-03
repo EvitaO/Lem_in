@@ -6,7 +6,7 @@
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:21:12 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/03 14:24:34 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	find_short_path(t_able *ht, t_path *path)
 	link = path->array[0];
 	link->prev = (t_link*)malloc(sizeof(t_link));
 	tmp2 = ht->array[ht->size];
-	while (!ft_strcmp(tmp->name, tmp2->name) == 0)
+	while (!(ft_strcmp(tmp->name, tmp2->name) == 0))
 	{
 		link->prev->next = link;
 		link = link->prev;
 		make_path(tmp, link);
 		tmp = tmp->prev;
-		if (!ft_strcmp(tmp->name, tmp2->name) == 0)
+		if (!(ft_strcmp(tmp->name, tmp2->name) == 0))
 			link->prev = (t_link*)malloc(sizeof(t_link));
 	}
 }
