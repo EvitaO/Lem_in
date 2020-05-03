@@ -6,7 +6,7 @@
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/14 13:46:09 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:12:37 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/03 15:17:19 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,12 @@ void		close_lost_rooms(t_node *room, t_able *hashtable)
 		room->visited = -1;
 }
 
-static void	algo1(t_able *hashtable, t_link *links, int size)
+static void	put_prev(t_link *l, t_able *hashtable)
 {
-	t_node	*room;
-	t_node	*r;
-	t_link	*l;
+	t_node *room;
+	t_node *r;
+	t_link *links;
 
-	l = links;
-	while (links)
-	{
-		if (start_end_room(hashtable, links->name) == 0)
-		{
-			room = find_room(hashtable, links->name);
-			if (room->visited != 1000 && (room->visited == 0 ||\
-			room->visited > size))
-			{
-				room->visited = size;
-				algo1(hashtable, room->link, size + 1);
-			}
-		}
-		links = links->next;
-	}
 	while (l)
 	{
 		close_lost_rooms(find_room(hashtable, l->name), hashtable);
@@ -75,13 +60,31 @@ static void	algo1(t_able *hashtable, t_link *links, int size)
 			}
 			links = links->next;
 		}
-//		ft_printf("room is %s visited is %i\n", room->name, room->visited);
 		l = l->next;
 	}
-	ft_printf("room->%s %i --- prev->", room->name, room->visited);
-	if (room->prev)
-		ft_printf("%s\n", room->prev->name);
-	ft_printf("\n");
+}
+
+static void	algo1(t_able *hashtable, t_link *links, int size)
+{
+	t_node	*room;
+	t_link	*l;
+
+	l = links;
+	while (links)
+	{
+		if (start_end_room(hashtable, links->name) == 0)
+		{
+			room = find_room(hashtable, links->name);
+			if (room->visited != 1000 && (room->visited == 0 ||\
+			room->visited > size))
+			{
+				room->visited = size;
+				algo1(hashtable, room->link, size + 1);
+			}
+		}
+		links = links->next;
+	}
+	put_prev(l, hashtable);
 }
 
 void		algo(t_able *hashtable)

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/29 17:58:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:28:10 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/03 15:22:07 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,6 @@ void		valid_name(char *tmp)
 		exit(ft_printf("Error\n"));
 }
 
-/*
-static void	check_cordinates(char *x, char *y, t_room **room)
-{
-	while ((*room)->next)
-	{
-		if (ft_strcmp((*room)->x, x) == 0)
-		{
-			if (ft_strcmp((*room)->y, y) == 0)
-				exit(ft_printf("Error\n");
-		}
-		*room = (*room)->next;
-	}
-	if (ft_strcmp((*room)->x, x) == 0)
-	{
-		if (ft_strcmp((*room)->y, y) == 0)
-		{
-			ft_printf("Error\n");
-			exit(-1);
-		}
-	}
-}
-*/
-
 static void	check_exist(char **tmp, t_room **room)
 {
 	while ((*room)->next)
@@ -77,7 +54,7 @@ static void	check_exist(char **tmp, t_room **room)
 		*room = (*room)->next;
 	}
 	if (ft_strcmp((*room)->name, tmp[0]) == 0)
-			exit(ft_printf("Error\n"));
+		exit(ft_printf("Error\n"));
 	if (ft_strcmp((*room)->x, tmp[1]) == 0)
 	{
 		if (ft_strcmp((*room)->y, tmp[2]) == 0)

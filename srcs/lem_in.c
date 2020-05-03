@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:03:13 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/03 14:58:52 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,28 @@ static void	free_p(t_path *p, t_able *hashtable)
 	free(p->array);
 }
 
-int	main(void)
+static void	input(t_able *hashtable)
 {
 	char	*line;
 	char	*output;
 	t_room	*room;
-	t_able	hashtable;
-	t_path	p;
-	int		i;
 
 	line = NULL;
 	output = "";
 	room = NULL;
-	hashtable = check_input(&line, &room, &output);
+	*hashtable = check_input(&line, &room, &output);
 	ft_printf("%s\n", output);
 	free(output);
 	free_room(&room);
+}
+
+int			main(void)
+{
+	t_able	hashtable;
+	t_path	p;
+	int		i;
+
+	input(&hashtable);
 	p = save_path(&hashtable);
 	i = 0;
 	while (i < hashtable.max_path)
