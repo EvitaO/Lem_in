@@ -6,7 +6,7 @@
 /*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/05/03 14:24:34 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/03 15:58:18 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	make_path(t_node *room, t_link *path)
 	t_link	*p;
 
 	p = path;
-//	while (p->prev)
-//		p = p->prev;
 	p->name = room->name;
 	p->prev = NULL;
 }
@@ -45,6 +43,7 @@ void	find_short_path(t_able *ht, t_path *path)
 	tmp2 = ht->array[ht->size];
 	while (!(ft_strcmp(tmp->name, tmp2->name) == 0))
 	{
+		ft_printf("%s - ", link->name);
 		link->prev->next = link;
 		link = link->prev;
 		make_path(tmp, link);
@@ -65,27 +64,17 @@ t_path	save_path(t_able *hashtable)
 	hashtable->array[hashtable->size]->visited = 1;
 	while (i < hashtable->max_path)
 	{
-		if (hashtable->cnt_s < hashtable->cnt_e)
+		algo(hashtable);
+		p.array[0] = (t_link*)malloc(sizeof(t_link));
+		p.array[0]->prev = NULL;
+		make_path(hashtable->array[hashtable->size + 1], p.array[0]);
+		find_short_path(hashtable, &p);
+		while (p.array[0])
 		{
-			algo(hashtable);
-			p.array[0] = (t_link*)malloc(sizeof(t_link));
-			p.array[0]->prev = NULL;
-			make_path(hashtable->array[hashtable->size + 1], p.array[0]);
-			find_short_path(hashtable, &p);
-			while (p.array[0])
-			{
-				ft_printf(" %s -", p.array[0]->name);
-				p.array[0] = p.array[0]->prev;
-			}
-			exit(1);
+			ft_printf(" %s -", p.array[0]->name);
+			p.array[0] = p.array[0]->prev;
 		}
-		//	p.array[i] = find_path(hashtable);
-		reset(hashtable, p.array[i]);
-		//else
-		//	*array[i] = find_path_end(hashtable);
-		hashtable->array[hashtable->size]->visited++;
-		hashtable->cnt_s--;
-		i++;
+		exit(1);
 	}
 	return (p);
 }
