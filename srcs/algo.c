@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   algo.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: eovertoo <eovertoo@student.codam.nl>         +#+                     */
+/*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/14 13:46:09 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/05/03 15:17:19 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/16 16:30:08 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,15 @@ static void	algo1(t_able *hashtable, t_link *links, int size)
 		if (start_end_room(hashtable, links->name) == 0)
 		{
 			room = find_room(hashtable, links->name);
-			if (room->visited != 1000 && (room->visited == 0 ||\
-			room->visited > size))
+			if (room->visited == 0 || room->visited > size)
 			{
 				room->visited = size;
 				algo1(hashtable, room->link, size + 1);
 			}
 		}
 		links = links->next;
+		if (links)
+			ft_printf("link\n %s --> %i\n", links->name, links->visited);
 	}
 	put_prev(l, hashtable);
 }
@@ -103,4 +104,5 @@ void		algo(t_able *hashtable)
 	}
 	algo1(hashtable, links, 1);
 	ft_printf("finished\n");
+	exit(1);
 }

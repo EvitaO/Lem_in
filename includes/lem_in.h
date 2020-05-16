@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/10 17:58:06 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/16 16:05:19 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,9 @@ void				clos_lost_rooms(t_node *room, t_able hashtable);
 t_node				*find_room(t_able *hashtable, char *name);
 int					start_end_room(t_able *hashtable, char *name);
 void				make_path(t_node *room, t_link *path);
+void    			algo_b(t_able *hashtable);
+void    			add_q(t_link **q, t_link *links, t_able *hashtable);
+void    			remove_q(t_link **q);
 
 /*
 **			WALKING ANTS
