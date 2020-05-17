@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/05/16 16:58:22 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/16 16:58:22 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/05/17 10:44:24 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/05/17 10:45:31 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	add_q(t_link **q, t_link *links, t_able *hashtable)
 	}
 }
 
-void		algo_b(t_able *hashtable)
+void	algo_b(t_able *hashtable)
 {
 	t_link	*links;
 	t_link	*q;
