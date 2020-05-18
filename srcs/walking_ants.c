@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/09 14:43:41 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/03/10 17:53:26 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/18 00:24:15 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	one_path(t_link **tmp, int *a, int ants, int counter)
 		else if (ft_strcmp((*tmp)->name, "end") != 0 && (*tmp)->visited != 0)
 			counter = ants_on_the_walk(tmp, &tmp2, counter);
 		tmp2 = *tmp;
-		*tmp = (*tmp)->next;
+		*tmp = (*tmp)->prev;
 	}
 	return (counter);
 }

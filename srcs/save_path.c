@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   save_path.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: eutrodri <eutrodri@student.codam.nl>         +#+                     */
+/*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/05/16 15:58:41 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/18 17:18:28 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,35 +51,36 @@ void	find_short_path(t_able *ht, t_path *path)
 		link->prev = (t_link*)malloc(sizeof(t_link));
 	}
 	link->prev->name = tmp2->name;
+	path->array[0]->next = link->prev;
 	link->prev->prev = NULL;
 }
 
 t_path	save_path(t_able *hashtable)
 {
-	int		i;
+	//int		i;
 	t_path	p;
 
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->max_path);
 	ft_memset(p.array, 0, hashtable->max_path * sizeof(t_link));
-	i = 0;
+//	i = 0;
 	hashtable->array[hashtable->size]->visited = 0;
-	while (i < hashtable->max_path)
-	{
+	//while (i < hashtable->max_path)
+	//{
 		algo_b(hashtable);
 		p.array[0] = (t_link*)malloc(sizeof(t_link));
 		p.array[0]->prev = NULL;
 		make_path(hashtable->array[hashtable->size + 1], p.array[0]);
 		find_short_path(hashtable, &p);
 		ft_printf("\n");
-		while (p.array[0])
-		{
-			if (p.array[0]->prev)
-				ft_printf(" %s -", p.array[0]->name);
-			else
-				ft_printf(" %s\n", p.array[0]->name);
-			p.array[0] = p.array[0]->prev;
-		}
-		exit(1);
-	}
+		// while (p.array[0])
+		// {
+		// 	if (p.array[0]->prev)
+		// 		ft_printf(" %s -", p.array[0]->name);
+		// 	else
+		// 		ft_printf(" %s\n", p.array[0]->name);
+		// 	p.array[0] = p.array[0]->prev;
+		// }
+		// exit(1);
+	//}
 	return (p);
 }

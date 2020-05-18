@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/17 10:44:24 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/17 10:45:31 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/17 12:58:39 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	algo_b(t_able *hashtable)
 		room = find_room(hashtable, q->name);
 		links = room->link;
 		add_q(&q, links, hashtable);
-		ft_printf("room %s visited %i\n", room->name, room->visited);
+		//ft_printf("room %s visited %i\n", room->name, room->visited);
 		remove_q(&q);
 	}
 }
