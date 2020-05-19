@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/18 17:19:21 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/19 20:04:59 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,9 @@ void    			remove_q(t_link **q);
 */
 
 void				devide_ants(t_path *p, int ants);
+void				size_path(t_path *p);
+int					choose_path(t_link *tmp, t_link *tmp2, int i, t_link *p);
+void				reset_vst(t_path *p);
 void				walking_ants(int ants, t_path *p, int size);
 
 #endif

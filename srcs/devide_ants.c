@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/18 16:48:09 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/18 17:34:27 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/19 20:07:21 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,40 @@ void	size_path(t_path *p)
 	}
 }
 
+int		choose_path(t_link *tmp, t_link *tmp2, int i, t_link *p)
+{
+	if (tmp->visited <= tmp2->visited)
+	{
+		tmp->visited++;
+		tmp->next->visited++;
+	}
+	else if (tmp2->visited >= p->visited)
+	{
+		p->visited++;
+		p->next->visited++;
+		i = 0;
+	}
+	else
+	{
+		tmp2->visited++;
+		tmp2->next->visited++;
+		i++;
+	}
+	return (i);
+}
+
+void	reset_vst(t_path *p)
+{
+	int		i;
+
+	i = 0;
+	while (p->array[i])
+	{
+		p->array[i]->visited = 0;
+		i++;
+	}
+}
+
 void	devide_ants(t_path *p, int ants)
 {
 	t_link	*tmp;
@@ -51,24 +85,11 @@ void	devide_ants(t_path *p, int ants)
 	while (ants != 0)
 	{
 		tmp = p->array[i];
+		if (!(p->array[i + 1]))
+			i = -1;
 		tmp2 = p->array[i + 1];
-		if (tmp->visited + tmp->next->visited <= tmp2->visited + tmp2->next->visited)
-		{
-			tmp->visited++;
-			tmp->next->visited++;
-		}
-		else if (tmp2->visited + tmp2->next->visited >= p->array[0]->visited + p->array[0]->next->visited)
-		{
-			p->array[0]->visited++;
-			p->array[0]->next->visited++;
-			i = 0;
-		}
-		else
-		{
-			tmp2->visited++;
-			tmp2->next->visited++;
-			i++;
-		}
+		i = choose_path(tmp, tmp2, i, p->array[0]);
 		ants--;
 	}
+	reset_vst(p);
 }
