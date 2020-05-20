@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/18 17:21:54 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/20 15:43:29 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	free_p(t_path *p, t_able *hashtable)
 		if (p->array[i])
 		{
 			tmp = p->array[i];
-			free_link(tmp);
+			free_link(tmp, "prev");
 		}
 		i++;
 	}
@@ -60,8 +60,10 @@ int			main(void)
 			all_paths(&p.array[i]);
 		i++;
 	}
-*/	devide_ants(&p, hashtable.ants);
+*/	
+	devide_ants(&p, hashtable.ants);
 //	walking_ants(hashtable.ants, &p, hashtable.max_path);
+	walk_ants(&p, hashtable.ants);
 	free_p(&p, &hashtable);
 	free_ht(&hashtable);
 	ft_printf("DONE\n");

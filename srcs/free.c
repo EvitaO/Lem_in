@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 17:06:08 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:04:50 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/20 15:50:32 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,21 @@ void	free_tmp(char **tmp)
 	free(tmp);
 }
 
-void	free_link(t_link *link)
+void	free_link(t_link *link, char *x)
 {
 	t_link		*tmp_link;
 
-	while (link->next)
+
+	while (link)
 	{
 		tmp_link = link;
-		link = link->next;
+		if (ft_strcmp(x, "prev") == 0)
+			link = link->prev;
+		else
+			link = link->next;
 		free(tmp_link->name);
 		free(tmp_link);
 	}
-	free(link->name);
-	free(link);
 }
 
 void	free_node(t_node *node)
@@ -67,14 +69,14 @@ void	free_node(t_node *node)
 	while (node->next)
 	{
 		if (node->link)
-			free_link(node->link);
+			free_link(node->link, "next");
 		tmp = node;
 		node = node->next;
 		free(tmp->name);
 		free(tmp);
 	}
 	if (node->link)
-		free_link(node->link);
+		free_link(node->link, "next");
 	free(node->name);
 	free(node);
 }

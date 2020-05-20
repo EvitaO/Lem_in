@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/19 20:04:59 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/20 15:44:19 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void				max_path(t_able *ht);
 void				free_room(t_room **room);
 void				free_tmp(char **tmp);
 void				free_ht(t_able *hashtable);
-void				free_link(t_link *link);
+void				free_link(t_link *link, char *x);
 void				free_node(t_node *node);
 
 /*
@@ -139,6 +139,13 @@ void				devide_ants(t_path *p, int ants);
 void				size_path(t_path *p);
 int					choose_path(t_link *tmp, t_link *tmp2, int i, t_link *p);
 void				reset_vst(t_path *p);
+
+int					check_paths(t_path *p);
+int					ants_end(int cnt_p, int ants, t_path *p);
+int					move_ants(int print, t_link *p, int *a);
+void				walk_ants(t_path *p, int ants);
+int					print_ant(int print, int ant, char *name);
+
 void				walking_ants(int ants, t_path *p, int size);
 
 #endif

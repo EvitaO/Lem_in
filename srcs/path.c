@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/07 11:34:53 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:02:55 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/20 15:49:30 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void		free_patha(t_able *hashtable, t_path *p, int i)
 		if (j != i)
 		{
 			tmp = p->array[j];
-			free_link(tmp);
+			free_link(tmp, "next");
 		}
 		j++;
 	}

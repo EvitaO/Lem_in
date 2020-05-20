@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/18 16:48:09 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/19 20:07:21 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/20 14:25:04 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ void	devide_ants(t_path *p, int ants)
 	if (!(p->array[i + 1]))
 	{
 		p->array[i]->next->visited = ants;
-		ft_printf("%i\n", p->array[i]->next->visited);
-		exit(1);
-		//return ;
+		return ;
 	}
 	size_path(p);
 	while (ants != 0)

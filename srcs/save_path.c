@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/05/18 17:18:28 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/20 15:26:39 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	make_path(t_node *room, t_link *path)
 	p = path;
 	p->name = room->name;
 	p->prev = NULL;
+	p->visited = 0;
 }
 
 void	find_short_path(t_able *ht, t_path *path)
