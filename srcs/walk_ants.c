@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/20 13:13:36 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/20 15:27:50 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/20 17:29:04 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			check_paths(t_path *p)
 {
 	t_link	*tmp;
 	int		i;
-	
+
 	i = 0;
 	while (p->array[i])
 	{
@@ -24,7 +24,7 @@ int			check_paths(t_path *p)
 		if (tmp->next->visited != 0)
 			i++;
 		else
-			break;
+			break ;
 	}
 	return (i);
 }
@@ -46,12 +46,27 @@ int			ants_end(int cnt_p, int ants, t_path *p)
 	return (1);
 }
 
-int			print_ant(int print, int ant, char *name)
+int			move_ants2(int print, t_link *tmp, t_link *p, int *a)
 {
-	if (print != 0)
-		write(1, " ", 1);
-	ft_printf("L%i-%s", ant, name);
-	print++;
+	if (tmp == p)
+	{
+		print = print_ant(print, tmp->prev->visited, tmp->name);
+		tmp->visited++;
+		tmp->prev->visited = 0;
+	}
+	else if (tmp->prev->visited != 0 && tmp->prev != p->next)
+	{
+		tmp->visited = tmp->prev->visited;
+		print = print_ant(print, tmp->visited, tmp->name);
+		tmp->prev->visited = 0;
+	}
+	else if (tmp->prev->visited != 0 && tmp->prev == p->next)
+	{
+		tmp->visited = *a;
+		(*a)++;
+		print = print_ant(print, tmp->visited, tmp->name);
+		tmp->prev->visited--;
+	}
 	return (print);
 }
 
@@ -62,41 +77,16 @@ int			move_ants(int print, t_link *p, int *a)
 	tmp = p;
 	while (tmp->prev && tmp->prev->visited == 0)
 		tmp = tmp->prev;
-	if (tmp->prev == p->next && tmp->prev->visited != 0)
-	{
-		tmp->visited = *a;
-		p->next->visited--;
-		print = print_ant(print, tmp->visited, tmp->name);
-		(*a)++;
-	}
-	else if (tmp != p->next && tmp->prev->visited != 0)
+	if (tmp->prev->visited != 0)
 	{
 		while (tmp->prev)
 		{
-			if (tmp == p)
-			{
-				print = print_ant(print, tmp->prev->visited, tmp->name);
-				tmp->visited++;
-				tmp->prev->visited = 0;
-			}
-			else if (tmp->prev->visited != 0 && tmp->prev != p->next)
-			{
-				tmp->visited = tmp->prev->visited;
-				print = print_ant(print, tmp->visited, tmp->name);
-				tmp->prev->visited = 0;
-			}
-			else if (tmp->prev->visited != 0 && tmp->prev == p->next)
-			{
-				tmp->visited = *a;
-				(*a)++;
-				print = print_ant(print, tmp->visited, tmp->name);
-				tmp->prev->visited--;
-			}
+			print = move_ants2(print, tmp, p, a);
 			tmp = tmp->prev;
 		}
 	}
 	return (print);
-}	
+}
 
 void		walk_ants(t_path *p, int ants)
 {

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/20 15:44:19 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/20 17:20:09 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void				reset_vst(t_path *p);
 int					check_paths(t_path *p);
 int					ants_end(int cnt_p, int ants, t_path *p);
 int					move_ants(int print, t_link *p, int *a);
+int					move_ants2(int print, t_link *tmp, t_link *p, int *a);
 void				walk_ants(t_path *p, int ants);
 int					print_ant(int print, int ant, char *name);
 
