@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/18 16:48:09 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/20 14:25:04 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/25 12:26:39 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	devide_ants(t_path *p, int ants)
 	int		i;
 
 	i = 0;
-	if (!(p->array[i + 1]))
+	if (!(p->array[i + 1] && p->array[i + 1]->prev))
 	{
 		p->array[i]->next->visited = ants;
 		return ;
@@ -83,9 +83,13 @@ void	devide_ants(t_path *p, int ants)
 	while (ants != 0)
 	{
 		tmp = p->array[i];
-		if (!(p->array[i + 1]))
-			i = -1;
-		tmp2 = p->array[i + 1];
+		if (!(p->array[i + 1] && p->array[i + 1]->prev))
+		{
+			i = 0;
+			tmp2 = p->array[i];
+		}
+		else
+			tmp2 = p->array[i + 1];
 		i = choose_path(tmp, tmp2, i, p->array[0]);
 		ants--;
 	}

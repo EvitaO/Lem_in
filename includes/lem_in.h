@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:20:09 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/25 12:03:43 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void				free_node(t_node *node);
 t_path				save_path(t_able *hashtable);
 t_link				*find_path(t_able *hashtable);
 void				all_paths(t_link **path);
+int					find_short_path(t_able *ht, t_path *path, int i);
 void				find_node(t_able *hash, t_path *p, int index, int index_p);
 void				reset(t_able *hashtable, t_link *p);
 void				algo(t_able *hashtable);
