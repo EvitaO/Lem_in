@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/25 12:03:43 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/28 14:48:11 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct		s_node
 {
 	char			*name;
 	int				visited;
+	int				path_id;
 	t_link			*link;
 	struct s_node	*next;
 	struct s_node	*prev;

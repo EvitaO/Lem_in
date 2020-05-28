@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:04:30 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/05/26 12:06:41 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ht_put(t_able *hashtable, t_room **room, int index)
 	node = (t_node*)malloc(sizeof(t_node));
 	node->name = ft_strdup((*room)->name);
 	node->visited = 0;
+	node->path_id = -1;
 	node->link = NULL;
 	node->prev = NULL;
 	add_node_ht(hashtable, &node, index);

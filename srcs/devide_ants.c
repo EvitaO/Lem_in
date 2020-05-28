@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/18 16:48:09 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/25 12:26:39 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/05/26 12:11:30 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,4 @@ void	devide_ants(t_path *p, int ants)
 		i = choose_path(tmp, tmp2, i, p->array[0]);
 		ants--;
 	}
-	reset_vst(p);
 }
