@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/28 14:48:22 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/02 16:24:43 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,19 @@ int			main(void)
 {
 	t_able	hashtable;
 	t_path	p;
+	t_path	all;
 //	int		i;
 
 	input(&hashtable);
+	ft_printf("max path is %i\n", hashtable.max_path);
 	p = save_path(&hashtable);
+	ft_printf("blblblblb\n");
+	all = test(&hashtable);
+	if (all.array[8])
+		ft_printf("B\n");
 //	i = 0;
 /*	while (i < hashtable.max_path)
-	{
+	{.
 		if (ft_strcmp(p.array[i]->name, "start") == 0)
 			all_paths(&p.array[i]);
 		i++;

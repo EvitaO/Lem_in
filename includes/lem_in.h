@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/28 14:48:11 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/02 13:54:03 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,18 +120,14 @@ void				free_node(t_node *node);
 */
 t_path				save_path(t_able *hashtable);
 t_link				*find_path(t_able *hashtable);
-void				all_paths(t_link **path);
-int					find_short_path(t_able *ht, t_path *path, int i);
+void				find_short_path(t_able *ht, t_path *path, int i);
 void				find_node(t_able *hash, t_path *p, int index, int index_p);
-void				reset(t_able *hashtable, t_link *p);
-void				algo(t_able *hashtable);
-void				clos_lost_rooms(t_node *room, t_able hashtable);
 t_node				*find_room(t_able *hashtable, char *name);
 int					start_end_room(t_able *hashtable, char *name);
 void				make_path(t_node *room, t_link *path);
-void    			algo_b(t_able *hashtable);
-void    			add_q(t_link **q, t_link *links, t_able *hashtable);
-void    			remove_q(t_link **q);
+t_link    			*algo_b(t_able *hashtable, int id);
+int	    			add_q(t_link **q, t_link *links, t_able *hashtable);
+void				remove_q(t_link **q, t_able *hashtable);
 
 /*
 **			WALKING ANTS
@@ -148,7 +144,15 @@ int					move_ants(int print, t_link *p, int *a);
 int					move_ants2(int print, t_link *tmp, t_link *p, int *a);
 void				walk_ants(t_path *p, int ants);
 int					print_ant(int print, int ant, char *name);
+t_node				*find_short_link_end(t_able *ht);
+void				algo_d(t_able *ht, int id);
+int					dfs(t_able *ht, int id, char *name, int vst);
+int					rec(t_able *ht, t_link **link, int id, int vst);
+int					put_link_off(t_able *ht, int id, char *name);
 
-void				walking_ants(int ants, t_path *p, int size);
+int					bla(t_able *ht, int id, t_path *all);
+
+t_path				test(t_able *hashtable);
+
 
 #endif
