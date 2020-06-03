@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/06/02 16:09:37 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/03 10:29:16 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ void			put_id(t_able *ht, int i)
 	t_node	*tmp2;
 
 	tmp = find_short_link_end(ht);
-	if (tmp->path_id != -1 || tmp->visited <= 0)
+	if ((!(tmp)) || (tmp->path_id != -1 || tmp->visited <= 0))
 		return ;
+	tmp->visited = 0;
 	tmp2 = ht->array[ht->size];
 	while (!(ft_strcmp(tmp->name, tmp2->name) == 0))
 	{
 		tmp->path_id = i;
 		tmp = tmp->prev;
+		tmp->visited = 0;
 	}
 }
 
@@ -41,24 +43,15 @@ void			make_path(t_node *room, t_link *path)
 t_node	*find_short_link_end(t_able *ht)
 {
 	t_node	*tmp;
-	t_node	*tmp2;
 	t_link	*link;
 
 	tmp = ht->array[ht->size + 1];
 	link = tmp->link;
 	tmp = find_room(ht, link->name);
-	while (link && (tmp->path_id != -1 && tmp->visited <= 0))
+	while (link->next && tmp->visited <= 0)
 	{
 		link = link->next;
 		tmp = find_room(ht, link->name);
-	}
-	while (link)
-	{
-		tmp2 = find_room(ht, link->name);
-		if (tmp2->visited > 0 && tmp2->visited < tmp->visited &&\
-		 tmp2->path_id == -1)
-			tmp = tmp2;
-		link = link->next;
 	}
 	return (tmp);
 }
@@ -101,6 +94,7 @@ t_path			save_path(t_able *hashtable)
 	int		i;
 	t_path	p;
 	t_link	*q;
+	t_node	*room;
 
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->max_path);
 	ft_memset(p.array, 0, hashtable->max_path * sizeof(t_link));
@@ -123,7 +117,7 @@ t_path			save_path(t_able *hashtable)
 	 		// 		ft_printf(" %s\n", p.array[i]->name);
 	 		// 	p.array[i] = p.array[i]->prev;
 			// }
-			//./exit(1);
+			// //./exit(1);
 		}
 		else
 			put_id(hashtable, i);
@@ -132,6 +126,16 @@ t_path			save_path(t_able *hashtable)
 	}
 	i = 0;
 	ft_printf("\n");
+	room = find_room(hashtable, hashtable->array[hashtable->size +1]->name);
+	q = room->link;
+	// while (q)
+	// {
+	// 	room = find_room(hashtable, q->name);
+	// 	ft_printf("%s -- %i\n", room->name, room->path_id);
+	// 	q = q->next;
+	// }
+	// ft_printf("maxpath%i\n", hashtable->max_path);
+	// exit (1);
 	// i = 0;
 	// while (p.array[i])
 	// {

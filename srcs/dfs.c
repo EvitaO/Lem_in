@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/30 00:27:23 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/02 14:55:55 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/03 10:28:48 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ void	test2(int id, t_node *room, t_able *ht)
 	t_link	*link;
 
 	link = room->link;
+	//ft_printf("id was %i\n", room->path_id);
 	room->path_id = id;
 	room->visited = 0;
-	//ft_printf("Lalaal link is %s room is %s id is %i\n", link->name, room->name, id);
+	//ft_printf("roomtest is %s id is %i\n", room->name, id);
 	while (link)
 	{
 		room2 = find_room(ht, link->name);
@@ -38,7 +39,7 @@ int		put_link_off(t_able *ht, int id, char *name)
 	i = 0;
 	//ft_printf("id is %i\n");
 	room = find_room(ht, name);
-	//ft_printf("room is %s\n", room->name);
+	//ft_printf("room is %s	id is %i\n", room->name, room->path_id);
 	if (start_end_room(ht, room->prev->name) == 1)
 		return (0);
 	i = dfs(ht, room->path_id, room->prev->name, 1);
@@ -55,8 +56,8 @@ int		rec(t_able *ht, t_link **link, int id, int vst)
 	i = 0;
 	//ft_printf("link is %s\n", (*link)->name);
 	room = find_room(ht, (*link)->name);
-	//if (room->visited == 0)
-	//	room->visited = vst;
+	if (room->visited == 0)
+		room->visited = vst;
 	//ft_printf("room is %s en vst is %i\n", room->name, room->path_id);
 	if (start_end_room(ht, room->name) == 1)
 	{
@@ -125,7 +126,10 @@ int		dfs(t_able *ht, int id, char *name, int vst)
 		return (i);
 	}
 	if (room->path_id == -1)
-		room->prev = NULL;	
+	{
+		// room->path_id = -2;
+		room->prev = NULL;
+	}	
 	return (i);
 }
 
@@ -136,17 +140,14 @@ void	algo_d(t_able *ht, int id)
 	t_link	*link;
 	int		i;
 
-	ft_printf("WHASGHASGKHSJKHGAS!!\n");
 	i = 0;
 	room = find_room(ht, ht->array[ht->size]->name);
 	link = room->link;
 	while (link && i == 0)
 	{
-		//i = rec(ht, &link, id, 1);
 		room2 = find_room(ht, link->name);
 		if (room2->path_id == -1)
 		 	i = dfs(ht, id, link->name, 1);
-		//ft_printf("%i --\n", i);
 		link = link->next;
 	}
 }

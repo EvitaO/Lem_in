@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/02 16:24:43 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/03 11:52:41 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,40 @@ int			main(void)
 	t_able	hashtable;
 	t_path	p;
 	t_path	all;
-//	int		i;
+	int		i;
 
 	input(&hashtable);
-	ft_printf("max path is %i\n", hashtable.max_path);
+//	ft_printf("max path is %i\n", hashtable.max_path);
 	p = save_path(&hashtable);
-	ft_printf("blblblblb\n");
 	all = test(&hashtable);
-	if (all.array[8])
-		ft_printf("B\n");
+	// i = 0;
+	// while (p.array[i])
+	// {
+	// 	ft_printf("shortest\n");
+	// 	while (p.array[i])
+	// 	{
+	//  		if (p.array[i]->prev)
+	//  			ft_printf("%s -", p.array[i]->name);
+	//  		else
+	//  			ft_printf("%s\n", p.array[i]->name);
+	//  		p.array[i] = p.array[i]->prev;
+	// 	}
+	// 	i++;
+	// }
+	// i = 0;
+	// while (all.array[i])
+	// {
+	// 	while (all.array[i])
+	// 	{
+	//  		if (all.array[i]->prev)
+	//  			ft_printf(" %s -", all.array[i]->name);
+	//  		else
+	//  			ft_printf(" %s\n", all.array[i]->name);
+	//  		all.array[i] = all.array[i]->prev;
+	// 	}
+	// 	i++;
+	// }
+	// exit (1);
 //	i = 0;
 /*	while (i < hashtable.max_path)
 	{.
