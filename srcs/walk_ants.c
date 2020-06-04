@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/20 13:13:36 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/20 17:29:04 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/04 14:29:43 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			check_paths(t_path *p)
 	int		i;
 
 	i = 0;
-	while (p->array[i])
+	while (p->array[i] && p->array[i]->prev)
 	{
 		tmp = p->array[i];
 		if (tmp->next->visited != 0)

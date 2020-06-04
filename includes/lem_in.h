@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/02 13:54:03 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/04 14:17:34 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_able
 typedef struct		s_path
 {
 	t_link			**array;
+	int				instruction;
 }					t_path;
 
 /*
@@ -129,30 +130,42 @@ t_link    			*algo_b(t_able *hashtable, int id);
 int	    			add_q(t_link **q, t_link *links, t_able *hashtable);
 void				remove_q(t_link **q, t_able *hashtable);
 
-/*
-**			WALKING ANTS
-*/
-
-void				devide_ants(t_path *p, int ants);
-void				size_path(t_path *p);
-int					choose_path(t_link *tmp, t_link *tmp2, int i, t_link *p);
-void				reset_vst(t_path *p);
-
-int					check_paths(t_path *p);
-int					ants_end(int cnt_p, int ants, t_path *p);
-int					move_ants(int print, t_link *p, int *a);
-int					move_ants2(int print, t_link *tmp, t_link *p, int *a);
-void				walk_ants(t_path *p, int ants);
-int					print_ant(int print, int ant, char *name);
 t_node				*find_short_link_end(t_able *ht);
 void				algo_d(t_able *ht, int id);
 int					dfs(t_able *ht, int id, char *name, int vst);
 int					rec(t_able *ht, t_link **link, int id, int vst);
 int					put_link_off(t_able *ht, int id, char *name);
 
-int					bla(t_able *ht, int id, t_path *all);
+/*
+**			SAVE ALL PATHS
+*/
+t_path				save_all_p(t_able *hashtable);
+int					save_a_p(t_able *ht, int id, t_path *all);
+t_link				*find_id_end(t_able *ht, int id);
+void				size_sort_all(t_path *all);
+void				size_path(t_path *all);
+void				sort_all(t_path *all);
+int					check_if_sorted(t_path *all);
+void				swap_tlink(t_link *big, t_link *smal);
 
-t_path				test(t_able *hashtable);
+void				use_one_p(t_path *p, t_able *hashtable);
 
+/*
+**			DEVIDE ANTS
+*/
+void				devide_ants(t_path *p, int ants);
+int					choose_path(t_link *tmp, t_link *tmp2, int i, t_link *p);
+void				reset_vst(t_path *p);
+void				all_instruction(t_path *p);
+
+/*
+**			WALKING ANTS
+*/
+int					check_paths(t_path *p);
+int					ants_end(int cnt_p, int ants, t_path *p);
+int					move_ants(int print, t_link *p, int *a);
+int					move_ants2(int print, t_link *tmp, t_link *p, int *a);
+void				walk_ants(t_path *p, int ants);
+int					print_ant(int print, int ant, char *name);
 
 #endif

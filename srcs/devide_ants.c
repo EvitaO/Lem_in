@@ -6,32 +6,11 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/18 16:48:09 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/26 12:11:30 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/04 14:37:17 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-
-void	size_path(t_path *p)
-{
-	int		i;
-	int		size;
-	t_link	*tmp;
-
-	i = 0;
-	while (p->array[i])
-	{
-		tmp = p->array[i];
-		size = 0;
-		while (tmp->prev)
-		{
-			tmp = tmp->prev;
-			size++;
-		}
-		p->array[i]->visited = size;
-		i++;
-	}
-}
 
 int		choose_path(t_link *tmp, t_link *tmp2, int i, t_link *p)
 {
@@ -67,6 +46,21 @@ void	reset_vst(t_path *p)
 	}
 }
 
+void	all_instruction(t_path *p)
+{
+	int	i;
+	int	instr;
+	
+	i = 0;
+	instr = 0;
+	while (p->array[i] && p->array[i]->prev && p->array[i]->next->visited > 0)
+	{
+		instr = p->array[i]->visited + instr;
+		i++;
+	}
+	p->instruction = instr / i;
+}
+
 void	devide_ants(t_path *p, int ants)
 {
 	t_link	*tmp;
@@ -77,9 +71,9 @@ void	devide_ants(t_path *p, int ants)
 	if (!(p->array[i + 1] && p->array[i + 1]->prev))
 	{
 		p->array[i]->next->visited = ants;
+		p->instruction = p->array[i]->visited + ants;
 		return ;
 	}
-	size_path(p);
 	while (ants != 0)
 	{
 		tmp = p->array[i];
@@ -93,4 +87,5 @@ void	devide_ants(t_path *p, int ants)
 		i = choose_path(tmp, tmp2, i, p->array[0]);
 		ants--;
 	}
+	all_instruction(p);
 }

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/06/03 10:29:16 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/04 12:42:44 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,11 @@ t_path			save_path(t_able *hashtable)
 	int		i;
 	t_path	p;
 	t_link	*q;
-	t_node	*room;
+//	t_node	*room;
 
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->max_path);
 	ft_memset(p.array, 0, hashtable->max_path * sizeof(t_link));
+	p.instruction = 0;
 	i = 0;
 	hashtable->array[hashtable->size]->visited = 0;
 	while (i < hashtable->max_path)
@@ -109,6 +110,7 @@ t_path			save_path(t_able *hashtable)
 			p.array[0]->prev = NULL;	
 			make_path(hashtable->array[hashtable->size + 1], p.array[i]);
 			find_short_path(hashtable, &p, i);
+			use_one_p(&p, hashtable);
 			// while (p.array[i])
 			// {
 	 		// 	if (p.array[i]->prev)
@@ -117,17 +119,18 @@ t_path			save_path(t_able *hashtable)
 	 		// 		ft_printf(" %s\n", p.array[i]->name);
 	 		// 	p.array[i] = p.array[i]->prev;
 			// }
-			// //./exit(1);
+			// exit(1);
 		}
 		else
 			put_id(hashtable, i);
 		i++;
 		remove_q(&q, hashtable);
 	}
-	i = 0;
+	//exit (1);
+	// i = 0;
 	ft_printf("\n");
-	room = find_room(hashtable, hashtable->array[hashtable->size +1]->name);
-	q = room->link;
+	// room = find_room(hashtable, hashtable->array[hashtable->size +1]->name);
+	// q = room->link;
 	// while (q)
 	// {
 	// 	room = find_room(hashtable, q->name);
@@ -136,7 +139,7 @@ t_path			save_path(t_able *hashtable)
 	// }
 	// ft_printf("maxpath%i\n", hashtable->max_path);
 	// exit (1);
-	// i = 0;
+	//i = 0;
 	// while (p.array[i])
 	// {
 	// 	while (p.array[i])

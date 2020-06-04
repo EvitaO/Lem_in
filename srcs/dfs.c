@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/30 00:27:23 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/03 10:28:48 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/03 15:41:15 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		dfs(t_able *ht, int id, char *name, int vst)
 	if (ft_strcmp(name, ht->array[ht->size]->name) == 0)
 		return (0);
 	room = find_room(ht, name);
+	// ft_printf("room->%s -- id->%i --- id->%i\n", room->name, room->path_id, id);
 	if (room->visited == 0)
 		room->visited = vst;
 	//ft_printf("room is %s en vst is %i\n", room->name, vst);
@@ -94,15 +95,17 @@ int		dfs(t_able *ht, int id, char *name, int vst)
 	{
 		room2 = find_room(ht, link->name);
 		//ft_printf("room2 is %s\n", room2->name);
-		if (room2 != room->prev)
+		if (room2 == room->prev || room2->path_id != -1)
+			link = link->next;
+		else
 		{
-			if (room->path_id == -1 && room2->path_id == -1)
+			//if (room->path_id == -1 && room2->path_id == -1) // waarom dit statment? kunnen we niet een if en else maken? en niet een dubbel if en ik denk dat het hier fout gaat. room == -1, hij zou als die groter is dan -1 al niet in rec mogen gaan.
+			if (room2->path_id == -1)
 				room2->prev = room;
 			i = rec(ht, &link, id, vst + 1);
-		}
-		else
-			link = link->next;
+		}	
 	}
+//	ft_printf("room2 is %s --  i is %i\n", room2->name, i);
 	if (i != 1)
 	{
 		link = room->link;
@@ -112,8 +115,7 @@ int		dfs(t_able *ht, int id, char *name, int vst)
 			//ft_printf("room is %s id %i room2 %s %i\n", room->name, room->path_id, room2->name, id);
 			if (room2->path_id != -1 && room2->prev != room)
 				i = put_link_off(ht, id, room2->name);
-			if (i == 0)
-				link = link->next;
+			link = link->next;
 		//	if (start_end_room(ht, room->prev->name) == 1)
 		//		return (0);
 		}

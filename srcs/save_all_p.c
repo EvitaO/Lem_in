@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test.c                                             :+:    :+:            */
+/*   save_all_p.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/05/30 14:41:32 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/03 11:45:07 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/06/04 12:46:20 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/06/04 13:54:19 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_link	*find_id_end(t_able *ht, int id)
 	return (NULL);
 }
 
-int		bla(t_able *ht, int id, t_path *all)
+int		save_a_p(t_able *ht, int id, t_path *all)
 {
 	t_link	*tmp;
 	t_link	*tmp2;
@@ -56,10 +56,9 @@ int		bla(t_able *ht, int id, t_path *all)
 	all->array[id]->next = tmp->prev;
 	tmp->prev->prev = NULL;
 	return (0);
-
 }
 
-t_path	test(t_able *hashtable)
+t_path	save_all_p(t_able *hashtable)
 {
 	int		i;
 	int		id;
@@ -67,14 +66,16 @@ t_path	test(t_able *hashtable)
 
 	all.array = (t_link**)malloc(sizeof(t_link) * hashtable->max_path);
 	ft_memset(all.array, 0, hashtable->max_path * sizeof(t_link));
+	all.instruction = 0;
 	i = 0;
 	id = 0;
 	while (id < hashtable->max_path && i != -1)
 	{
 		all.array[id] = (t_link*)malloc(sizeof(t_link));
 		all.array[id]->prev = NULL;
-		i = bla(hashtable, id, &all);
+		i = save_a_p(hashtable, id, &all);
 		id++;
 	}
+	size_sort_all(&all);
 	return (all);
 }
