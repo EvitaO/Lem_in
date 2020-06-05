@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/04 12:46:20 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/04 13:54:19 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/05 13:08:23 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_link	*find_id_end(t_able *ht, int id)
 	while (link)
 	{
 		room2 = find_room(ht, link->name);
-		//ft_printf("la	r	%s	i %i\n", room2->name, room2->path_id);
 		if (room2->path_id == id)
 			return (link);
 		link = link->next;
@@ -54,6 +53,7 @@ int		save_a_p(t_able *ht, int id, t_path *all)
 	tmp->prev = (t_link*)malloc(sizeof(t_link));
 	tmp->prev->name = ft_strdup(room->name);
 	all->array[id]->next = tmp->prev;
+	all->array[id]->next->visited = 0;
 	tmp->prev->prev = NULL;
 	return (0);
 }

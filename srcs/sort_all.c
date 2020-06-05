@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/04 13:10:17 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/04 13:51:48 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/05 13:11:19 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int		check_if_sorted(t_path *all)
 	{
 		if (tmp[i + 1])
 		{
-			if (tmp[i]->visited <= tmp[i + 1]->visited || tmp[i + 1]->visited <= 0)
+			if (tmp[i]->visited <= tmp[i + 1]->visited ||\
+				tmp[i + 1]->visited <= 0)
 				i++;
 			else
 				return (-1);

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/20 13:13:36 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/04 14:29:43 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/05 13:09:37 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ int			move_ants2(int print, t_link *tmp, t_link *p, int *a)
 		tmp->visited++;
 		tmp->prev->visited = 0;
 	}
-	else if (tmp->prev->visited != 0 && tmp->prev != p->next)
+	else if (tmp->prev && tmp->prev->visited != 0 && tmp->prev != p->next)
 	{
 		tmp->visited = tmp->prev->visited;
 		print = print_ant(print, tmp->visited, tmp->name);
 		tmp->prev->visited = 0;
 	}
-	else if (tmp->prev->visited != 0 && tmp->prev == p->next)
+	else if (tmp->prev && tmp->prev->visited != 0 && tmp->prev == p->next)
 	{
 		tmp->visited = *a;
 		(*a)++;
@@ -77,9 +77,9 @@ int			move_ants(int print, t_link *p, int *a)
 	tmp = p;
 	while (tmp->prev && tmp->prev->visited == 0)
 		tmp = tmp->prev;
-	if (tmp->prev->visited != 0)
+	if (tmp->prev && tmp->prev->visited != 0)
 	{
-		while (tmp->prev)
+		while (tmp && tmp->prev)
 		{
 			print = move_ants2(print, tmp, p, a);
 			tmp = tmp->prev;

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 17:06:08 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/25 11:39:07 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/05 13:12:10 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	free_tmp(char **tmp)
 void	free_link(t_link *link, char *x)
 {
 	t_link		*tmp_link;
-
 
 	while (link)
 	{

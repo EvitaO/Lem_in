@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/18 16:48:09 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/04 14:37:17 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/05 13:09:13 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	all_instruction(t_path *p)
 {
 	int	i;
 	int	instr;
-	
+
 	i = 0;
 	instr = 0;
 	while (p->array[i] && p->array[i]->prev && p->array[i]->next->visited > 0)
