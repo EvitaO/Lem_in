@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/06/04 12:42:44 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/06 20:35:18 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ t_path			save_path(t_able *hashtable)
 	// }
 	// ft_printf("maxpath%i\n", hashtable->max_path);
 	// exit (1);
-	//i = 0;
+	// i = 0;
 	// while (p.array[i])
 	// {
 	// 	while (p.array[i])

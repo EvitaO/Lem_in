@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/04 14:17:34 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/07 14:32:40 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef	struct		s_room
 	struct s_room	*next;
 	struct s_room	*prev;
 }					t_room;
+
+typedef struct		s_tab
+{
+	t_room			**array;
+}					t_tab;
 
 typedef struct		s_link
 {
@@ -135,6 +140,11 @@ void				algo_d(t_able *ht, int id);
 int					dfs(t_able *ht, int id, char *name, int vst);
 int					rec(t_able *ht, t_link **link, int id, int vst);
 int					put_link_off(t_able *ht, int id, char *name);
+void				change_id(int id, t_node *room, t_able *ht);
+int					next_link(t_able *ht, t_node *room, int id, int vst);
+int					next_link_id(t_able *ht, t_node *room, int id);
+int					find_detour_link(t_able *ht, char *name);
+void				set_id_off(t_able *ht, char *name, int off);
 
 /*
 **			SAVE ALL PATHS
