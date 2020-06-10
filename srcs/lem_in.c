@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 12:47:06 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 20:52:40 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ static void	input(t_able *hashtable)
 {
 	char	*line;
 	char	*output;
-	t_room	*room;
 
 	line = NULL;
 	output = "";
-	room = NULL;
-	*hashtable = check_input(&line, &room, &output);
+	*hashtable = check_input(&line, &output);
 	ft_printf("%s\n", output);
 	free(output);
+	exit (1);
 	//free_room(&room);
 }
 

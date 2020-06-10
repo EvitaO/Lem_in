@@ -6,21 +6,20 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 13:28:12 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 13:17:37 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 16:16:41 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-t_able	check_input(char **line, t_room **room, char **str)
+t_able	check_input(char **line, char **str)
 {
 	t_able	hashtable;
 
 	hashtable.ants = count_ants(line, str);
-	hashtable.size = read_rooms(line, room, str);
-	hashtable = rooms_hash(room, &hashtable, hashtable.size);
-	if (hashtable.array[hashtable.size] == NULL || \
-		hashtable.array[hashtable.size + 1] == NULL)
+	hashtable = read_rooms(line, &hashtable, str);
+	if (hashtable.array[788] == NULL || \
+		hashtable.array[789] == NULL)
 		exit(-1);
 	check_links(*line, &hashtable);
 	free(*line);

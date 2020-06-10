@@ -6,33 +6,66 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:28:42 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 13:49:22 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 16:10:47 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	store_room(char **tmp, t_room **room)
+void	store_check_coord(t_xy *coord, char **crd, int index)
 {
-	if (*room)
+	t_info	*tmp;
+	t_info	*new;
+
+	tmp = coord->array[index];
+	new = (t_info*)malloc(sizeof(t_info));
+	new->x = ft_atoi(crd[1]);
+	new->y = ft_atoi(crd[2]);
+	if (!tmp)
 	{
-		(*room)->next = (t_room*)malloc(sizeof(t_room));
-		(*room)->next->prev = *room;
-		*room = (*room)->next;
-		(*room)->next = NULL;
+		new->next = NULL;
+		coord->array[index] = new;
 	}
 	else
 	{
-		*room = (t_room*)malloc(sizeof(t_room));
-		(*room)->prev = NULL;
-		(*room)->next = NULL;
+		while (tmp)
+		{
+			if (tmp->x == new->x)
+			{
+				if (tmp->y == new->y)
+					exit(ft_printf("Error\n"));
+			}
+			tmp = tmp->next;
+		}
+		tmp = coord->array[index];
+		new->next = tmp;
+		coord->array[index] = new;
 	}
-	(*room)->name = ft_strdup(tmp[0]);
-	(*room)->x = ft_atoi(tmp[1]);
-	(*room)->y = ft_atoi(tmp[2]);
 }
 
-int		check_rooms(char *line, t_room **room)
+void	check_cordinates(char **tmp, t_xy *coord)
+{
+	int		index;
+
+	index = hash(787, tmp[1]);
+	store_check_coord(coord, tmp, index);
+}
+
+void	store_room(char **tmp, t_able *ht, int comment, t_xy *coord)
+{
+	int		index;
+
+	if (comment == 1)
+		index = 788;
+	else if (comment == 2)
+		index = 789;
+	else
+		index = hash(787, tmp[0]);
+	ht_put(ht, tmp[0], index);
+	check_cordinates(tmp, coord);
+}
+
+int		check_rooms(char *line, t_able *ht, int comment, t_xy *coord)
 {
 	char	**tmp;
 
@@ -50,36 +83,35 @@ int		check_rooms(char *line, t_room **room)
 		exit(-1);
 	valid_name(tmp[0]);
 	valid_cordinates(tmp);
-	//if (*room)
-	//	check_valid_room(tmp, room);
-	store_room(tmp, room);
+	store_room(tmp, ht, comment, coord);
 	free_tmp(tmp);
 	return (0);
 }
 
-int		read_rooms(char **line, t_room **room, char **str)
+t_able		read_rooms(char **line, t_able *ht, char **str)
 {
-	int	ret;
-	int	i;
-	int	comment;
+	int		ret;
+	int		i;
+	int		comment;
+	t_xy	coord;
 
 	i = 0;
 	ret = 0;
 	comment = 0;
+	ht->array = (t_node**)malloc((787 + 2) * sizeof(t_node));
+	ft_memset(ht->array, 0, (787 + 2) * sizeof(t_node));
+	coord.array = (t_info**)malloc(787 * sizeof(t_info));
+	ft_memset(coord.array, 0, 787 * sizeof(t_info));
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
-		ret = check_rooms(*line, room);
+		ret = check_rooms(*line, ht, comment, &coord);
 		if (*line[0] != '#')
-		{
-			if (ret != 1)
-				(*room)->comment = comment;
 			i++;
-		}
 		store_input_str(str, line);
 		comment = check_comment(*line);
 		if (ret != 1)
 			free(*line);
 	}
-	//go_to_first_room(room);
-	return (i - 1);
+	ht->size = i - 1;
+	return (*ht);
 }
