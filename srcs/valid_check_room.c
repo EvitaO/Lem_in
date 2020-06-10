@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/29 17:58:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/03 15:22:07 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/10 12:53:10 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,30 @@ void		valid_name(char *tmp)
 		exit(ft_printf("Error\n"));
 }
 
-static void	check_exist(char **tmp, t_room **room)
-{
-	while ((*room)->next)
-	{
-		if (ft_strcmp((*room)->name, tmp[0]) == 0)
-			exit(ft_printf("Error\n"));
-		if (ft_strcmp((*room)->x, tmp[1]) == 0)
-		{
-			if (ft_strcmp((*room)->y, tmp[2]) == 0)
-				exit(ft_printf("Error\n"));
-		}
-		*room = (*room)->next;
-	}
-	if (ft_strcmp((*room)->name, tmp[0]) == 0)
-		exit(ft_printf("Error\n"));
-	if (ft_strcmp((*room)->x, tmp[1]) == 0)
-	{
-		if (ft_strcmp((*room)->y, tmp[2]) == 0)
-			exit(ft_printf("Error\n"));
-	}
-}
+// static void	check_exist(char **tmp, t_room **room)
+// {
+// 	while ((*room)->next)
+// 	{
+// 		if (ft_strcmp((*room)->name, tmp[0]) == 0)
+// 			exit(ft_printf("Error\n"));
+// 		if (ft_strcmp((*room)->x, tmp[1]) == 0)
+// 		{
+// 			if (ft_strcmp((*room)->y, tmp[2]) == 0)
+// 				exit(ft_printf("Error\n"));
+// 		}
+// 		*room = (*room)->next;
+// 	}
+// 	if (ft_strcmp((*room)->name, tmp[0]) == 0)
+// 		exit(ft_printf("Error\n"));
+// 	if (ft_strcmp((*room)->x, tmp[1]) == 0)
+// 	{
+// 		if (ft_strcmp((*room)->y, tmp[2]) == 0)
+// 			exit(ft_printf("Error\n"));
+// 	}
+// }
 
-void		check_valid_room(char **tmp, t_room **room)
-{
-	go_to_first_room(room);
-	check_exist(tmp, room);
-}
+// void		check_valid_room(char **tmp, t_room **room)
+// {
+// 	go_to_first_room(room);
+// 	check_exist(tmp, room);
+// }

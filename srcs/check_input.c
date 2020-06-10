@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 13:28:12 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/06 15:42:39 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 13:17:37 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ t_able	check_input(char **line, t_room **room, char **str)
 	if (hashtable.array[hashtable.size] == NULL || \
 		hashtable.array[hashtable.size + 1] == NULL)
 		exit(-1);
-	go_to_first_room(room);
-	check_links(*line, room, &hashtable);
+	check_links(*line, &hashtable);
 	free(*line);
-	go_to_first_room(room);
-	read_links(line, room, str, &hashtable);
+	read_links(line, str, &hashtable);
 	links_start_end(&hashtable);
 	max_path(&hashtable);
 	return (hashtable);

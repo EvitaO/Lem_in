@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/07 14:32:40 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 13:16:45 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,26 @@
 typedef	struct		s_room
 {
 	char			*name;
-	char			*x;
-	char			*y;
+	int				x;
+	int				y;
 	int				comment;
 	struct s_room	*next;
 	struct s_room	*prev;
 }					t_room;
 
-typedef struct		s_tab
+typedef struct		s_info
 {
-	t_room			**array;
-}					t_tab;
+	int				x;
+	int				y;
+	struct s_info	*next;
+	struct s_info	*prev;
+}					t_info;
+
+
+typedef struct		s_xy
+{
+	t_info			**array;
+}					t_xy;
 
 typedef struct		s_link
 {
@@ -92,10 +101,11 @@ void				valid_name(char *tmp);
 /*
 **		check links
 */
-void				read_links(char **line, t_room **room, char **str, t_able\
+void				read_links(char **line, char **str, t_able\
 					*hashtable);
-void				check_links(char *line, t_room **room, t_able *hashtable);
-void				check_room_exists(char *name, t_room **room);
+void				check_links(char *line, t_able *hashtable);
+void				check_room_exists(char *name, t_able *hashtable, int index);
+
 
 /*
 **		go to the start / end of a list

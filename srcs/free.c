@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 17:06:08 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/05 13:12:10 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 12:48:08 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	free_room(t_room **room)
 		*room = (*room)->next;
 		(*room)->prev = NULL;
 		free(tmp->name);
-		free(tmp->x);
-		free(tmp->y);
+		//free(tmp->x);
+		//free(tmp->y);
 		free(tmp);
 	}
 	free((*room)->name);
-	free((*room)->x);
-	free((*room)->y);
+	//free((*room)->x);
+	//free((*room)->y);
 	free(*room);
 }
 

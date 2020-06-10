@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:28:42 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/06 23:59:40 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 13:49:22 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	store_room(char **tmp, t_room **room)
 		(*room)->next = NULL;
 	}
 	(*room)->name = ft_strdup(tmp[0]);
-	(*room)->x = ft_strdup(tmp[1]);
-	(*room)->y = ft_strdup(tmp[2]);
+	(*room)->x = ft_atoi(tmp[1]);
+	(*room)->y = ft_atoi(tmp[2]);
 }
 
 int		check_rooms(char *line, t_room **room)
@@ -50,8 +50,8 @@ int		check_rooms(char *line, t_room **room)
 		exit(-1);
 	valid_name(tmp[0]);
 	valid_cordinates(tmp);
-	if (*room)
-		check_valid_room(tmp, room);
+	//if (*room)
+	//	check_valid_room(tmp, room);
 	store_room(tmp, room);
 	free_tmp(tmp);
 	return (0);
@@ -80,6 +80,6 @@ int		read_rooms(char **line, t_room **room, char **str)
 		if (ret != 1)
 			free(*line);
 	}
-	go_to_first_room(room);
+	//go_to_first_room(room);
 	return (i - 1);
 }

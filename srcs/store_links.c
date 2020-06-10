@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/04 12:09:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/04/25 11:00:45 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/10 13:14:33 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,23 @@ void		put_link(t_node **t, char *name, char *new)
 	}
 }
 
+void	check_room_exists(char *name, t_able *hashtable, int index)
+{
+	t_node		*tmp;
+
+	tmp = hashtable->array[index];
+	while (tmp->next)
+	{
+		if (ft_strcmp(name, tmp->name) == 0)
+			return ;
+		tmp = tmp->next;
+	}
+	if (ft_strcmp(name, tmp->name) == 0)
+		return ;
+	else
+		exit(ft_printf("Error check if room exists\n"));
+}
+
 void		store_links(char **tmp, t_able *hashtable)
 {
 	int		index_a;
@@ -86,6 +103,8 @@ void		store_links(char **tmp, t_able *hashtable)
 
 	index_a = find_index(tmp[0], hashtable);
 	index_b = find_index(tmp[1], hashtable);
+	check_room_exists(tmp[0], hashtable, index_a);
+	check_room_exists(tmp[1], hashtable, index_b);
 	t = hashtable->array[index_a];
 	s = hashtable->array[index_b];
 	put_link(&t, tmp[0], tmp[1]);
