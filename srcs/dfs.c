@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/30 00:27:23 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/07 14:49:25 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/10 21:21:51 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int		dfs(t_able *ht, int id, char *name, int vst)
 	i = next_link(ht, room, id, vst);
 	if (i != 1)
 		i = next_link_id(ht, room, id);
-	return (i);
 	room->visited = 0;
 	if (i == 1)
 		return (i);

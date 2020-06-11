@@ -6,30 +6,26 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 17:06:08 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 12:48:08 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/11 11:09:41 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	free_room(t_room **room)
+void	free_coord(t_xy *coord)
 {
-	t_room	*tmp;
+	t_info	*tmp;
+	int		i;
 
-	while ((*room)->next)
+	i = 0;
+	while (i < 789)
 	{
-		tmp = *room;
-		*room = (*room)->next;
-		(*room)->prev = NULL;
-		free(tmp->name);
-		//free(tmp->x);
-		//free(tmp->y);
-		free(tmp);
+		tmp = coord->array[i];
+		if (tmp != NULL)
+			free_info(tmp);
+		i++;
 	}
-	free((*room)->name);
-	//free((*room)->x);
-	//free((*room)->y);
-	free(*room);
+	free(coord->array);
 }
 
 void	free_tmp(char **tmp)

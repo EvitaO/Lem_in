@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   go_to_start.c                                      :+:    :+:            */
+/*   free2.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/03 12:22:53 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/06 15:15:49 by eutrodri      ########   odam.nl         */
+/*   Created: 2020/06/11 10:36:58 by eutrodri      #+#    #+#                 */
+/*   Updated: 2020/06/11 10:38:52 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	go_to_first_room(t_room **room)
+void	free_info(t_info *tmp)
 {
-	while ((*room)->prev != NULL)
-		*room = (*room)->prev;
+	t_info	*tmp2;
+
+	while (tmp)
+	{
+		tmp2 = tmp;
+		tmp = tmp->next;
+		free(tmp2);
+	}
 }

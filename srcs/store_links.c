@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/04 12:09:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 16:15:27 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/11 11:11:49 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		links_start_end(t_able *hashtable)
 
 	hashtable->cnt_s = 0;
 	hashtable->cnt_e = 0;
-	tmp = hashtable->array[788];
+	tmp = hashtable->array[787];
 	if (tmp->link)
 	{
 		tmp2 = tmp->link;
@@ -29,7 +29,7 @@ void		links_start_end(t_able *hashtable)
 			hashtable->cnt_s++;
 		}
 	}
-	tmp = hashtable->array[789];
+	tmp = hashtable->array[788];
 	if (tmp->link)
 	{
 		tmp2 = tmp->link;
@@ -43,10 +43,10 @@ void		links_start_end(t_able *hashtable)
 
 static int	find_index(char *tmp, t_able *hashtable)
 {
-	if (ft_strcmp(tmp, hashtable->array[788]->name) == 0)
+	if (ft_strcmp(tmp, hashtable->array[787]->name) == 0)
+		return (787);
+	else if (ft_strcmp(tmp, hashtable->array[788]->name) == 0)
 		return (788);
-	else if (ft_strcmp(tmp, hashtable->array[789]->name) == 0)
-		return (789);
 	else
 		return (hash(787, tmp));
 }
@@ -77,7 +77,7 @@ void		put_link(t_node **t, char *name, char *new)
 	}
 }
 
-void	check_room_exists(char *name, t_able *hashtable, int index)
+void		check_room_exists(char *name, t_able *hashtable, int index)
 {
 	t_node		*tmp;
 

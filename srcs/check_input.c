@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 13:28:12 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 16:16:41 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/11 11:10:43 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_able	check_input(char **line, char **str)
 
 	hashtable.ants = count_ants(line, str);
 	hashtable = read_rooms(line, &hashtable, str);
-	if (hashtable.array[788] == NULL || \
-		hashtable.array[789] == NULL)
+	if (hashtable.array[787] == NULL || \
+		hashtable.array[788] == NULL)
 		exit(-1);
 	check_links(*line, &hashtable);
 	free(*line);

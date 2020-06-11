@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 16:09:04 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/11 11:40:43 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,12 @@
 
 # include "../libft/includes/libft.h"
 
-typedef	struct		s_room
-{
-	char			*name;
-	int				x;
-	int				y;
-	int				comment;
-	struct s_room	*next;
-	struct s_room	*prev;
-}					t_room;
-
 typedef struct		s_info
 {
 	int				x;
 	int				y;
 	struct s_info	*next;
-	struct s_info	*prev;
 }					t_info;
-
 
 typedef struct		s_xy
 {
@@ -52,9 +40,6 @@ typedef struct		s_node
 	char			*name;
 	int				visited;
 	int				path_id;
-	int				x;
-	int				y;
-	int				comment;
 	t_link			*link;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -97,8 +82,7 @@ int					check_ants(int ants, char **line);
 t_able				read_rooms(char **line, t_able *ht, char **str);
 int					check_rooms(char *line, t_able *ht, int comment, t_xy *coord);
 void				store_room(char **tmp, t_able *ht, int comment, t_xy *coord);
-void				check_valid_room(char **tmp, t_room **room);
-void				valid_cordinates(char **tmp);
+int					ft_atoi2(const char *str);
 void				valid_name(char *tmp);
 
 /*
@@ -107,29 +91,25 @@ void				valid_name(char *tmp);
 void				read_links(char **line, char **str, t_able\
 					*hashtable);
 void				check_links(char *line, t_able *hashtable);
+void				store_links(char **tmp, t_able *hashtable);
+void				put_link(t_node **t, char *name, char *new);
 void				check_room_exists(char *name, t_able *hashtable, int index);
-
-
-/*
-**		go to the start / end of a list
-*/
-void				go_to_first_room(t_room **room);
 
 /*
 **		store in hashtable
 */
-t_able				rooms_hash(t_room **room, t_able *hashtable, int size);
 int					hash(int size, char *key);
+void				check_name_exist(t_able *hashtable, int index, t_node **node);
 void				ht_put(t_able *hashtable, char *name, int index);
-void				store_links(char **tmp, t_able *hashtable);
-void				put_link(t_node **t, char *name, char *new);
+void				add_node_ht(t_able *hashtable, t_node **node, int index);
 void				links_start_end(t_able *hashtable);
 void				max_path(t_able *ht);
 /*
 **			FREE
 **			FUNCTION
 */
-void				free_room(t_room **room);
+void				free_coord(t_xy *coord);
+void				free_info(t_info *tmp);
 void				free_tmp(char **tmp);
 void				free_ht(t_able *hashtable);
 void				free_link(t_link *link, char *x);

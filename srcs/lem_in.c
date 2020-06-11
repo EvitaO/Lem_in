@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 20:52:40 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/11 11:20:43 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ static void	input(t_able *hashtable)
 	*hashtable = check_input(&line, &output);
 	ft_printf("%s\n", output);
 	free(output);
-	exit (1);
-	//free_room(&room);
 }
 
 int			main(void)
@@ -52,6 +50,7 @@ int			main(void)
 	//int		i;
 
 	input(&hashtable);
+	exit (1);
 //	ft_printf("max path is %i\n", hashtable.max_path);
 	p = save_path(&hashtable);
 	ft_printf("komt hier\n");
