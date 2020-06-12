@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/11 11:20:43 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/12 18:03:58 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,31 @@ int			main(void)
 	t_able	hashtable;
 	t_path	p;
 	t_path	all;
-	//int		i;
+	int		i;
 
 	input(&hashtable);
-	exit (1);
+//	exit (1);
 //	ft_printf("max path is %i\n", hashtable.max_path);
 	p = save_path(&hashtable);
 	ft_printf("komt hier\n");
 	all = save_all_p(&hashtable);
 	ft_printf("2komt hier\n");
+	// i = 0;
+	// while (all.array[i])
+	// {
+	// 	ft_printf("size van path is %i			", all.array[i]->visited);
+	// 	//ft_printf("all.arr->next is %s\n", all.array[i]->next->name);
+	// 	while (all.array[i])
+	// 	{
+	//  		if (all.array[i]->prev)
+	//  			ft_printf(" %s -", all.array[i]->name);
+	//  		else
+	//  			ft_printf(" %s\n", all.array[i]->name);
+	//  		all.array[i] = all.array[i]->prev;
+	// 	}
+	// 	i++;
+	// }
+	// exit (1);
 	if (all.array[1] && all.array[1]->prev)
 		devide_ants(&all, hashtable.ants);
 	ft_printf("p.inst.r is %i		all.instr is %i\n", p.instruction, all.instruction);

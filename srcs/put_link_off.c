@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/06 22:05:49 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/10 21:22:53 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/12 18:01:29 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		find_detour_link(t_able *ht, char *name)
 		}
 		off++;
 	}
-	// if (off > 0 && i == 1)
+	//if (off > 0 && i == 1)
 	// 	set_id_off(ht, name, off);
 	return (i);
 }
