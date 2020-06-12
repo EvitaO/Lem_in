@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/06/11 11:06:53 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/12 22:33:16 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ void			put_id(t_able *ht, int i)
 	if ((!(tmp)) || (tmp->path_id != -1 || tmp->visited <= 0))
 		return ;
 	tmp->visited = 0;
+	// tmp2 = tmp;
+	// while (tmp)
+	// {
+	// 	ft_printf("%s	", tmp->name);
+	// 	tmp = tmp->prev;
+	// }
+	// tmp = tmp2;
 	tmp2 = ht->array[ht->size];
 	while (!(ft_strcmp(tmp->name, tmp2->name) == 0))
 	{
@@ -93,65 +100,36 @@ t_path			save_path(t_able *hashtable)
 {
 	int		i;
 	t_path	p;
-	t_link	*q;
+	int		id;
+	int		ret;
+//	t_link	*q;
 //	t_node	*room;
 
 	p.array = (t_link**)malloc(sizeof(t_link) * hashtable->max_path);
 	ft_memset(p.array, 0, hashtable->max_path * sizeof(t_link));
 	p.instruction = 0;
 	i = 0;
+	ret = 0;
 	hashtable->array[hashtable->size]->visited = 0;
-	while (i < hashtable->max_path)
+	id = algo_b(hashtable, i);
+	ft_printf("id is %i\n", id);
+	while (i < id && ret != -1)
 	{
-		q = algo_b(hashtable, i);
-		if (i == 0)
-		{
-			p.array[0] = (t_link*)malloc(sizeof(t_link));
-			p.array[0]->prev = NULL;	
-			make_path(hashtable->array[hashtable->size + 1], p.array[i]);
-			find_short_path(hashtable, &p, i);
-			use_one_p(&p, hashtable);
-			// while (p.array[i])
-			// {
-	 		// 	if (p.array[i]->prev)
-	 		// 		ft_printf(" %s -", p.array[i]->name);
-	 		// 	else
-	 		// 		ft_printf(" %s\n", p.array[i]->name);
-	 		// 	p.array[i] = p.array[i]->prev;
-			// }
-			// exit(1);
-		}
-		else
-			put_id(hashtable, i);
+		p.array[i] = (t_link*)malloc(sizeof(t_link));
+		p.array[i]->prev = NULL;	
+		ret = save_a_p(hashtable, i, &p);
+		//make_path(hashtable->array[hashtable->size + 1], p.array[i]);
+		//find_short_path(hashtable, &p, i);
+		//devide_ants(p, hashtable->ants);
 		i++;
-		remove_q(&q, hashtable);
 	}
-	//exit (1);
-	// i = 0;
+	ft_printf("maxp is %i\n", hashtable->max_path);
+	algo_d(hashtable, id);
+	// while (id < hashtable->max_path)
+	// {
+	// 	algo_d(hashtable, id);
+	// 	id++;
+	// }
 	ft_printf("\n");
-	// room = find_room(hashtable, hashtable->array[hashtable->size +1]->name);
-	// q = room->link;
-	// while (q)
-	// {
-	// 	room = find_room(hashtable, q->name);
-	// 	ft_printf("%s -- %i\n", room->name, room->path_id);
-	// 	q = q->next;
-	// }
-	// ft_printf("maxpath%i\n", hashtable->max_path);
-	// exit (1);
-	// i = 0;
-	// while (p.array[i])
-	// {
-	// 	while (p.array[i])
-	// 	{
-	//  		if (p.array[i]->prev)
-	//  			ft_printf(" %s -", p.array[i]->name);
-	//  		else
-	//  			ft_printf(" %s\n", p.array[i]->name);
-	//  		p.array[i] = p.array[i]->prev;
-	// 	}
-	// 	i++;
-	// }
-	// exit(1);
 	return (p);
 }

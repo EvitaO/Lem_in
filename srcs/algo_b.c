@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/17 10:44:24 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/07 15:03:44 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/12 22:20:24 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,24 @@ static void	make_q_elm(t_link **tmp, char *name)
 {
 	(*tmp)->next = (t_link*)malloc(sizeof(t_link));
 	*tmp = (*tmp)->next;
-	(*tmp)->name = name;
+	(*tmp)->name = ft_strdup(name);
 	(*tmp)->next = NULL;
+}
+
+void		remove_q2(t_link **q, t_able *hashtable)
+{
+	t_link	*tmp;
+	t_node	*room;
+
+	while (*q)
+	{
+		room = find_room(hashtable, (*q)->name);
+		room->visited = 0;
+		tmp = *q;
+		*q = (*q)->next;
+		free(tmp->name);
+		free(tmp);
+	}
 }
 
 void		remove_q(t_link **q, t_able *hashtable)
@@ -62,23 +78,35 @@ int			add_q(t_link **q, t_link *links, t_able *hashtable)
 	return (0);
 }
 
-t_link		*algo_b(t_able *hashtable, int id)
+int		algo_b(t_able *hashtable, int id)
 {
 	t_link	*q;
 	t_node	*room;
 	t_link	*q2;
+	int		i;
 
-	q = (t_link*)malloc(sizeof(t_link));
-	q->name = hashtable->array[hashtable->size]->name;
-	q->next = NULL;
-	q2 = q;
-	while (q)
+	i = 1;
+	while (i == 1)
 	{
-		room = find_room(hashtable, q->name);
-		if (add_q(&q, room->link, hashtable) == 1)
-			return (q2);
-		q = q->next;
+		i = 0;
+		q = (t_link*)malloc(sizeof(t_link));
+		q->name = ft_strdup(hashtable->array[hashtable->size]->name);
+		q->next = NULL;
+		q2 = q;
+		while (q)
+		{
+			room = find_room(hashtable, q->name);
+			if (add_q(&q, room->link, hashtable) == 1)
+			{
+				put_id(hashtable, id);
+				remove_q2(&q2, hashtable);
+				id++;
+				i = 1;
+				break ;
+			}
+			q = q->next;
+		}
 	}
-	algo_d(hashtable, id);
-	return (q2);
+	remove_q2(&q2, hashtable);
+	return (id);
 }

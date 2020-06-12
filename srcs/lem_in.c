@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/12 18:03:58 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/12 22:38:59 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			main(void)
 	t_able	hashtable;
 	t_path	p;
 	t_path	all;
-	int		i;
+//	int		i;
 
 	input(&hashtable);
 //	exit (1);
@@ -56,11 +56,30 @@ int			main(void)
 	ft_printf("komt hier\n");
 	all = save_all_p(&hashtable);
 	ft_printf("2komt hier\n");
+	size_path(&p);
+	devide_ants(&p, hashtable.ants);
+	if (all.array[1] && all.array[1]->prev)
+		devide_ants(&all, hashtable.ants);
+	// i = 0;
+	// while (p.array[i])
+	// {
+	// 	ft_printf("shortest\n");
+	// 	while (p.array[i])
+	// 	{
+	//  		if (p.array[i]->prev)
+	//  			ft_printf("%s -", p.array[i]->name);
+	//  		else
+	//  			ft_printf("%s\n", p.array[i]->name);
+	//  		p.array[i] = p.array[i]->prev;
+	// 	}
+	// 	ft_printf("\n");
+	// 	i++;
+	// }
+	// ft_printf("\n");
 	// i = 0;
 	// while (all.array[i])
 	// {
 	// 	ft_printf("size van path is %i			", all.array[i]->visited);
-	// 	//ft_printf("all.arr->next is %s\n", all.array[i]->next->name);
 	// 	while (all.array[i])
 	// 	{
 	//  		if (all.array[i]->prev)
@@ -69,11 +88,10 @@ int			main(void)
 	//  			ft_printf(" %s\n", all.array[i]->name);
 	//  		all.array[i] = all.array[i]->prev;
 	// 	}
+	// 	ft_printf("\n");
 	// 	i++;
 	// }
 	// exit (1);
-	if (all.array[1] && all.array[1]->prev)
-		devide_ants(&all, hashtable.ants);
 	ft_printf("p.inst.r is %i		all.instr is %i\n", p.instruction, all.instruction);
 	if (all.instruction > 0 && all.instruction < p.instruction)
 	{
