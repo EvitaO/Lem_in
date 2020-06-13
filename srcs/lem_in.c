@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/12 22:38:59 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/13 17:53:09 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			main(void)
 	ft_printf("komt hier\n");
 	all = save_all_p(&hashtable);
 	ft_printf("2komt hier\n");
-	size_path(&p);
+	size_sort_all(&p);
 	devide_ants(&p, hashtable.ants);
 	if (all.array[1] && all.array[1]->prev)
 		devide_ants(&all, hashtable.ants);
