@@ -1,0 +1,103 @@
+error_ants :                       ......
+error_bad_line :                   [KO][KO][KO].[KO][SEGFAULT]....[KO][KO][KO][KO].
+error_rooms :                      [KO].[KO]..[KO][SEGFAULT][SEGFAULT][SEGFAULT]
+error_start_end :                  [SEGFAULT][SEGFAULT][SEGFAULT][KO][SEGFAULT][KO]
+no_way :                           [SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT][SEGFAULT]
+comment :                          [KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO]
+cmd :                              [KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO][KO]
+pipes_error :                      [KO][SEGFAULT][SEGFAULT][SEGFAULT][KO][KO][SEGFAULT][SEGFAULT][KO][KO][SEGFAULT][KO][SEGFAULT][KO][KO][SEGFAULT][KO][KO][KO][KO][KO]
+multiple_ways :                    [KO][KO][KO][KO][KO]
+valid_maps_part_1 :                [SEGFAULT][SEGFAULT][KO][KO][KO][SEGFAULT]
+-------------------------------------------------------------------------
+Errors in
+bad_line_ant_0       : KO             bad_line_ant_1       : KO
+bad_line_ant_2       : KO             bad_line_room_1      : KO
+bad_line_room_2      : SEGFAULT       bad_line_room_7      : KO
+bad_line_room_8      : KO             bad_line_start_0     : KO
+bad_line_start_1     : KO             Lroom                : KO
+no_room              : KO             same_room2           : KO
+space_after_room     : SEGFAULT       space_before_room    : SEGFAULT
+space_middle_room    : SEGFAULT       multi_end            : SEGFAULT
+multi_start          : SEGFAULT       no_access_end        : SEGFAULT
+no_end               : KO             no_path_start        : SEGFAULT
+no_start             : KO             no_way0              : SEGFAULT
+no_way1              : SEGFAULT       no_way10             : SEGFAULT
+no_way2              : SEGFAULT       no_way4              : SEGFAULT
+no_way5              : SEGFAULT       no_way6              : SEGFAULT
+no_way7              : SEGFAULT       no_way8              : SEGFAULT
+no_way9              : SEGFAULT       comment_###          : KO
+comment_###2         : KO             comment_after_ant    : KO
+comment_after_end    : KO             comment_after_end2   : KO
+comment_after_pipes  : KO             comment_after_rooms  : KO
+comment_after_start  : KO             comment_after_start2 : KO
+comment_b_a_pipes    : KO             comment_b_a_rooms    : KO
+comment_before_ant   : KO             comment_before_ant2  : KO
+comment_before_end   : KO             comment_before_pipes : KO
+comment_before_rooms : KO             comment_before_start : KO
+comment_mass_pipes   : KO             comment_mass_rooms   : KO
+comment_pipe         : KO             comment_room         : KO
+cmd_after_ant        : KO             cmd_after_end        : KO
+cmd_after_pipes      : KO             cmd_after_rooms      : KO
+cmd_after_start      : KO             cmd_b_a_ant          : KO
+cmd_b_a_pipes        : KO             cmd_b_a_rooms        : KO
+cmd_before_ant       : KO             cmd_before_end       : KO
+cmd_before_pipes     : KO             cmd_before_rooms     : KO
+cmd_before_start     : KO             cmd_mass_pipes       : KO
+cmd_mass_rooms       : KO             bad_line_pipe_0      : KO
+bad_line_pipe_1      : SEGFAULT       bad_line_pipe_10     : SEGFAULT
+bad_line_pipe_11     : SEGFAULT       bad_line_pipe_12     : KO
+bad_line_pipe_13     : KO             bad_line_pipe_14     : SEGFAULT
+bad_line_pipe_2      : SEGFAULT       bad_line_pipe_3      : KO
+bad_line_pipe_4      : KO             bad_line_pipe_5      : SEGFAULT
+bad_line_pipe_6      : KO             bad_line_pipe_7      : SEGFAULT
+bad_line_pipe_8      : KO             bad_line_pipe_9      : KO
+error_middle_pipe    : SEGFAULT       pipe_to_itself       : KO
+same_pipe            : KO             same_pipe2           : KO
+same_pipe3           : KO             space_middle_pipe    : KO
+four_ways            : KO             three_ways           : KO
+two_ways             : KO             two_ways_collision   : KO
+two_ways_long        : KO             1000_map             : SEGFAULT
+100_map              : SEGFAULT       200_map              : KO
+300_map              : KO             400_map              : KO
+500_map              : SEGFAULT
+
+                        [15/114]
+                       \/       \/
+                 ___  _@@       @@_  ___
+                (___)(_)         (_)(___)
+                //|| ||           || ||\
+f0r3s24%
+f0r3s24% vi uitkomtst
+f0r3s24% >....
+no_end               : KO             no_path_start        : SEGFAULT
+no_start             : KO             no_way0              : SEGFAULT
+no_way1              : SEGFAULT       no_way10             : SEGFAULT
+no_way2              : SEGFAULT       no_way4              : SEGFAULT
+no_way5              : SEGFAULT       no_way6              : SEGFAULT
+no_way7              : SEGFAULT       no_way8              : SEGFAULT
+no_way9              : SEGFAULT       comment_###          : KO
+comment_###2         : KO             comment_after_ant    : KO
+comment_after_end    : KO             comment_after_end2   : KO
+comment_after_pipes  : KO             comment_after_rooms  : KO
+comment_after_start  : KO             comment_after_start2 : KO
+comment_b_a_pipes    : KO             comment_b_a_rooms    : KO
+comment_before_ant   : KO             comment_before_ant2  : KO
+comment_before_end   : KO             comment_before_pipes : KO
+comment_before_rooms : KO             comment_before_start : KO
+comment_mass_pipes   : KO             comment_mass_rooms   : KO
+comment_pipe         : KO             comment_room         : KO
+cmd_after_ant        : KO             cmd_after_end        : KO
+cmd_after_pipes      : KO             cmd_after_rooms      : KO
+cmd_after_start      : KO             cmd_b_a_ant          : KO
+cmd_b_a_pipes        : KO             cmd_b_a_rooms        : KO
+cmd_before_ant       : KO             cmd_before_end       : KO
+cmd_before_pipes     : KO             cmd_before_rooms     : KO
+cmd_before_start     : KO             cmd_mass_pipes       : KO
+cmd_mass_rooms       : KO             bad_line_pipe_0      : KO
+bad_line_pipe_1      : SEGFAULT       bad_line_pipe_10     : SEGFAULT
+bad_line_pipe_11     : SEGFAULT       bad_line_pipe_12     : KO
+bad_line_pipe_13     : KO             bad_line_pipe_14     : SEGFAULT
+bad_line_pipe_2      : SEGFAULT       bad_line_pipe_3      : KO
+bad_line_pipe_4      : KO             bad_line_pipe_5      : SEGFAULT
+bad_line_pipe_6      : KO             bad_line_pipe_7      : SEGFAULT
+bad_line_pipe_8      : KO             bad_line_pipe_9      : KO
