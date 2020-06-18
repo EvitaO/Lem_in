@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/17 10:44:24 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/12 22:20:24 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/18 14:19:03 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void		remove_q2(t_link **q, t_able *hashtable)
 	{
 		room = find_room(hashtable, (*q)->name);
 		room->visited = 0;
+		room->prev2 = NULL;
+		room->n = NULL;
 		tmp = *q;
 		*q = (*q)->next;
 		free(tmp->name);
@@ -52,26 +54,49 @@ int			add_q(t_link **q, t_link *links, t_able *hashtable)
 {
 	t_link	*tmp;
 	t_node	*room;
+	t_node	*room2;
 	t_node	*prev;
 
 	tmp = *q;
 	prev = find_room(hashtable, (*q)->name);
 	while (tmp->next)
 		tmp = tmp->next;
-	while (links)
+	while (links && prev->visited != -2)
 	{
 		room = find_room(hashtable, links->name);
 		if (start_end_room(hashtable, room->name) == 0 &&\
-		room->visited == 0 && room->path_id == -1)
+		room->visited == 0)
 		{
-			room->prev = prev;
-			if (room->link->next)
-				room->visited = prev->visited + 1;
-			else
-				room->visited = -1;
-			make_q_elm(&tmp, room->name);
+			if (room->path_id == -1)
+			{
+				//room->prev = prev;
+				room->n = prev;
+				if (room->link->next)
+				{
+					room->visited = prev->visited + 1;
+					make_q_elm(&tmp, room->name);
+				}
+				else
+					room->visited = -1;
+			}
+			else if (room->prev && room->path_id != -1 && prev->path_id != room->path_id &&\
+			start_end_room(hashtable, room->prev->name) != 1)
+			{
+				if (room->prev && room->prev->visited == 0 &&\
+				start_end_room(hashtable, room->prev->name) == 0)
+				{
+					room2 = find_room(hashtable, room->prev->name);
+					room->prev2 = prev;
+					room->n = prev;
+					room2->n = room;
+					room->visited = -2;
+					room2->visited = prev->visited + 1;
+					make_q_elm(&tmp, room->name);
+					make_q_elm(&tmp, room2->name);
+				}
+			}
 		}
-		else if (start_end_room(hashtable, room->name) == 2)
+		else if (start_end_room(hashtable, room->name) == 2 && prev->path_id == -1)
 			return (1);
 		links = links->next;
 	}

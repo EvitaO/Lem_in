@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/13 17:53:09 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/17 21:47:27 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			main(void)
 {
 	t_able	hashtable;
 	t_path	p;
-	t_path	all;
+//	t_path	all;
 //	int		i;
 
 	input(&hashtable);
@@ -54,12 +54,12 @@ int			main(void)
 //	ft_printf("max path is %i\n", hashtable.max_path);
 	p = save_path(&hashtable);
 	ft_printf("komt hier\n");
-	all = save_all_p(&hashtable);
+	//all = save_all_p(&hashtable);
 	ft_printf("2komt hier\n");
 	size_sort_all(&p);
 	devide_ants(&p, hashtable.ants);
-	if (all.array[1] && all.array[1]->prev)
-		devide_ants(&all, hashtable.ants);
+//	if (all.array[1] && all.array[1]->prev)
+//		devide_ants(&all, hashtable.ants);
 	// i = 0;
 	// while (p.array[i])
 	// {
@@ -92,17 +92,18 @@ int			main(void)
 	// 	i++;
 	// }
 	// exit (1);
-	ft_printf("p.inst.r is %i		all.instr is %i\n", p.instruction, all.instruction);
-	if (all.instruction > 0 && all.instruction < p.instruction)
-	{
-		reset_vst(&all);
-		walk_ants(&all, hashtable.ants);
-	}
-	else
-	{
-		reset_vst(&p);
-		walk_ants(&p, hashtable.ants);
-	}
+//	ft_printf("p.inst.r is %i		all.instr is %i\n", p.instruction, all.instruction);
+	ft_printf("p.inst.r is %i\n", p.instruction);
+	// if (all.instruction > 0 && all.instruction < p.instruction)
+	// {
+	// 	reset_vst(&all);
+	// 	walk_ants(&all, hashtable.ants);
+	// }
+	// else
+	// {
+	reset_vst(&p);
+	walk_ants(&p, hashtable.ants);
+//	}
 	exit(1);
 	// i = 0;
 	// while (p.array[i])

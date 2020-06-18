@@ -6,11 +6,54 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/06/12 22:33:16 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/06/18 14:18:40 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static void		switch_id(char* name, t_able *ht)
+{
+	t_node	*tmp;
+	t_node	*tmp2;
+	t_link	*link;
+	int		i;
+
+	tmp = find_room(ht, name);
+	i = tmp->path_id;
+	while (tmp && start_end_room(ht, tmp->name) != 2)
+	{
+		link = tmp->link;
+		while (link)
+		{
+			tmp2 = find_room(ht, link->name);
+			if (start_end_room(ht, tmp2->name) == 2)
+				return ;
+			if (tmp2->prev == tmp)
+			{
+				tmp2->path_id = i;
+				tmp = tmp2;
+				break ;
+			}
+			link = link->next;
+		}
+	}
+}
+
+static void		change_path_id(char *name, t_able *ht)
+{
+	t_node	*tmp;
+	int		i;
+
+	tmp = find_room(ht, name);
+	i = tmp->path_id;
+	tmp = tmp->prev;
+	while (tmp && start_end_room(ht, tmp->name) != 1)
+	{
+		tmp->path_id = i;
+		tmp = tmp->prev;
+	}
+}
 
 void			put_id(t_able *ht, int i)
 {
@@ -20,20 +63,29 @@ void			put_id(t_able *ht, int i)
 	tmp = find_short_link_end(ht);
 	if ((!(tmp)) || (tmp->path_id != -1 || tmp->visited <= 0))
 		return ;
-	tmp->visited = 0;
-	// tmp2 = tmp;
-	// while (tmp)
-	// {
-	// 	ft_printf("%s	", tmp->name);
-	// 	tmp = tmp->prev;
-	// }
-	// tmp = tmp2;
+	//tmp->visited = 0;
+	tmp->path_id = i;
 	tmp2 = ht->array[ht->size];
-	while (!(ft_strcmp(tmp->name, tmp2->name) == 0))
+	while (tmp && (!(ft_strcmp(tmp->name, tmp2->name) == 0)))
 	{
-		tmp->path_id = i;
-		tmp = tmp->prev;
+		if ((!(tmp->prev)) && tmp->n->visited == tmp->visited -1)
+		{
+			tmp->n->path_id = tmp->path_id;
+			tmp->prev = tmp->n;
+		}
+		else if (tmp->prev && tmp->visited != tmp->prev->visited -1)
+		{
+			if ((!(tmp->prev2)) && tmp->prev && tmp->prev != tmp->n)
+				change_path_id(tmp->name, ht);
+			else if (tmp->prev && tmp->prev2 && tmp->visited == -2)
+			{
+				tmp->prev = tmp->prev2;
+				tmp->prev->path_id = tmp->path_id;
+				switch_id(tmp->name, ht);
+			}
+		}
 		tmp->visited = 0;
+		tmp = tmp->n;
 	}
 }
 
@@ -117,19 +169,9 @@ t_path			save_path(t_able *hashtable)
 	{
 		p.array[i] = (t_link*)malloc(sizeof(t_link));
 		p.array[i]->prev = NULL;	
-		ret = save_a_p(hashtable, i, &p);
-		//make_path(hashtable->array[hashtable->size + 1], p.array[i]);
-		//find_short_path(hashtable, &p, i);
-		//devide_ants(p, hashtable->ants);
+		ret = save_a_p(hashtable, i, &p);		
 		i++;
 	}
-	ft_printf("maxp is %i\n", hashtable->max_path);
-	algo_d(hashtable, id);
-	// while (id < hashtable->max_path)
-	// {
-	// 	algo_d(hashtable, id);
-	// 	id++;
-	// }
 	ft_printf("\n");
 	return (p);
 }

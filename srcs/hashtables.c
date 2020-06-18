@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/11 10:28:28 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/18 14:06:21 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	ht_put(t_able *hashtable, char *name, int index)
 	node->path_id = -1;
 	node->link = NULL;
 	node->prev = NULL;
+	node->prev2 = NULL;
+	node->n = NULL;
 	add_node_ht(hashtable, &node, index);
 }
 
