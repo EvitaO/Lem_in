@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/17 17:42:48 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/19 15:54:22 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct		s_able
 	int				cnt_e;
 	int				cnt_s;
 	int				max_path;
+	int				check;
 	t_node			**array;
 }					t_able;
 
@@ -116,21 +117,24 @@ void				free_tmp(char **tmp);
 void				free_ht(t_able *hashtable);
 void				free_link(t_link *link, char *x);
 void				free_node(t_node *node);
+void				free_p(t_path *p, t_able *hashtable);
 
 /*
 **			PATH
 */
-t_path				save_path(t_able *hashtable);
+t_path				*save_path(t_able *hashtable);
 t_link				*find_path(t_able *hashtable);
 void				find_short_path(t_able *ht, t_path *path, int i);
 void				find_node(t_able *hash, t_path *p, int index, int index_p);
 t_node				*find_room(t_able *hashtable, char *name);
 int					start_end_room(t_able *hashtable, char *name);
 void				make_path(t_node *room, t_link *path);
-int	    			algo_b(t_able *hashtable, int id);
+t_path    			*algo_b(t_able *hashtable, int id, t_path *p);
 void				put_id(t_able *ht, int i);
 int	    			add_q(t_link **q, t_link *links, t_able *hashtable);
+void				make_q_elm(t_link **tmp, char *name);
 void				remove_q(t_link **q, t_able *hashtable);
+void				remove_q2(t_link **q, t_able *hashtable);
 
 t_node				*find_short_link_end(t_able *ht);
 void				algo_d(t_able *ht, int id);
@@ -146,7 +150,7 @@ void				set_id_off(t_able *ht, char *name, int off);
 /*
 **			SAVE ALL PATHS
 */
-t_path				save_all_p(t_able *hashtable);
+t_path				*save_all_p(t_able *hashtable, int max);
 int					save_a_p(t_able *ht, int id, t_path *all);
 t_link				*find_id_end(t_able *ht, int id);
 void				size_sort_all(t_path *all);
@@ -154,6 +158,7 @@ void				size_path(t_path *all);
 void				sort_all(t_path *all);
 int					check_if_sorted(t_path *all);
 void				swap_tlink(t_link *big, t_link *smal);
+t_path 				*save_and_check(t_path *p, t_able *hashtable, int id);
 
 void				use_one_p(t_path *p, t_able *hashtable);
 
