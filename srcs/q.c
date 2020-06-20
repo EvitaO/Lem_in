@@ -6,13 +6,13 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/14 08:57:39 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/19 15:57:33 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 19:21:37 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-void	make_q_elm(t_link **tmp, char *name)
+void		make_q_elm(t_link **tmp, char *name)
 {
 	(*tmp)->next = (t_link*)malloc(sizeof(t_link));
 	*tmp = (*tmp)->next;
@@ -57,7 +57,6 @@ int			add_q(t_link **q, t_link *links, t_able *hashtable)
 		{
 			if (room->path_id == -1)
 			{
-				//room->prev = prev;
 				room->n = prev;
 				if (room->link->next)
 				{
@@ -67,8 +66,9 @@ int			add_q(t_link **q, t_link *links, t_able *hashtable)
 				else
 					room->visited = -1;
 			}
-			else if (room->prev && room->path_id != -1 && prev->path_id != room->path_id &&\
-			start_end_room(hashtable, room->prev->name) != 1)
+			else if (room->prev && room->path_id != -1 &&\
+				prev->path_id != room->path_id &&\
+				start_end_room(hashtable, room->prev->name) != 1)
 			{
 				if (room->prev && room->prev->visited == 0 &&\
 				start_end_room(hashtable, room->prev->name) == 0)
@@ -81,7 +81,8 @@ int			add_q(t_link **q, t_link *links, t_able *hashtable)
 					room2->visited = prev->visited + 1;
 					make_q_elm(&tmp, room->name);
 					make_q_elm(&tmp, room2->name);
-					if (room2->prev && room2->prev->visited == 0 && start_end_room(hashtable, room2->prev->name) != 1)
+					if (room2->prev && room2->prev->visited == 0 &&\
+						start_end_room(hashtable, room2->prev->name) != 1)
 					{
 						room2->prev->n = room2;
 						room2->prev->visited = room2->visited + 1;
@@ -90,7 +91,8 @@ int			add_q(t_link **q, t_link *links, t_able *hashtable)
 				}
 			}
 		}
-		else if (start_end_room(hashtable, room->name) == 2 && prev->path_id == -1)
+		else if (start_end_room(hashtable, room->name) == 2 &&\
+			prev->path_id == -1)
 			return (1);
 		links = links->next;
 	}

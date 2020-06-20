@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/11 11:32:44 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/11 11:38:29 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 18:42:21 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	loop_str(const char *str, int i)
 		i++;
 	}
 	if (str[i] != '\0')
-		exit(ft_printf("Error\n"));
+		exit(ft_error(12));
 	return (res);
 }
 
@@ -44,6 +44,8 @@ int			ft_atoi2(const char *str)
 		if (ft_strcmp(&str[i], "-2147483648") == 0)
 			return (-2147483648);
 		sign = -1;
+		if (str[i + 1] == '\0')
+			exit(ft_error(12));
 		i++;
 	}
 	else if (str[i] == '+')

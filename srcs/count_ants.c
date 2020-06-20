@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:23:12 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/05/18 13:00:07 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 13:02:01 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	check_ants(int ants, char **line)
 	else if (line[0][0] == '#')
 		return (ants);
 	else
-	{
-		ft_printf("Error\n");
-		exit(-1);
-	}
+		exit(ft_error(1));
 	return (ants);
 }
 

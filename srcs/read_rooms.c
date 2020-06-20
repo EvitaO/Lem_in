@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:28:42 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/11 11:40:21 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 19:06:58 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		store_check_coord(t_xy *coord, char **crd, int index)
 		if (tmp->x == new->x)
 		{
 			if (tmp->y == new->y)
-				exit(ft_printf("Error\n"));
+				exit(ft_error(6));
 		}
 		tmp = tmp->next;
 	}
@@ -74,15 +74,15 @@ int			check_rooms(char *line, t_able *ht, int comment, t_xy *coord)
 	if (line[0] == '#')
 		return (0);
 	else if (line[0] == 'L')
-		exit(-1);
+		exit(ft_error(2));
 	tmp = ft_strsplit(line, ' ');
 	if (!tmp[1])
 	{
 		free_tmp(tmp);
 		return (1);
 	}
-	else if (!tmp[2])
-		exit(-1);
+	else if ((!tmp[2]) || tmp[3])
+		exit(ft_error(3));
 	valid_name(tmp[0]);
 	store_room(tmp, ht, comment, coord);
 	free_tmp(tmp);
@@ -101,6 +101,7 @@ t_able		read_rooms(char **line, t_able *ht, char **str)
 	ft_memset(ht->array, 0, (787 + 2) * sizeof(t_node));
 	coord.array = (t_info**)malloc(787 * sizeof(t_info));
 	ft_memset(coord.array, 0, 787 * sizeof(t_info));
+	ht->size = 787;
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
 		ret = check_rooms(*line, ht, comment, &coord);
@@ -109,7 +110,6 @@ t_able		read_rooms(char **line, t_able *ht, char **str)
 		if (ret != 1)
 			free(*line);
 	}
-	ht->size = 787;
 	free_coord(&coord);
 	return (*ht);
 }

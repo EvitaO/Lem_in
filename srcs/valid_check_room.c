@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/29 17:58:21 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/11 11:40:33 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 13:07:23 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void		valid_name(char *tmp)
 	while (tmp[i] && ft_isascii(tmp[i]) == 1)
 		i++;
 	if (tmp[i] != '\0')
-		exit(ft_printf("Error\n"));
+		exit(ft_error(4));
 }

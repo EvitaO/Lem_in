@@ -6,13 +6,13 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/04 12:46:20 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/19 22:10:21 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 19:25:46 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-t_link	*find_id_end(t_able *ht, int id)
+t_link		*find_id_end(t_able *ht, int id)
 {
 	t_link	*link;
 	t_node	*room;
@@ -30,14 +30,12 @@ t_link	*find_id_end(t_able *ht, int id)
 	return (NULL);
 }
 
-int		save_a_p(t_able *ht, int id, t_path *all)
+int			save_a_p(t_able *ht, int id, t_path *all)
 {
 	t_link	*tmp;
 	t_link	*tmp2;
 	t_node	*room;
-	int		i;
 
-	i = 0;
 	make_path(ht->array[ht->size + 1], all->array[id]);
 	tmp = all->array[id];
 	tmp2 = find_id_end(ht, id);
@@ -51,7 +49,6 @@ int		save_a_p(t_able *ht, int id, t_path *all)
 		tmp = tmp->prev;
 		make_path(room, tmp);
 		room = room->prev;
-		i++;
 	}
 	if (!room)
 		return (-1);
@@ -63,7 +60,7 @@ int		save_a_p(t_able *ht, int id, t_path *all)
 	return (0);
 }
 
-t_path	*save_all_p(t_able *hashtable, int max)
+t_path		*save_all_p(t_able *hashtable, int max)
 {
 	int		i;
 	int		id;
@@ -86,7 +83,7 @@ t_path	*save_all_p(t_able *hashtable, int max)
 	return (all);
 }
 
-t_path *save_and_check(t_path *p, t_able *hashtable, int id)
+t_path		*save_and_check(t_path *p, t_able *hashtable, int id)
 {
 	t_path	*p2;
 
@@ -101,7 +98,7 @@ t_path *save_and_check(t_path *p, t_able *hashtable, int id)
 	else if (p)
 	{
 		free_p(p, hashtable);
-		return (p2);	
+		return (p2);
 	}
 	return (p2);
 }

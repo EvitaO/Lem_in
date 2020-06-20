@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/19 16:03:35 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 19:40:14 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,11 @@ int			main(void)
 
 	input(&hashtable);
 	p = save_path(&hashtable);
-	ft_printf("p.inst.r is %i\n", p->instruction);
+	//ft_printf("p.inst.r is %i\n", p->instruction);
 	reset_vst(p);
 	walk_ants(p, hashtable.ants);
 	free_p(p, &hashtable);
 	free_ht(&hashtable);
-	ft_printf("DONE\n");
+	ft_printf("\n");
 	return (0);
 }
-/*
-int			main(void)
-{
-	aap("leuk");
-	return (0);
-}*/

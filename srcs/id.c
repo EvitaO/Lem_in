@@ -6,13 +6,13 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/19 15:58:26 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/19 15:58:43 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 19:22:07 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static void		switch_id(char* name, t_able *ht)
+static void		switch_id(char *name, t_able *ht)
 {
 	t_node	*tmp;
 	t_node	*tmp2;

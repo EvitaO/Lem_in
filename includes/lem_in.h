@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/19 15:54:22 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 15:33:28 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void				ht_put(t_able *hashtable, char *name, int index);
 void				add_node_ht(t_able *hashtable, t_node **node, int index);
 void				links_start_end(t_able *hashtable);
 void				max_path(t_able *ht);
+int					ft_error(int i);
 /*
 **			FREE
 **			FUNCTION

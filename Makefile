@@ -6,7 +6,7 @@
 #    By: eutrodri <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/05/16 16:35:04 by eutrodri      #+#    #+#                  #
-#    Updated: 2020/06/19 16:00:26 by eutrodri      ########   odam.nl          #
+#    Updated: 2020/06/20 19:18:07 by eutrodri      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,17 @@ NAME = lem-in
 
 SRCS = count_ants.c lem_in.c read_links.c read_rooms.c\
 	 check_input.c store_input_str.c valid_check_room.c hashtables.c\
-	 free.c check_comment.c store_links.c max_path.c path.c\
-	 save_path.c find_node.c dfs.c save_all_p.c use_one_p.c\
+	 free.c check_comment.c store_links.c max_path.c\
+	 save_path.c find_node.c save_all_p.c\
 	 find_room.c algo_b.c devide_ants.c walk_ants.c print_ants.c\
-	 sort_all.c algo_d.c put_link_off.c free2.c ft_atoi2.c q.c id.c
+	 sort_all.c free2.c ft_atoi2.c q.c id.c error.c
 
 OBJ = count_ants.o lem_in.o read_links.o read_rooms.o\
 	 check_input.o store_input_str.o valid_check_room.o hashtables.o\
-	 free.o check_comment.o store_links.o max_path.o path.o\
-	 save_path.o find_node.o dfs.o save_all_p.o use_one_p.o\
+	 free.o check_comment.o store_links.o max_path.o\
+	 save_path.o find_node.o save_all_p.o\
 	 find_room.o algo_b.o devide_ants.o walk_ants.o print_ants.o\
-	 sort_all.o algo_d.o put_link_off.o free2.o ft_atoi2.o q.o id.o
+	 sort_all.o free2.o ft_atoi2.o q.o id.o error.o
 
 FLAGS = -Wall -Werror -Wextra
 

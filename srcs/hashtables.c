@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/02 13:21:38 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/19 13:09:46 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/20 19:07:16 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_name_exist(t_able *hashtable, int index, t_node **node)
 	while (tmp)
 	{
 		if (ft_strcmp(tmp->name, (*node)->name) == 0)
-			exit(ft_printf("Error\n"));
+			exit(ft_error(5));
 		tmp = tmp->next;
 	}
 }
@@ -30,9 +30,12 @@ void	add_node_ht(t_able *hashtable, t_node **node, int index)
 	t_node			*tmp;
 
 	tmp = hashtable->array[index];
-	if ((index == hashtable->size + 1 || index == hashtable->size)\
-			&& tmp != NULL)
-		exit(-1);
+	if (tmp && (index == hashtable->size + 1 || index == hashtable->size))
+		exit(ft_error(7));
+	if (index == hashtable->size + 1 || index == hashtable->size)
+		check_name_exist(hashtable, hash(787, (*node)->name), node);
+	check_name_exist(hashtable, 787, node);
+	check_name_exist(hashtable, 788, node);
 	if (hashtable->array[index] != NULL)
 	{
 		check_name_exist(hashtable, index, node);
