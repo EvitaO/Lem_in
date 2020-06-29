@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:28:42 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 19:06:58 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/29 13:22:12 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ int			check_rooms(char *line, t_able *ht, int comment, t_xy *coord)
 {
 	char	**tmp;
 
+	if (ft_strcmp(line, "") == 0)
+		exit(ft_error(12));
 	if (line[0] == '#')
 		return (0);
 	else if (line[0] == 'L')
 		exit(ft_error(2));
 	tmp = ft_strsplit(line, ' ');
-	if (!tmp[1])
+	if (!(tmp[1]))
 	{
 		free_tmp(tmp);
 		return (1);

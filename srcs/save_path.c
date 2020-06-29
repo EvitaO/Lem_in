@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 11:22:07 by eovertoo      #+#    #+#                 */
-/*   Updated: 2020/06/20 19:19:25 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/29 14:27:21 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ t_path			*save_path(t_able *hashtable)
 	p = NULL;
 	hashtable->array[hashtable->size]->visited = 0;
 	p = algo_b(hashtable, i, p);
+	if (!p)
+		exit(ft_error(13));
 	return (p);
 }

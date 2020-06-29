@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:26:57 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 13:12:39 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/29 13:34:56 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_links(char *line, t_able *hashtable)
 	char	**tmp;
 
 	tmp = ft_strsplit(line, '-');
-	if ((!tmp[1]) || tmp[2])
+	if ((!tmp[0]) || (!tmp[1]) || tmp[2])
 		exit(ft_error(9));
 	store_links(tmp, hashtable);
 	free_tmp(tmp);
