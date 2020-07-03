@@ -6,7 +6,7 @@
 #    By: eutrodri <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/05/16 16:35:04 by eutrodri      #+#    #+#                  #
-#    Updated: 2020/06/20 19:18:07 by eutrodri      ########   odam.nl          #
+#    Updated: 2020/07/02 16:48:36 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,16 @@ OBJ = count_ants.o lem_in.o read_links.o read_rooms.o\
 
 FLAGS = -Wall -Werror -Wextra
 
+HEADER_FILES = includes/lem_in.h
+
+LIB = Libft/libft.a
+PR = libft/ft_printf/libftprintf.a
+
 S = $(addprefix srcs/, $(SRCS))
 
 O = $(addprefix obj/, $(OBJ))
 
-O_P = mkdir obj
+O_P = mkdir -p obj
 
 COLOR_GREEN = $(shell printf "\e[38;5;10m")
 COLOR_RED = $(shell printf "\e[31;5;10m")
@@ -48,16 +53,23 @@ FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME) :
+$(NAME) : $(LIB) $(O) $(PR)
 	@echo "$(PROCESS) $(COLOR_YELLOW)COMPILING$(COLOR_DEFAULT)"
+	@gcc -o $(NAME) $(O) -I includes libft/ft_printf/libftprintf.a\
+	 libft/libft.a
+	@echo "$(PRINT_PLUS) $(COLOR_GREEN)Done$(COLOR_DEFAULT)"
+
+obj/%.o : srcs/%.c
+	@$(O_P)
+	@gcc $(FLAGS) -c -o $@ $< -I includes
+
+$(LIB) :
 	@make -C libft/
 	@echo "$(PRINT_PLUS) $(COLOR_GREEN)Libft Done$(COLOR_DEFAULT)"
-	@mv libft/libft.a .
-	@gcc $(FLAGS) -c $(S) -I includes
-	@$(O_P)
-	@mv $(OBJ) obj/
-	@gcc $(FLAGS) -o $(NAME) $(O) -I includes/ libft.a
-	@echo "$(PRINT_PLUS) $(COLOR_GREEN)Done$(COLOR_DEFAULT)"
+
+$(PR) :
+	@make -C libft/ft_printf/
+	@echo "$(PRINT_PLUS) $(COLOR_GREEN)Printf Done$(COLOR_DEFAULT)"
 
 clean:
 	@make clean -C libft/

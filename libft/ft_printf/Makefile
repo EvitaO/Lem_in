@@ -6,7 +6,7 @@
 #    By: eutrodri <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/17 01:27:44 by eutrodri      #+#    #+#                  #
-#    Updated: 2020/02/05 13:25:09 by eutrodri      ########   odam.nl          #
+#    Updated: 2020/07/02 15:59:57 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,15 @@ OBJ = ft_printf.o douix.o store_flags.o clear_struct.o \
 	  store_percision_width.o f.o get_float_in_string.o\
 	  get_flags_in_float.o check_validf.o
 
-
-
-
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME) :
-	@gcc $(FLAGS) -c $(SRCS) -I .
-	@ar rcs $(NAME) $(OBJ)
+$(NAME) : $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+
+%.o: %.c
+	@gcc $(FLAGS) -c -o $@ $< -I .
 
 clean:
 	@rm -f $(OBJ)
