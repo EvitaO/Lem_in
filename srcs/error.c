@@ -6,15 +6,28 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/20 13:16:55 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 15:33:03 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/29 14:28:38 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int	ft_error(int i)
+static void	error_putstr(char *s)
 {
-	char	*str[12];
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(2, &s[i], 1);
+		i++;
+	}
+	write(2, "\n", 1);
+}
+
+int			ft_error(int i)
+{
+	char	*str[13];
 
 	str[0] = "incorrect format of ants";
 	str[1] = "incorrect room name";
@@ -28,6 +41,7 @@ int	ft_error(int i)
 	str[9] = "link name does not exists";
 	str[10] = "start/end room has no links";
 	str[11] = "wrong format";
-	ft_printf("%s\n", str[i - 1]);
+	str[12] = "there is no path";
+	error_putstr(str[i - 1]);
 	return (0);
 }

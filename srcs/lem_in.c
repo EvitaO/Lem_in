@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/24 16:14:46 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 19:40:14 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/29 14:33:38 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		free_p(t_path *p, t_able *hashtable)
 	free(p);
 }
 
-static void	input(t_able *hashtable)
+static char	*input(t_able *hashtable)
 {
 	char	*line;
 	char	*output;
@@ -39,22 +39,22 @@ static void	input(t_able *hashtable)
 	line = NULL;
 	output = "";
 	*hashtable = check_input(&line, &output);
-	ft_printf("%s\n", output);
-	free(output);
+	return (output);
 }
 
 int			main(void)
 {
 	t_able	hashtable;
 	t_path	*p;
+	char	*output;
 
-	input(&hashtable);
+	output = input(&hashtable);
 	p = save_path(&hashtable);
-	//ft_printf("p.inst.r is %i\n", p->instruction);
+	ft_printf("%s\n", output);
+	free(output);
 	reset_vst(p);
 	walk_ants(p, hashtable.ants);
 	free_p(p, &hashtable);
 	free_ht(&hashtable);
-	ft_printf("\n");
 	return (0);
 }

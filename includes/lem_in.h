@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 15:33:28 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/06/30 11:29:17 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,9 @@ void				free_p(t_path *p, t_able *hashtable);
 /*
 **			PATH
 */
+
+void				put_link_off(t_able *ht, int i, char *name);
+
 t_path				*save_path(t_able *hashtable);
 t_link				*find_path(t_able *hashtable);
 void				find_short_path(t_able *ht, t_path *path, int i);
@@ -141,7 +144,6 @@ t_node				*find_short_link_end(t_able *ht);
 void				algo_d(t_able *ht, int id);
 int					dfs(t_able *ht, int id, char *name, int vst);
 int					rec(t_able *ht, t_link **link, int id, int vst);
-int					put_link_off(t_able *ht, int id, char *name);
 void				change_id(int id, t_node *room, t_able *ht);
 int					next_link(t_able *ht, t_node *room, int id, int vst);
 int					next_link_id(t_able *ht, t_node *room, int id);
