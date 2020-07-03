@@ -6,7 +6,7 @@
 #    By: eutrodri <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/17 01:27:44 by eutrodri      #+#    #+#                  #
-#    Updated: 2020/02/05 13:24:33 by eutrodri      ########   odam.nl          #
+#    Updated: 2020/07/02 16:47:06 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,16 +44,24 @@ OBJ = ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o ft_memmove.o \
 	  ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstiter.o ft_lstmap.o \
 	  ft_lstnew.o
 
+HEADER_FILES = includes/libft.h
+
+PR = ft_printf/libftprintf.a
+
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME) :
-	@make -C ft_printf/
-	@gcc $(FLAGS) -c $(SRCS) -I includes
-	@mv ft_printf/libftprintf.a $(NAME)
-	@ar rc $(NAME) $(OBJ)
+$(NAME) : $(OBJ) $(PR)
+	@ar rcs $(NAME) $(OBJ) $(PR)
 	@ranlib $(NAME)
+
+
+%.o : %.c $(HEADER_FILES)
+	@gcc $(FLAGS) -c -o $@ $< -I includes/
+
+$(PR) :
+	@make -C ft_printf/
 
 clean:
 	@make clean -C ft_printf/
