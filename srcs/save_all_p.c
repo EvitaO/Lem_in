@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/04 12:46:20 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 19:25:46 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/03 21:20:44 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,13 @@ t_path		*save_and_check(t_path *p, t_able *hashtable, int id)
 	if (p && p->instruction <= p2->instruction)
 	{
 		free_p(p2, hashtable);
-		hashtable->check = 1;
+		hashtable->check++;
 		return (p);
 	}
 	else if (p)
 	{
 		free_p(p, hashtable);
+		hashtable->check = 0;
 		return (p2);
 	}
 	return (p2);

@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/19 15:58:26 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 19:22:07 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/03 21:30:42 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static void		switch_id(char *name, t_able *ht)
 
 	tmp = find_room(ht, name);
 	i = tmp->path_id;
-	while (tmp && start_end_room(ht, tmp->name) != 2)
+	ht->check = 1;
+	while (tmp && start_end_room(ht, tmp->name) != 2 && ht->check == 1)
 	{
+		ht->check = 0;
 		link = tmp->link;
 		while (link)
 		{
@@ -33,11 +35,14 @@ static void		switch_id(char *name, t_able *ht)
 			{
 				tmp2->path_id = i;
 				tmp = tmp2;
+				ht->check = 1;
 				break ;
 			}
 			link = link->next;
 		}
 	}
+	if (tmp && start_end_room(ht, tmp->name) != 2)
+		ht->check = -5;
 }
 
 static void		change_path_id(char *name, t_able *ht)
@@ -65,7 +70,7 @@ void			put_id(t_able *ht, int i)
 		return ;
 	tmp->path_id = i;
 	tmp2 = ht->array[ht->size];
-	while (tmp && (!(ft_strcmp(tmp->name, tmp2->name) == 0)))
+	while (tmp && ht->check != -5 && (!(ft_strcmp(tmp->name, tmp2->name) == 0)))
 	{
 		if ((!(tmp->prev)) && tmp->n->visited == tmp->visited - 1)
 		{
