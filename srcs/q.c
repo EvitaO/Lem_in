@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/14 08:57:39 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 19:21:37 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/03 11:27:53 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void		remove_q2(t_link **q, t_able *hashtable)
 	while (*q)
 	{
 		room = find_room(hashtable, (*q)->name);
-		room->visited = 0;
+		if (room->visited != -5)
+			room->visited = 0;
 		room->prev2 = NULL;
 		room->n = NULL;
 		tmp = *q;
