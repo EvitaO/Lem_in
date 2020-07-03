@@ -1,122 +1,122 @@
-oude manier
+oude manier                       manier van 3/7
 
 map:                all
-sec:                1.92
-instr:              101
-onze instr:         119      
-paden in gebruik:   4
+sec:                1.92          1.48
+instr:              101           
+onze instr:         119           119
+paden in gebruik:   4             4
 
-map:                all2
-sec:                20.39 :o
-instr:              81
-onze instr:         88   
-paden in gebruik:   7
+map:                all2          
+sec:                20.39 :o      14.91
+instr:              81            
+onze instr:         88            83
+paden in gebruik:   7             7
 
 map:                map
-sec:                0.17
-instr:              32
-onze instr:         31
-paden in gebruik:   7
+sec:                0.17          0.14
+instr:              32 
+onze instr:         31            31
+paden in gebruik:   7             7
 
-map:                flow-one1
-sec:                0.08
+map:                flow-one1     
+sec:                0.08          0.06
 instr:              32
-onze instr:         -   segfault   
-paden in gebruik:   -
+onze instr:         -   segfault   32
+paden in gebruik:   -               1
 
 map:                flow-one2
-sec:                0.08
+sec:                0.08              0.06
 instr:              27
-onze instr:         -   segfault   
-paden in gebruik:   -
+onze instr:         -   segfault      27
+paden in gebruik:   -               1
 
 map:                flow-one3
-sec:                0.02
-instr:              27
-onze instr:         27   
-paden in gebruik:   1
+sec:                0.02            0.00
+instr:              27            
+onze instr:         27              27
+paden in gebruik:   1             1
 
 map:                flow-ten1
-sec:                0.08
+sec:                0.08          0.08
 instr:              38
-onze instr:         37 
-paden in gebruik:   5
+onze instr:         37            37
+paden in gebruik:   5             5
 
 map:                flow-ten2
-sec:                0.16
+sec:                0.16          0.11
 instr:              32
-onze instr:         32  
-paden in gebruik:   4
+onze instr:         32            32
+paden in gebruik:   4             4
 
 map:                flow-ten3
-sec:                0.17
-instr:              31
-onze instr:         30   
-paden in gebruik:   6
+sec:                0.17          0.12
+instr:              31  
+onze instr:         30            30
+paden in gebruik:   6             6
 
 map:                flow-thousand1
-sec:                0.16
-instr:              33
-onze instr:         33
-paden in gebruik:   11
-
+sec:                0.16              0.09
+instr:              33                  
+onze instr:         33                33  
+paden in gebruik:   11                10  
+  
 map:                flow-thousand2
-sec:                0.11
-instr:              29
-onze instr:         28
-paden in gebruik:   12
+sec:                0.11              0.09
+instr:              29        
+onze instr:         28                28
+paden in gebruik:   12                12
 
 map:                flow-thousand3
-sec:                0.11
+sec:                0.11              0.08
 instr:              31
-onze instr:         34
-paden in gebruik:   12
+onze instr:         34                31
+paden in gebruik:   12                11
 
 map:                big1
-sec:                2.31
+sec:                2.31              1.55
 instr:              85
-onze instr:         85
-paden in gebruik:   8
+onze instr:         85                85
+paden in gebruik:   8                 8
 
 map:                big2
-sec:                4.80
+sec:                4.80              3.27
 instr:              71
-onze instr:         71
-paden in gebruik:   9
+onze instr:         71                71
+paden in gebruik:   9                 9 
 
 map:                big3
-sec:                5.28
+sec:                5.28              3.78
 instr:              47
-onze instr:         46
-paden in gebruik:   14
+onze instr:         46                46
+paden in gebruik:   14                14
 
 map:                big-super1
-sec:                10.67
+sec:                10.67             7.77
 instr:              95
-onze instr:         107
-paden in gebruik:   11
+onze instr:         107               99
+paden in gebruik:   11                8
 
 map:                big-super2
-sec:                2.39
+sec:                2.39              1.5
 instr:              76
-onze instr:         79
-paden in gebruik:   5
+onze instr:         79                76
+paden in gebruik:   5                 5
 
 map:                big-super3
-sec:                5.52
-instr:              90
-onze instr:         109
-paden in gebruik:   7
+sec:                5.52              3.77
+instr:              90    
+onze instr:         109               101
+paden in gebruik:   7                 5
 
 map:                big-super4
-sec:                2.11
+sec:                2.11              1.55
 instr:              89
-onze instr:         93
-paden in gebruik:   10
+onze instr:         93                89
+paden in gebruik:   10                8
 
 map:                big-super5
-sec:                1.59
-instr:              75
-onze instr:         80
-paden in gebruik:   5
+sec:                1.59              1.11
+instr:              75      
+onze instr:         80                75
+paden in gebruik:   5                 5
 
