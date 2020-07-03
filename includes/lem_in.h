@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/30 11:29:17 by eutienne      ########   odam.nl         */
+/*   Updated: 2020/07/03 11:28:18 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void				free_p(t_path *p, t_able *hashtable);
 **			PATH
 */
 
-void				put_link_off(t_able *ht, int i, char *name);
+void				put_link_off(t_able *ht);
 
 t_path				*save_path(t_able *hashtable);
 t_link				*find_path(t_able *hashtable);
