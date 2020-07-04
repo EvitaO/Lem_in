@@ -6,13 +6,13 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/04 12:46:20 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/03 21:20:44 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/04 20:52:33 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-t_link		*find_id_end(t_able *ht, int id)
+t_link			*find_id_end(t_able *ht, int id)
 {
 	t_link	*link;
 	t_node	*room;
@@ -30,7 +30,16 @@ t_link		*find_id_end(t_able *ht, int id)
 	return (NULL);
 }
 
-int			save_a_p(t_able *ht, int id, t_path *all)
+static void		add_start(t_link **tmp, t_path *all, int id, char *name)
+{
+	(*tmp)->prev = (t_link*)malloc(sizeof(t_link));
+	(*tmp)->prev->name = ft_strdup(name);
+	all->array[id]->next = (*tmp)->prev;
+	all->array[id]->next->visited = 0;
+	(*tmp)->prev->prev = NULL;
+}
+
+int				save_a_p(t_able *ht, int id, t_path *all)
 {
 	t_link	*tmp;
 	t_link	*tmp2;
@@ -52,15 +61,11 @@ int			save_a_p(t_able *ht, int id, t_path *all)
 	}
 	if (!room)
 		return (-1);
-	tmp->prev = (t_link*)malloc(sizeof(t_link));
-	tmp->prev->name = ft_strdup(room->name);
-	all->array[id]->next = tmp->prev;
-	all->array[id]->next->visited = 0;
-	tmp->prev->prev = NULL;
+	add_start(&tmp, all, id, room->name);
 	return (0);
 }
 
-t_path		*save_all_p(t_able *hashtable, int max)
+t_path			*save_all_p(t_able *hashtable, int max)
 {
 	int		i;
 	int		id;
@@ -83,22 +88,22 @@ t_path		*save_all_p(t_able *hashtable, int max)
 	return (all);
 }
 
-t_path		*save_and_check(t_path *p, t_able *hashtable, int id)
+t_path			*save_and_check(t_path *p, t_able *hashtable, int id)
 {
 	t_path	*p2;
 
+	if (hashtable->check == -5)
+		return (p);
 	p2 = save_all_p(hashtable, id);
 	devide_ants(p2, hashtable->ants);
 	if (p && p->instruction <= p2->instruction)
 	{
 		free_p(p2, hashtable);
-		hashtable->check++;
 		return (p);
 	}
 	else if (p)
 	{
 		free_p(p, hashtable);
-		hashtable->check = 0;
 		return (p2);
 	}
 	return (p2);

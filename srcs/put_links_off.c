@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 11:29:16 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/04 14:38:42 by anonymous     ########   odam.nl         */
+/*   Updated: 2020/07/04 20:17:41 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static void		put_vst(t_able *ht, t_node *room, t_link *q)
 void			put_link_off(t_able *ht)
 {
 	t_node	*room;
-	t_link	*tmp;
 	t_link	*q;
 	t_link	*q2;
 	t_link	*q3;
