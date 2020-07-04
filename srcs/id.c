@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/19 15:58:26 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/03 21:30:42 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/04 23:12:50 by anonymous     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static void		switch_id(char *name, t_able *ht)
 	t_node	*tmp;
 	t_node	*tmp2;
 	t_link	*link;
-	int		i;
 
 	tmp = find_room(ht, name);
-	i = tmp->path_id;
 	ht->check = 1;
 	while (tmp && start_end_room(ht, tmp->name) != 2 && ht->check == 1)
 	{
@@ -33,7 +31,7 @@ static void		switch_id(char *name, t_able *ht)
 				return ;
 			if (tmp2->prev == tmp)
 			{
-				tmp2->path_id = i;
+				tmp2->path_id = tmp->path_id;
 				tmp = tmp2;
 				ht->check = 1;
 				break ;
