@@ -6,7 +6,7 @@
 #    By: eutrodri <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/05/16 16:35:04 by eutrodri      #+#    #+#                  #
-#    Updated: 2020/07/02 16:48:36 by anonymous     ########   odam.nl          #
+#    Updated: 2020/07/04 14:37:48 by anonymous     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,14 @@ SRCS = count_ants.c lem_in.c read_links.c read_rooms.c\
 	 free.c check_comment.c store_links.c max_path.c\
 	 save_path.c find_node.c save_all_p.c\
 	 find_room.c algo_b.c devide_ants.c walk_ants.c print_ants.c\
-	 sort_all.c free2.c ft_atoi2.c q.c id.c error.c
+	 sort_all.c free2.c ft_atoi2.c q.c id.c error.c put_links_off.c
 
 OBJ = count_ants.o lem_in.o read_links.o read_rooms.o\
 	 check_input.o store_input_str.o valid_check_room.o hashtables.o\
 	 free.o check_comment.o store_links.o max_path.o\
 	 save_path.o find_node.o save_all_p.o\
 	 find_room.o algo_b.o devide_ants.o walk_ants.o print_ants.o\
-	 sort_all.o free2.o ft_atoi2.o q.o id.o error.o
+	 sort_all.o free2.o ft_atoi2.o q.o id.o error.o put_links_off.o
 
 FLAGS = -Wall -Werror -Wextra
 
