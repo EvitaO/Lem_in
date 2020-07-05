@@ -6,11 +6,18 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/19 15:58:26 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/04 23:12:50 by anonymous     ########   odam.nl         */
+/*   Updated: 2020/07/05 01:13:37 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static void		give_id(t_node **tmp, t_node **tmp2, t_able *ht)
+{
+	(*tmp2)->path_id = (*tmp)->path_id;
+	*tmp = *tmp2;
+	ht->check = 1;
+}
 
 static void		switch_id(char *name, t_able *ht)
 {
@@ -31,9 +38,7 @@ static void		switch_id(char *name, t_able *ht)
 				return ;
 			if (tmp2->prev == tmp)
 			{
-				tmp2->path_id = tmp->path_id;
-				tmp = tmp2;
-				ht->check = 1;
+				give_id(&tmp, &tmp2, ht);
 				break ;
 			}
 			link = link->next;
@@ -58,6 +63,18 @@ static void		change_path_id(char *name, t_able *ht)
 	}
 }
 
+static void		change_or_switch(t_node **tmp, t_able *ht)
+{
+	if ((!((*tmp)->prev2)) && (*tmp)->prev != (*tmp)->n)
+		change_path_id((*tmp)->name, ht);
+	else if ((*tmp)->prev2 && (*tmp)->visited == -2)
+	{
+		(*tmp)->prev = (*tmp)->prev2;
+		(*tmp)->prev->path_id = (*tmp)->path_id;
+		switch_id((*tmp)->name, ht);
+	}
+}
+
 void			put_id(t_able *ht, int i)
 {
 	t_node	*tmp;
@@ -76,16 +93,7 @@ void			put_id(t_able *ht, int i)
 			tmp->prev = tmp->n;
 		}
 		else if (tmp->prev && tmp->visited != tmp->prev->visited - 1)
-		{
-			if ((!(tmp->prev2)) && tmp->prev != tmp->n)
-				change_path_id(tmp->name, ht);
-			else if (tmp->prev2 && tmp->visited == -2)
-			{
-				tmp->prev = tmp->prev2;
-				tmp->prev->path_id = tmp->path_id;
-				switch_id(tmp->name, ht);
-			}
-		}
+			change_or_switch(&tmp, ht);
 		else if (tmp->prev && tmp->visited == tmp->prev->visited + 1)
 			tmp->prev = NULL;
 		tmp->visited = 0;
