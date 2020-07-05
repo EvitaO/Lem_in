@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/10 17:12:18 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/04 20:50:53 by anonymous     ########   odam.nl         */
+/*   Updated: 2020/07/05 02:14:19 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,30 @@ int					check_ants(int ants, char **line);
 **		check rooms
 */
 t_able				read_rooms(char **line, t_able *ht, char **str);
-int					check_rooms(char *line, t_able *ht, int comment, t_xy *coord);
-void				store_room(char **tmp, t_able *ht, int comment, t_xy *coord);
+int					check_rooms(char *line, t_able *ht, \
+					int comment, t_xy *coord);
+void				store_room(char **tmp, t_able *ht, \
+					int comment, t_xy *coord);
 int					ft_atoi2(const char *str);
 void				valid_name(char *tmp);
 
 /*
 **		check links
 */
-void				read_links(char **line, char **str, t_able\
-					*hashtable);
+void				read_links(char **line, char **str, \
+					t_able *hashtable);
 void				check_links(char *line, t_able *hashtable);
 void				store_links(char **tmp, t_able *hashtable);
 void				put_link(t_node **t, char *name, char *new);
-void				check_room_exists(char *name, t_able *hashtable, int index);
+void				check_room_exists(char *name, \
+					t_able *hashtable, int index);
 
 /*
 **		store in hashtable
 */
 int					hash(int size, char *key);
-void				check_name_exist(t_able *hashtable, int index, t_node **node);
+void				check_name_exist(t_able *hashtable, \
+					int index, t_node **node);
 void				ht_put(t_able *hashtable, char *name, int index);
 void				add_node_ht(t_able *hashtable, t_node **node, int index);
 void				links_start_end(t_able *hashtable);
@@ -129,8 +133,6 @@ t_path	        	*bfs_path(t_able *ht, t_path *p, int *id);
 void				make_q(t_link **q, t_able *hashtable);
 
 t_path				*save_path(t_able *hashtable);
-t_link				*find_path(t_able *hashtable);
-void				find_short_path(t_able *ht, t_path *path, int i);
 void				find_node(t_able *hash, t_path *p, int index, int index_p);
 t_node				*find_room(t_able *hashtable, char *name);
 int					start_end_room(t_able *hashtable, char *name);
@@ -139,18 +141,9 @@ t_path    			*algo_b(t_able *hashtable, int id, t_path *p, int i);
 void				put_id(t_able *ht, int i);
 int	    			add_q(t_link **q, t_link *links, t_able *hashtable);
 void				make_q_elm(t_link **tmp, char *name);
-void				remove_q(t_link **q, t_able *hashtable);
 void				remove_q2(t_link **q, t_able *hashtable);
 
 t_node				*find_short_link_end(t_able *ht);
-void				algo_d(t_able *ht, int id);
-int					dfs(t_able *ht, int id, char *name, int vst);
-int					rec(t_able *ht, t_link **link, int id, int vst);
-void				change_id(int id, t_node *room, t_able *ht);
-int					next_link(t_able *ht, t_node *room, int id, int vst);
-int					next_link_id(t_able *ht, t_node *room, int id);
-int					find_detour_link(t_able *ht, char *name);
-void				set_id_off(t_able *ht, char *name, int off);
 
 /*
 **			SAVE ALL PATHS
@@ -164,8 +157,6 @@ void				sort_all(t_path *all);
 int					check_if_sorted(t_path *all);
 void				swap_tlink(t_link *big, t_link *smal);
 t_path 				*save_and_check(t_path *p, t_able *hashtable, int id);
-
-void				use_one_p(t_path *p, t_able *hashtable);
 
 /*
 **			DEVIDE ANTS
