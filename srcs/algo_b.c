@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/17 10:44:24 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/04 20:51:45 by anonymous     ########   odam.nl         */
+/*   Updated: 2020/07/05 15:07:39 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_path		*algo_b(t_able *hashtable, int id, t_path *p, int i)
 			q = q->next;
 		}
 	}
-	if (id <= hashtable->max_path && (i = 0 || hashtable->check == -5))
+	if (id <= hashtable->max_path && (i == 0 || hashtable->check == -5))
 		remove_q2(&q2, hashtable);
 	return (p);
 }
