@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/03/03 12:23:12 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 13:02:01 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/05 11:32:14 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ int	check_ants(int ants, char **line)
 	while (line[0][i] && ft_isdigit(line[0][i]) == 1)
 		i++;
 	if (line[0][i] == '\0')
-		ants = ft_atoi(*line);
+		ants = ft_atoi2(*line);
 	else if (line[0][0] == '#')
+	{
+		if (check_comment(*line) != 0)
+			exit(ft_error(12));
 		return (ants);
+	}
 	else
 		exit(ft_error(1));
 	return (ants);

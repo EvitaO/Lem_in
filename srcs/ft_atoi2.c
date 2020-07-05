@@ -6,15 +6,15 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/11 11:32:44 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/06/20 18:42:21 by eutrodri      ########   odam.nl         */
+/*   Updated: 2020/07/05 11:43:13 by eutienne      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-static int	loop_str(const char *str, int i)
+static long long	loop_str(const char *str, int i)
 {
-	int		res;
+	long long		res;
 
 	res = 0;
 	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
@@ -27,11 +27,11 @@ static int	loop_str(const char *str, int i)
 	return (res);
 }
 
-int			ft_atoi2(const char *str)
+int					ft_atoi2(const char *str)
 {
-	int		res;
-	int		sign;
-	int		i;
+	long long	res;
+	int			sign;
+	int			i;
 
 	res = 0;
 	sign = 1;
@@ -51,5 +51,7 @@ int			ft_atoi2(const char *str)
 	else if (str[i] == '+')
 		i++;
 	res = loop_str(str, i);
+	if ((res * sign) > 2147483647 || (res * sign) < -2147483648)
+		exit(ft_error(12));
 	return (sign * res);
 }
