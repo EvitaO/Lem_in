@@ -6,7 +6,7 @@
 /*   By: eutrodri <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 11:29:16 by eutrodri      #+#    #+#                 */
-/*   Updated: 2020/07/04 20:17:41 by anonymous     ########   odam.nl         */
+/*   Updated: 2020/07/05 14:47:18 by eutrodri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int		cnt_links(t_able *ht, t_node *room)
 	int		cnt;
 	t_node	*tmp;
 
+	cnt = 0;
 	links = room->link;
 	while (links)
 	{
