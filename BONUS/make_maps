@@ -1,0 +1,61 @@
+#!/bin/bash
+
+cnt=0
+if [ $1 = 'flow-one' ]
+then
+	while [ $cnt -lt 10 ]
+	do
+		filename="flow-one${cnt}"
+		mkdir -p flow-one
+		#res="$(./linux_gen --flow-one > ./flow-one/$filename)"
+		res="$(./generator --flow-one > ./flow-one/$filename)"
+		cnt=$((cnt+1))
+	done
+	sh ./flow-o
+elif [ $1 = 'flow-ten' ]
+then
+	while [ $cnt -lt 10 ]
+	do
+		filename="flow-ten${cnt}"
+		mkdir -p flow-ten
+		#res="$(./linux_gen --flow-ten > ./flow-ten/$filename)"
+		res="$(./generator --flow-ten > ./flow-ten/$filename)"
+		cnt=$((cnt+1))
+	done
+	sh ./flow-t
+elif [ $1 = 'flow-thousand' ]
+then
+	while [ $cnt -lt 10 ]
+	do
+		filename="flow-thousand${cnt}"
+		mkdir -p flow-thousand
+		#res="$(./linux_gen --flow-thousand > ./flow-thousand/$filename)"
+		res="$(./generator --flow-thousand > ./flow-thousand/$filename)"
+		cnt=$((cnt+1))
+	done
+	sh ./flow-th
+elif [ $1 = 'big' ]
+then
+	while [ $cnt -lt 10 ]
+	do
+		filename="big${cnt}"
+		mkdir -p big
+		#res="$(./linux_gen --big > ./big/$filename)"
+		res="$(./generator --big > ./big/$filename)"
+		cnt=$((cnt+1))
+	done
+	sh ./flow-b
+elif [ $1 = 'big-super' ]
+then
+	while [ $cnt -lt 10 ]
+	do
+		filename="big-super${cnt}"
+		mkdir -p big-super
+		#res="$(./linux_gen --big-superposition > ./big-super/$filename)"
+		res="$(./generator --big-superposition > ./big-super/$filename)"
+		cnt=$((cnt+1))
+	done
+	sh ./flow-bs
+else
+	kill %%
+fi

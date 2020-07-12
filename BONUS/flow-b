@@ -1,0 +1,51 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+files=./big/*
+start="$(date +'%s * 1000 + %-N / 1000000')"
+#start="$(date +%s%N)"
+cnt=0
+for file in $files
+do
+	mkdir -p big-results
+	output="$(./lem-in < "$file" > ./big-results/$(basename $file))"
+	cnt=$((cnt+1))
+done
+end="$(date +'%s * 1000 + %-N / 1000000')"
+#end="$(date +%s%N)"
+
+av_time="$(((end - start) / 1000000000))"
+max=$((cnt * 15))
+if [ $av_time -le $max ]
+then
+	printf "${PURPLE}average time with big is ${NC}${GREEN}%.5f${NC} ${PURPLE}seconds${NC}\n" "$(((end - start) / cnt))e-9"
+else
+	printf "${PURPLE}average time with big is ${NC}${RED}%.5f${NC} ${PURPLE}seconds${NC}\n" "$(((end - start) / cnt))e-9"
+fi
+
+files=./big-results/*
+
+for file in $files
+do
+	max_line=$(grep -m 1 "lines required" "$file" | tr -dc '0-9')
+	res_line=$(grep -0 "L" "$file" | wc -l)
+	if [ $res_line -le $max_line ]
+	then
+		printf "${PURPLE}%-10s		max=%i	result=%-10i		${NC}${GREEN}[passed]${NC}\n" $(basename $file) $max_line $res_line
+	else
+		printf "${PURPLE}%-10s		max=%i	result=%-10i		${NC}${RED}[failed]${NC}\n" $(basename $file) $max_line $res_line
+	fi
+done
+
+echo "Do you want to remove maps and the result maps?(yes/no)"
+read opt
+
+if [ $opt = 'yes' ]
+then
+	rm -rf ./big
+	rm -rf ./big-results
+fi

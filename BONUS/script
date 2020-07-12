@@ -1,0 +1,45 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+PURPLE='\033[0;35m'
+NC='\033[0m'
+
+echo 'Do you want to test valid or invalid maps?'
+read map
+
+if [ $map = 'invalid' ]
+then
+	echo -e "${GREEN}testing $map maps${NC}"
+	files=./invalid_maps/*
+	touch ./error
+	for file in $files
+	do
+		./lem-in < "$file" > ./error 2>&1
+		output=$(< ./error wc -l)
+		if [ $output -le 1 ]
+		then
+			printf "${PURPLE}%-30s${NC} ${GREEN}[passed]${NC}\n" $(basename $file)
+		else
+			printf "${PURPLE}%-30s${NC}	${RED}[failed]${NC}\n" $(basename $file)
+		fi
+	done
+	rm ./error
+elif [ $map = 'valid' ]
+then
+	echo "do you want to test lem-in with: flow-one, flow-ten, flow-thousand, big, big-super or all?"
+	read answer
+
+	if [ $answer = 'all' ]
+	then
+		sh ./make_maps 'flow-one'
+		sh ./make_maps 'flow-ten'
+		sh ./make_maps 'flow-thousand'
+		sh ./make_maps 'big'
+		sh ./make_maps 'big-super'
+	else
+		sh ./make_maps $answer
+	fi
+else
+	kill %%
+fi
