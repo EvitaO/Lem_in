@@ -12,7 +12,7 @@
 
 #include "../includes/lem_in.h"
 
-static void		give_id(t_able *ht, int *id, t_link **q2)
+static void		give_id(t_able *ht, int *id)
 {
 	t_node	*tmp;
 	t_link	*tmp_l;
@@ -31,8 +31,7 @@ static void		give_id(t_able *ht, int *id, t_link **q2)
 			if (room->visited == tmp->visited - 1 &&\
 			start_end_room(ht, room->name) != 2)
 			{
-				if (start_end_room(ht, room->name) == 0)
-					room->path_id = *id;
+				room->path_id = *id;
 				tmp->prev = room;
 				tmp = room;
 				break ;
@@ -40,7 +39,6 @@ static void		give_id(t_able *ht, int *id, t_link **q2)
 			tmp_l = tmp_l->next;
 		}
 	}
-	remove_q2(q2, ht);
 }
 
 static int		bfs_loop(t_able *ht, t_link **q, t_node *prev_r, t_link *links)
@@ -85,7 +83,8 @@ t_path			*bfs_path(t_able *ht, t_path *p, int *id)
 		room = find_room(ht, q->name);
 		if (bfs_loop(ht, &q, room, room->link) == 1)
 		{
-			give_id(ht, id, &q2);
+			give_id(ht, id);
+			ht->array[ht->size]->path_id = 0;
 			(*id)++;
 			p = save_and_check(p, ht, (*id) - 1);
 			break ;

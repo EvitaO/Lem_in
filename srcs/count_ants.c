@@ -19,9 +19,9 @@ static void	read_first_line(int *ants, char **str)
 	char	*line2;
 
 	i = read(0, line, 1);
-	line2 = line;
+	line2 = ft_strdup(line);
 	store_input_str_first_line(str, &line2);
-	line2 = NULL;
+	free(line2);
 	if (i <= 0)
 		exit(write(2, "no file\n", 8));
 	else if (ft_strcmp(line, "\n") == 0)
@@ -30,7 +30,10 @@ static void	read_first_line(int *ants, char **str)
 	if (i <= 0)
 		exit(ft_error(12));
 	store_input_str_first_line(str, &line2);
+	free(line2);
+	line2 = ft_strdup(*str);
 	*ants = check_ants(*ants, str);
+	free(*str);
 	*str = ft_strjoin(*str, "\n");
 	free(line2);
 }
