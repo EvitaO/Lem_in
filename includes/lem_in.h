@@ -84,9 +84,9 @@ void				store_input_str_first_line(char **str, char **line);
 */
 t_able				read_rooms(char **line, t_able *ht, char **str);
 int					check_rooms(char *line, t_able *ht, \
-					int comment, t_xy *coord);
+					int *comment, t_xy *coord);
 void				store_room(char **tmp, t_able *ht, \
-					int comment, t_xy *coord);
+					int *comment, t_xy *coord);
 int					ft_atoi2(const char *str);
 void				valid_name(char *tmp);
 

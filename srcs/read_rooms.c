@@ -53,21 +53,22 @@ void		check_cordinates(char **tmp, t_xy *coord)
 		store_check_coord(coord, tmp, index);
 }
 
-void		store_room(char **tmp, t_able *ht, int comment, t_xy *coord)
+void		store_room(char **tmp, t_able *ht, int *comment, t_xy *coord)
 {
 	int		index;
 
-	if (comment == 1)
+	if (*comment == 1)
 		index = 787;
-	else if (comment == 2)
+	else if (*comment == 2)
 		index = 788;
 	else
 		index = hash(787, tmp[0]);
+	*comment = 0;
 	ht_put(ht, tmp[0], index);
 	check_cordinates(tmp, coord);
 }
 
-int			check_rooms(char *line, t_able *ht, int comment, t_xy *coord)
+int			check_rooms(char *line, t_able *ht, int *comment, t_xy *coord)
 {
 	char	**tmp;
 
@@ -107,9 +108,10 @@ t_able		read_rooms(char **line, t_able *ht, char **str)
 	ht->size = 787;
 	while (ret != 1 && get_next_line(0, line) == 1)
 	{
-		ret = check_rooms(*line, ht, comment, &coord);
+		ret = check_rooms(*line, ht, &comment, &coord);
 		store_input_str(str, line);
-		comment = check_comment(*line);
+		if (comment == 0)
+			comment = check_comment(*line);
 		if (ret != 1)
 			free(*line);
 	}

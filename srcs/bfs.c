@@ -28,9 +28,11 @@ static void		give_id(t_able *ht, int *id, t_link **q2)
 		while (tmp_l)
 		{
 			room = find_room(ht, tmp_l->name);
-			if (room->visited == tmp->visited - 1)
+			if (room->visited == tmp->visited - 1 &&\
+			start_end_room(ht, room->name) != 2)
 			{
-				room->path_id = *id;
+				if (start_end_room(ht, room->name) == 0)
+					room->path_id = *id;
 				tmp->prev = room;
 				tmp = room;
 				break ;
