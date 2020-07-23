@@ -37,7 +37,7 @@ the_links
 ```
 number_of_ants:<br/>how many ants you have to move from the start to the end room
 
-the_rooms:<br/>rooms defined by: name coord_x coord_y<br/>rooms coordinates will always be integers and the room name can lever start with 'L', '#' or çontain a '-'.
+the_rooms:<br/>rooms defined by: name coord_x coord_y<br/>rooms coordinates will always be integers and the room name can lever start with 'L', '#' or contain a '-'.
 
 the_links:<br/>links defined by: name1-name2
 
@@ -64,6 +64,8 @@ We made the following bonusses:
 <br/>A test script with invalid maps, to check if lem-in gives an error message.
 <br/>A test script that generates maps with the generator, uses those maps on lem-in and gives a results if you failed or passed depending on how many lines lem-in used and on Linux it gives the average time your lem-in takes.
 <br/>A python program that makes an image from the maps lem-in uses, but with random coordinates.
+
+You can read the README's of the bonusses in my other git repositories(named: Tester-lem-in and map_image_lemin).
 
 ## Usage
 
