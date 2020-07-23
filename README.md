@@ -1,6 +1,7 @@
 # Lem_in
 
 Lem-in is an elementary algorithmic project, thats is meant to make you code an ant farm manager.
+<br/>It is a project you have to do with 2people, I did it togheter with [@eutienne](https://github.com/Eutienne)
 
 ## Project
 
